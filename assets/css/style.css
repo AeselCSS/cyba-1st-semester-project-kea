@@ -1,0 +1,119 @@
+/* font import */
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau:wght@1;100;200;300;400;500;700&display=swap');
+
+/* root variables */
+:root {
+/* fonts */
+--font-family: 'Ysabeau', cursive;
+--font-size-normal: 1rem;
+--font-size-small: 0.8rem;
+--font-size-large: 1.2rem;
+--font-size-xlarge: 1.5rem;
+/* colors */
+--primary-color: #f5f5f5;
+--secondary-color: #333333;
+--tertiary-color: #c9c9c9;
+--accent-color-light: #1e90ac;
+--accent-color-dark: #11596b;
+--shadow-color: #111;
+--text-color: var(--secondary-color);
+
+/* spacing */
+--spacing-small: 0.5em;
+--spacing-normal: 1em;
+--spacing-large: 1.5em;
+
+/* borders */
+--border-radius: 0.5rem;
+--border-solid: 1px solid var(--tertiary-color); /* color subject to change */
+--border-none: none;
+
+/* effects */
+--box-shadow: 0 0 10px var(--shadow-color);
+/* gradient colors are subject to change */
+--gradient: linear-gradient(to bottom right, var(--accent-color-light), var(--accent-color-dark));
+--transition-transform: transform 0.4s ease-in-out;
+--scale-on-hover: scale(1.05);
+--scale-on-click: scale(0.95);
+
+/* media queries */
+--media-query-small: 600px;
+--media-query-medium: 900px;
+--media-query-large: 1200px;
+--media-query-xlarge: 1800px;
+}
+
+/* reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* general styling */
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-normal);
+    color: var(--text-color);
+    background-color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family);
+    font-weight: 400;
+}
+
+h1 {
+    font-size: var(--font-size-xlarge);
+}
+
+h2 {
+    font-size: var(--font-size-large);
+}
+
+h3 {
+    font-size: var(--font-size-normal);
+}
+
+p {
+    font-size: var(--font-size-normal);
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding: var(--spacing-small);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* grid styling */
+
+
+
+/* table styling */
+
+
+/* form styling */
+
+
+/* button styling */
+
+
+/* media queries */
+
+
+/* animations */
+
+
+/* classes */
