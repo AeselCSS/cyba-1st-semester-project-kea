@@ -4,6 +4,7 @@
 import { initViews } from "./spa-router.js";
 import { apiReadMembers, members } from "./api.js";
 import { showMembers } from "./show-members.js";
+import { searchbar } from "./search.js";
 
 // onload event
 window.addEventListener("load", initApp);
@@ -14,5 +15,7 @@ async function initApp() {
 	initViews();
 	await apiReadMembers();
 	showMembers(members);
+
+	document.querySelector('#search').addEventListener('keyup', searchbar);
 }
 
