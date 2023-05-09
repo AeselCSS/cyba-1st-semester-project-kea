@@ -4,6 +4,8 @@
 import { initViews } from "./spa-router.js";
 import { apiReadMembers, members } from "./api.js";
 import { showMembers } from "./show-members.js";
+import { checkIfLoggedIn } from "./system-access.js";
+
 
 // onload event
 window.addEventListener("load", initApp);
@@ -11,8 +13,13 @@ window.addEventListener("load", initApp);
 // initApp function
 async function initApp() {
 	console.log(`App is running!`);
-	initViews();
+	initViews(); // init spa router
+	checkIfLoggedIn(); // check if user is logged in
 	await apiReadMembers();
 	showMembers(members);
+
+	// add event listeners
+	
+
 }
 
