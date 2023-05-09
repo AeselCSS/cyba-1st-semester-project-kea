@@ -97,6 +97,8 @@ img {
     max-width: 100%;
 }
 
+
+
 /* grid styling */
 
 
@@ -117,3 +119,19 @@ img {
 
 
 /* classes */
+
+.hidden {
+    display: none;
+}
+
+/* views */
+
+.view-content {
+    display: none;
+    /* padding: 248px 2em; */
+}
+
+.view-content.active {
+    display: block;
+}
+
