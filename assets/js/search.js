@@ -1,19 +1,23 @@
-import { members } from "./api.js";
 import { showMembers } from "./show-members.js";
+import { filterMembers } from "./filter.js";
 
 function searchbar() {
 	const searchValue = document.querySelector("#search").value.toLowerCase();
+	const filter = document.querySelector("#filter").value;
 
-	const searchArray = checkAllProperties();
+	const filteredArray = filterMembers(filter);
+
+	const searchArray = checkAllProperties(filteredArray);
+
 	showMembers(searchArray);
 
-	function checkAllProperties() {
+	function checkAllProperties(array) {
 		const searchArray = [];
 
 		//TODO: Combine with filter
 
 		// Loops through every member
-		for (const member of members) {
+		for (const member of array) {
 			// Loops through every key in current member
 			for (const key in member) {
 				const value = member[key];
@@ -40,7 +44,7 @@ function searchbar() {
 	}
 
 	function checkArray(array) {
-        // Checks indexes in array, if one matches, stops and returns true
+		// Checks indexes in array, if one matches, stops and returns true
 		return array.some(index => index.toLowerCase().includes(searchValue));
 	}
 }
