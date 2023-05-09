@@ -1,33 +1,30 @@
 
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
+let members = [];
 
-async function getMembers(url) {
-    const response = await fetch(`${url}/members.json`);    
-    const members = await response.json();
+async function apiReadMembers() {
+    const response = await fetch(`${endpoint}/members.json`);    
+    const membersInObjects = await response.json();
 
-    const preparedMembers = prepareMembers(members);
-    return preparedMembers
+    members = prepareMembers(membersInObjects);
 }
 
-function prepareMembers(members) {
+function prepareMembers(membersInObjects) {
     const arr = []
 
-    for (const key in members) {
-        const member = members[key];
+    for (const key in membersInObjects) {
+		const member = membersInObjects[key];
 
-        if (!member) {
-            continue;
-        }
+		if (!member) {
+			continue;
+		}
 
-        member.uid = key;
-        arr.push(member);
-    }
+		member.uid = key;
+		arr.push(member);
+	}
 
     return arr;
 }
 
 
-
-
-
-export {endpoint, getMembers}
+export {apiReadMembers, members}
