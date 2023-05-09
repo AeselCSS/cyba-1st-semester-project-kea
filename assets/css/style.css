@@ -97,7 +97,11 @@ img {
     max-width: 100%;
 }
 
-
+/* dialog styling */
+#main-dialog {
+    margin: auto;
+    padding: 1em;
+}
 
 /* grid styling */
 
@@ -119,6 +123,17 @@ img {
 
 /* table styling */
 
+/* detail view styling */
+
+.member-details-section {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+#details-img img {
+    width: auto;
+    height: 30rem;
+}
 
 /* form styling */
 
@@ -153,3 +168,5 @@ nav a.active {
     background-color: var(--accent-color-dark);
     color: var(--accent-color-light);
 }
+
+
