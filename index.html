@@ -1,78 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/app.js" type="module" defer></script>
-    <title>CYBA Semester Project</title>
-</head>
-<body>
-    <header>
-        <!-- title, logo, image -->
-        <h1>Delfin Svømmeklub</h1>
-    </header>
-    <nav>
-        <!-- navigation bar -->
-        <a href="#home" class="view-link">Home</a>
-        <a href="#members" class="view-link">Members</a>
-        <a href="#finances" class="view-link">Finances</a>
-        <a href="#top-five" class="view-link">Top 5</a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="#" type="image/x-icon" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
+		<script src="./assets/js/app.js" type="module" defer></script>
+		<title>CYBA Semester Project</title>
+	</head>
+	<body>
+		<header>
+			<!-- title, logo, image -->
+			<h1>Delfin Svømmeklub</h1>
+		</header>
+		<nav>
+			<!-- navigation bar -->
+			<a href="#home" class="view-link">Home</a>
+			<a href="#members" class="view-link">Members</a>
+			<a href="#finances" class="view-link">Finances</a>
+			<a href="#top-five" class="view-link">Top 5</a>
 
-        <button id="log-in-btn">Log in</button>
-        <button id="log-out-btn">Log out</button>
-    </nav>
+			<button id="log-in-btn">Log in</button>
+			<button id="log-out-btn">Log out</button>
+		</nav>
 
+		<main>
+			<!-- main content -->
 
-    <main>
-        <!-- main content -->
+			<section id="home" class="view-content">
+				<h2>Home</h2>
+			</section>
 
-        <section id="home" class="view-content">
-            <h2>Home</h2>
-        </section>
+			<section id="members" class="view-content">
+				<h2>members</h2>
+				<div id="search-bar">
+					<button id="add-new-member-btn"></button>
+					<label for="filter">Filter</label>
+					<select name="filter" id="filter">
+						<option value="all" selected>All (default)</option>
+						<option value="active">Active</option>
+						<option value="inactive">Inactive</option>
+						<option value="competitive">Competitive</option>
+						<option value="casual">Casual</option>
+					</select>
+				</div>
 
-        <section id="members" class="view-content">
-            <h2>members</h2>
-            <div id="search-bar">
+				<div id="members-grid"></div>
 
-                <button id="add-new-member-btn"></button>
-            </div>
+				<div id="members-table"></div>
+			</section>
 
-            <div id="members-grid">
+			<section id="finances" class="view-content">
+				<h2>Finances</h2>
+			</section>
 
-            </div>
+			<section id="top-five" class="view-content">
+				<h2>Top 5</h2>
+			</section>
+		</main>
 
-            <div id="members-table">
+		<footer>
+			<!-- footer -->
+		</footer>
 
-            </div>
-
-        </section>
-
-        <section id="finances" class="view-content">
-            <h2>Finances</h2>
-        </section>
-
-        <section id="top-five" class="view-content">
-            <h2>Top 5</h2>
-        </section>
-
-    </main>
-
-
-    <footer>
-        <!-- footer -->
-    </footer>
-
-    <dialog id="main-dialog">
-        <!-- main dialog box -->
-    </dialog>
-    <dialog id="notification-dialog">
-        <!-- dialog box for user feedback e.g. "something created/updated/deleted"-->
-    </dialog>
-
-
-    
-</body>
+		<dialog id="main-dialog">
+			<!-- main dialog box -->
+		</dialog>
+		<dialog id="notification-dialog">
+			<!-- dialog box for user feedback e.g. "something created/updated/deleted"-->
+		</dialog>
+	</body>
 </html>
