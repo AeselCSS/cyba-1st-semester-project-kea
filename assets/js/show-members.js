@@ -1,4 +1,4 @@
-
+import { memberDetailsDialog } from "./member-detailed-view.js";
 
 function showMembers(members) {
     clearContent();
