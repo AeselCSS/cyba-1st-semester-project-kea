@@ -14,8 +14,8 @@ async function initApp() {
 	console.log(`App is running!`);
 	initViews();
 	await apiReadMembers();
-	// showMembers(members);
-	sortMembers(members)
+	showMembers(sortMembers(members));
+	
 
 	document.querySelector("#members-sort").addEventListener("change", () => sortMembers(members));
 }

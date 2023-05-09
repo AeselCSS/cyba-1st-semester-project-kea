@@ -1,5 +1,5 @@
 import { showMembers } from "./show-members.js";
-
+import {calculateMemberAge} from "./member-detailed-view.js"
 
 function sortMembers(membersArr) {
     const sortValue = document.querySelector("#members-sort").value;
@@ -13,10 +13,10 @@ function sortMembers(membersArr) {
         if (!sortValue.includes("-") && sortValue !== "dateOfBirth") {
             return member1[sortValue].localeCompare(member2[sortValue]);
         } else if (!sortValue.includes("-") && sortValue === "dateOfBirth") {
+            return calculateMemberAge(member1) - calculateMemberAge(member2);
+        } else if (sortValue === "non-binary") {
+            //???
 
-
-            
-            return member1[sortValue] - member2[sortValue];
         }
     }
 
@@ -27,7 +27,7 @@ function sortMembers(membersArr) {
 		}
     }
 
-    showMembers(sortedMembers)
+    return sortedMembers
 }
 
 

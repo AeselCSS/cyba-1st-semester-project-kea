@@ -70,4 +70,4 @@ function showMemberDisciplines(member) {
 }
 
 
-export {memberDetailsDialog}
+export { memberDetailsDialog, calculateMemberAge };
