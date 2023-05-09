@@ -101,7 +101,21 @@ img {
 
 /* grid styling */
 
+#members-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
 
+}
+
+.grid-item img {
+    width: auto;
+    height: 300px;
+}
+
+.grid-item {
+    border: 1px solid black;
+}
 
 /* table styling */
 
@@ -135,3 +149,7 @@ img {
     display: block;
 }
 
+nav a.active {
+    background-color: var(--accent-color-dark);
+    color: var(--accent-color-light);
+}

@@ -2,16 +2,17 @@
 
 // imports
 import { initViews } from "./spa-router.js";
-import { endpoint, getMembers } from "./api.js";
+import { apiReadMembers, members } from "./api.js";
+import { showMembers } from "./show-members.js";
 
 // onload event
 window.addEventListener("load", initApp);
 
 // initApp function
 async function initApp() {
-	initViews();
 	console.log(`App is running!`);
-	const members = await getMembers(endpoint);
-
-	console.log(members);
+	initViews();
+	await apiReadMembers();
+	showMembers(members);
 }
+
