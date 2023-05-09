@@ -10,6 +10,7 @@ function filterChange(event) {
 	} else {
 		const filteredMembers = members.filter(filterProperty);
 		showMembers(filteredMembers);
+        console.log(filteredMembers);
 
 		function filterProperty(member) {
 			if (filter === "active") {
@@ -18,7 +19,7 @@ function filterChange(event) {
 				return member["isActiveMember"] === false;
 			} else if (filter === "competitive") {
 				return member["isCompetitive"] === true;
-			} else if (filter === "casual") {
+			} else if (filter === "recreational") {
 				return member["isCompetitive"] === false;
 			}
 		}
