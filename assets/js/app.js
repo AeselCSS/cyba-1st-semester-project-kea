@@ -6,6 +6,7 @@ import { apiReadMembers, members } from "./api.js";
 import { showMembers } from "./show-members.js";
 import { checkIfLoggedIn } from "./system-access.js";
 
+import { filterChange } from "./filter.js";
 
 // onload event
 window.addEventListener("load", initApp);
@@ -21,5 +22,7 @@ async function initApp() {
 	// add event listeners
 	
 
+
+	document.querySelector('#filter').addEventListener('change', filterChange)
 }
 
