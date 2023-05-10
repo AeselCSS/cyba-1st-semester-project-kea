@@ -12,7 +12,6 @@ async function apiCreateMember(member) {
 	return response;
 }
 
-
 // Read
 async function apiReadMembers() {
 	const response = await fetch(`${endpoint}/members.json`);
@@ -37,14 +36,11 @@ async function apiUpdateMember(member) {
 
 // Delete
 async function apiDeleteMember(member) {
-	const response = await fetch(`${endpoint}/members/${member.uid}.json`, { method: "DELETE" });
-	if (response.ok) {
-		console.log("Member successfully deleted");
-	}
+	const response = await fetch(`${endpoint}/members/${member}.json`, { method: "DELETE" });
+	return response;
 }
 
-
-// Helper functions 
+// Helper functions
 function prepareMembers(membersInObjects) {
 	const arr = [];
 
