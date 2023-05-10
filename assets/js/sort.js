@@ -4,18 +4,7 @@ import { searchbarAndFilter, globalFilteredMembers } from "./search.js";
 import { filterMembers } from "./filter.js";
 
 function sortAndShowMembers(membersArr) {
-	
 	const sortedMembersResult = checkSearchFilterParameter(membersArr);
-
-	
-
-	// globalFilteredMembers ? (sortedMembersResult = sortMembers(globalFilteredMembers)) : (sortedMembersResult = sortMembers(membersArr));
-
-	// if (filter !== "all" && !searchValue) {
-	// 	const filteredMembers = filterMembers(filter);
-	// 	sortedMembersResult = sortMembers(filteredMembers);
-	// }
-
 	showMembers(sortedMembersResult);
 }
 
