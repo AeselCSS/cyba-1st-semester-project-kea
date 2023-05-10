@@ -60,7 +60,7 @@ function prepareMembers(membersInObjects) {
 	return arr;
 }
 
-export async function updateMemberDisplay() {
+export async function refreshMembersView() {
 	await apiReadMembers();
 	showMembers(members);
 }
