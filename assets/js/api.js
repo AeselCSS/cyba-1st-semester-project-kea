@@ -36,7 +36,12 @@ async function apiUpdateMember(member) {
 }
 
 // Delete
-
+async function apiDeleteMember(member) {
+	const response = await fetch(`${endpoint}/members/${member.id}.json`, { method: "DELETE" });
+	if (response.ok) {
+		console.log("Member successfully deleted");
+	}
+}
 
 
 // Helper functions 
@@ -57,13 +62,5 @@ function prepareMembers(membersInObjects) {
 	return arr;
 }
 
-async function apiDeleteMember(member) {
-	const response = await fetch(`${endpoint}/members/${member.id}.json`, { method: "DELETE" });
-	if (response.ok) {
-		console.log("Member successfully deleted");
-	}
-}
-
-export { apiReadMembers, members, apiReadRole };
-
+// exports
 export { members, apiCreateMember, apiReadMembers, apiReadRole, apiUpdateMember, apiDeleteMember };
