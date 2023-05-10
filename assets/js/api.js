@@ -47,8 +47,4 @@ async function apiDeleteMember(member) {
 	}
 }
 
-export { apiReadMembers, members };
-
-export { apiReadMembers, members };
-
 export { apiReadMembers, members, apiReadRole };
