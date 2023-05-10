@@ -32,4 +32,4 @@ async function apiDeleteMember(member) {
 	}
 }
 
-export { apiReadMembers, members };
+export { apiReadMembers, members, apiDeleteMember };
