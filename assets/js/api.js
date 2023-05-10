@@ -26,7 +26,7 @@ function prepareMembers(membersInObjects) {
 }
 
 async function apiDeleteMember(member) {
-	const response = await fetch(`${endpoint}/members/${member.id}.json`, { method: "DELETE" });
+	const response = await fetch(`${endpoint}/members/${member.uid}.json`, { method: "DELETE" });
 	if (response.ok) {
 		console.log("Member successfully deleted");
 	}
