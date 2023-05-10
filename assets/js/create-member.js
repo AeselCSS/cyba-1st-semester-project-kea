@@ -1,12 +1,12 @@
 // imports
-import { apiCreateMember } from "./api.js";
+import { apiCreateMember, refreshMembersView } from "./api.js";
 
 const defaultAvatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 
 // createMember form upon clicking the create new member button
 function createMemberForm() {
 	// clear the dialog content if any - we need to do this smarter and uniform in the future
-    document.querySelector("#main-dialog").innerHTML = "";
+	document.querySelector("#main-dialog").innerHTML = "";
 	// create the form
 	const createMemberForm = /*html*/ `
     <form id="create-member-form">
@@ -82,10 +82,10 @@ function createMemberForm() {
 async function createMember(event) {
 	event.preventDefault();
 
-    const dialog = document.querySelector("#main-dialog");
+	const dialog = document.querySelector("#main-dialog");
 	const form = event.target;
-	
-    const newMember = {
+
+	const newMember = {
 		firstName: form.firstName.value,
 		lastName: form.lastName.value,
 		email: form.email.value,
@@ -110,13 +110,13 @@ async function createMember(event) {
 	const response = await apiCreateMember(newMember);
 	if (response.ok) {
 		console.log("Member created");
-        console.log(newMember);
+		console.log(newMember);
 		// reset the form, close the dialog and clear the dialog content
 		form.reset();
 		dialog.close();
 		dialog.innerHTML = "";
 		// TODO: show success message to user
-		// TODO: update members list
+		refreshMembersView();
 	} else {
 		console.log("Error occured while creating new member");
 		// TODO: show error message to user
