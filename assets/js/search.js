@@ -1,7 +1,7 @@
 import { showMembers } from "./show-members.js";
 import { filterMembers } from "./filter.js";
 
-function searchbar() {
+function searchbarAndFilter() {
 	// Get current selected filter and search value
 	const filter = document.querySelector("#filter").value;
 	const searchValue = document.querySelector("#search").value.toLowerCase();
@@ -18,8 +18,6 @@ function searchbar() {
 
 function searchMemberProperties(array, searchValue) {
 	const searchMembers = [];
-
-	//TODO: Combine with filter
 
 	// Loops through every member
 	for (const member of array) {
@@ -41,7 +39,6 @@ function searchMemberProperties(array, searchValue) {
 			}
 		}
 	}
-
 	return searchMembers;
 
 	function checkString(string) {
@@ -54,4 +51,4 @@ function searchMemberProperties(array, searchValue) {
 	}
 }
 
-export { searchbar, searchMemberProperties };
+export { searchbarAndFilter };
