@@ -11,9 +11,11 @@ function showMembers(members) {
 function showMember(member) {
     const htmlGrid = /*html*/`
     <article class="grid-item">
-        <img src=${member.image}>
-        <p>${member.firstName} ${member.lastName}</p>
-        <button class="grid-item-details-btn">Details</button>
+    <img src=${member.image}>
+        <div class="grid-item-bottom">
+            <h2>${member.firstName} ${member.lastName}</h2>
+            <p><button class="grid-item-details-btn">Details</button></p>
+            </div>
     </article>
     `
 

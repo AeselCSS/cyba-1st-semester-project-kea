@@ -29,11 +29,11 @@
 --border-none: none;
 
 /* effects */
---box-shadow: 0 0 10px var(--shadow-color);
+--box-shadow: 2px 2px 8px var(--shadow-color);
 /* gradient colors are subject to change */
 --gradient: linear-gradient(to bottom right, var(--accent-color-light), var(--accent-color-dark));
 --transition-transform: transform 0.4s ease-in-out;
---scale-on-hover: scale(1.05);
+--scale-on-hover: scale(1.01);
 --scale-on-click: scale(0.95);
 
 /* media queries */
@@ -55,7 +55,11 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size-normal);
     color: var(--text-color);
-    background-color: var(--primary-color);
+    background-color: var(--accent-color-dark);
+}
+
+header, nav {
+    background-color: var(--accent-color-light);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -97,6 +101,12 @@ img {
     max-width: 100%;
 }
 
+button {
+    padding: 0.8em;
+    border: none;
+    border-radius: var(--border-radius);
+}
+
 /* dialog styling */
 #main-dialog {
     margin: auto;
@@ -109,16 +119,47 @@ img {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1em;
-
-}
-
-.grid-item img {
-    width: auto;
-    height: 300px;
+    margin: 1.5em;
+    background-color: var(--accent-color-dark);
 }
 
 .grid-item {
     border: 1px solid black;
+    padding: 1em;
+    background-color: var(--accent-color-light);
+    border-radius: var(--border-radius);
+    max-width: 20em;
+    margin: auto auto;
+    transition: ease-out 0.3s;
+    box-shadow: var(--box-shadow);
+}
+
+.grid-item img {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    margin: auto auto;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    
+}
+
+.grid-item:hover {
+    transform: var(--scale-on-hover);
+    box-shadow: 3px 3px 10px var(--shadow-color);
+}
+
+
+.grid-item-bottom {
+    /* display: grid; */
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em 0em;
+}
+
+.grid-item-bottom button {
+    margin-top: 1em;
 }
 
 /* table styling */
@@ -142,6 +183,37 @@ img {
 
 
 /* media queries */
+
+@media (max-width: 479px) {
+	#members-grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media (min-width: 480px) {
+	#members-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 769px) {
+	#members-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (min-width: 1025px) {
+	#members-grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (min-width: 1201px) {
+	#members-grid {
+		grid-template-columns: repeat(5, 1fr);
+	}
+}
+
 
 
 /* animations */
