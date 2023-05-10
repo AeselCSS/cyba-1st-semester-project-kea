@@ -69,6 +69,4 @@ function showMemberDisciplines(member) {
 	return member.isCompetitive ? member.disciplines.join(", ") : "None";
 }
 
-export { memberDetailsDialog };
-
 export { memberDetailsDialog, calculateMemberAge };

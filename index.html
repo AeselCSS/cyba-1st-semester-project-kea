@@ -21,9 +21,9 @@
 			<a href="#finances" class="view-link" id="finances-link">Finances</a>
 			<a href="#top-five" class="view-link" id="top-five-link">Top 5</a>
 
-        <button id="login-btn">Log in</button>
-        <button id="logout-btn">Log out</button>
-    </nav>
+			<button id="login-btn">Log in</button>
+			<button id="logout-btn">Log out</button>
+		</nav>
 
 		<main>
 			<!-- main content -->
@@ -35,14 +35,16 @@
 			<section id="members" class="view-content">
 				<h2>members</h2>
 				<div id="search-bar">
-                <label for="sort">Sort after:</label>
-                <select name="sort" id="members-sort">
-                    <option value="firstName">A-Z</option>
-                    <option value="firstName-reverse">Z-A</option>
-                    <option value="dateOfBirth">Youngest</option>
-                    <option value="dateOfBirth-reverse">Oldest</option>
-                </select>					<button id="add-new-member-btn">add member</button>
-                <input type="text" id="search" name="search" placeholder="Search">
+                    <input type="text" id="search" name="search" placeholder="Search" />
+
+					<label for="sort">Sort after:</label>
+					<select name="sort" id="members-sort">
+						<option value="firstName">A-Z</option>
+						<option value="firstName-reverse">Z-A</option>
+						<option value="dateOfBirth">Youngest</option>
+						<option value="dateOfBirth-reverse">Oldest</option>
+					</select>
+
 					<label for="filter">Filter</label>
 					<select name="filter" id="filter">
 						<option value="all" selected>All (default)</option>
@@ -51,6 +53,8 @@
 						<option value="competitive">Competitive</option>
 						<option value="casual">Casual</option>
 					</select>
+                    
+                    <button id="add-new-member-btn">add member</button>
 				</div>
 
 				<div id="members-grid"></div>

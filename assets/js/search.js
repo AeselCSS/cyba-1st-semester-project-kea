@@ -1,5 +1,8 @@
 import { showMembers } from "./show-members.js";
 import { filterMembers } from "./filter.js";
+import { sortAndShowMembers } from "./sort.js";
+
+export let globalFilteredMembers;
 
 function searchbarAndFilter() {
 	// Get current selected filter and search value
@@ -12,8 +15,17 @@ function searchbarAndFilter() {
 	// Create list by searching through filtered list members properties
 	const searchedMembers = searchMemberProperties(filteredMembers, searchValue);
 
+	if (filter !== "all" || !searchValue) {
+		globalFilteredMembers = searchedMembers;
+	} else {
+		globalFilteredMembers = "";
+	}
+
 	// Update view
-	showMembers(searchedMembers);
+	// showMembers(searchedMembers);
+	sortAndShowMembers(searchedMembers)
+
+	return searchedMembers;
 }
 
 function searchMemberProperties(array, searchValue) {
