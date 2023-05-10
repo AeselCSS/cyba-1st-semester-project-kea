@@ -24,8 +24,6 @@ function searchbarAndFilter() {
 	// Update view
 	// showMembers(searchedMembers);
 	sortAndShowMembers(searchedMembers)
-
-	return searchedMembers;
 }
 
 function searchMemberProperties(array, searchValue) {
