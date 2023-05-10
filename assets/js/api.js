@@ -5,7 +5,13 @@ let members = [];
 
 // CRUD functions
 // Create
-
+async function apiCreateMember(member) {
+	const response = await fetch(`${endpoint}/members.json`, {
+		method: "POST",
+		body: JSON.stringify(member),
+	});
+	return response;
+}
 
 
 // Read
@@ -22,13 +28,19 @@ async function apiReadRole(role) {
 }
 
 // Update
-
+async function apiUpdateMember(member) {
+	const response = await fetch(`${endpoint}/members/${member.uid}.json`, {
+		method: "PUT",
+		body: JSON.stringify(member),
+	});
+	return response;
+}
 
 // Delete
 
 
 
-// Helper functions
+// Helper functions 
 function prepareMembers(membersInObjects) {
     const arr = []
 
@@ -47,4 +59,4 @@ function prepareMembers(membersInObjects) {
 }
 
 
-export {apiReadMembers, members, apiReadRole}
+export { members, apiCreateMember, apiReadMembers, apiReadRole, apiUpdateMember };
