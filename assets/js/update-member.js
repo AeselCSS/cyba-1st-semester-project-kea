@@ -56,24 +56,32 @@ function updateMemberForm(member) {
         <input type="reset" value="Reset">
         `;
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", updateMemberForm);
+
+	// convert the boolean value from isCompetitive to a selection in the member type dropdown
 	showMemberCompetitiveStatus(member);
-
+	// display disciplines container if member is competitive
 	const form = document.querySelector("#update-member-form");
-
-	// Show/hide the disciplines container based on the member type
 	const memberTypeSelect = form.querySelector("#memberType");
-	const disciplinesContainer = form.querySelector("#disciplines-container");
 
-	if (memberTypeSelect.value === "competitive") {
-		disciplinesContainer.style.display = "block";
-		setCheckBoxValues(member);
-	} else {
-		disciplinesContainer.style.display = "none";
-	}
+	displayDisciplines();
+	memberTypeSelect.addEventListener("change", displayDisciplines);
 
 	// add event listener to submit and reset buttons
 	form.addEventListener("submit", updateMember);
 	form.addEventListener("reset", () => form.reset());
+
+	function displayDisciplines() {
+		const disciplinesContainer = form.querySelector("#disciplines-container");
+		if (memberTypeSelect.value === "competitive") {
+			disciplinesContainer.style.display = "block";
+			if (member.disciplines) {
+				setCheckBoxValues(member);
+
+			}
+		} else {
+			disciplinesContainer.style.display = "none";
+		}
+	}
 
 // updateMember function
 async function updateMember(event) {
