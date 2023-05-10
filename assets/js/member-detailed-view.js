@@ -1,4 +1,5 @@
-
+// imports
+import { apiDeleteMember } from "./api.js";
 
 function memberDetailsDialog(member) {
     document.querySelector("#main-dialog").innerHTML="";
@@ -33,7 +34,7 @@ function memberDetailsDialog(member) {
     document.querySelector("#details-update-btn").addEventListener("click", () => updateMemberDetails(member));
 
     //EVENTLISTENER TIL DELETE OPGAVE
-    document.querySelector("#details-delete-btn").addEventListener("click", () => deleteMember(member));
+    document.querySelector("#details-delete-btn").addEventListener("click", () => apiDeleteMember(member));
 
 
     document.querySelector("#main-dialog").showModal();
