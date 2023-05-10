@@ -1,11 +1,36 @@
 import { calculateMemberAge } from "./member-detailed-view.js";
 import { showMembers } from "./show-members.js";
 import { searchbarAndFilter, globalFilteredMembers } from "./search.js";
+import { filterMembers } from "./filter.js";
 
 function sortAndShowMembers(membersArr) {
-	let sortedMembersResult;
-	globalFilteredMembers ? (sortedMembersResult = sortMembers(globalFilteredMembers)) : (sortedMembersResult = sortMembers(membersArr));
+	
+	const sortedMembersResult = checkSearchFilterParameter(membersArr);
+
+	
+
+	// globalFilteredMembers ? (sortedMembersResult = sortMembers(globalFilteredMembers)) : (sortedMembersResult = sortMembers(membersArr));
+
+	// if (filter !== "all" && !searchValue) {
+	// 	const filteredMembers = filterMembers(filter);
+	// 	sortedMembersResult = sortMembers(filteredMembers);
+	// }
+
 	showMembers(sortedMembersResult);
+}
+
+function checkSearchFilterParameter(membersArr) {
+	const filter = document.querySelector("#filter").value;
+	const searchValue = document.querySelector("#search").value;
+
+	if (filter !== "all" && !searchValue) {
+		const filteredMembers = filterMembers(filter);
+		return sortMembers(filteredMembers);
+	} else if (globalFilteredMembers) {
+		return sortMembers(globalFilteredMembers);
+	} else if (!globalFilteredMembers) {
+		return sortMembers(membersArr);
+	}
 }
 
 function sortMembers(membersArr) {
