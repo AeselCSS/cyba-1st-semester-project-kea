@@ -1,6 +1,6 @@
 import { calculateMemberAge } from "./member-detailed-view.js";
 import { showMembers } from "./show-members.js";
-import { searchbarAndFilter, globalFilteredMembers } from "./search.js";
+import { globalFilteredMembers } from "./search.js";
 import { filterMembers } from "./filter.js";
 
 function sortAndShowMembers(membersArr) {

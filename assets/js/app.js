@@ -18,6 +18,7 @@ async function initApp() {
 	initViews(); // init spa router
 	checkIfLoggedIn(); // check if user is logged in
 	await apiReadMembers();
+	//showMembers(members)
 	sortAndShowMembers(members)
 	
 
