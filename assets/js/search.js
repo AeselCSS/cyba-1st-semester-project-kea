@@ -15,7 +15,7 @@ function searchbarAndFilter() {
 	// Create list by searching through filtered list members properties
 	const searchedMembers = searchMemberProperties(filteredMembers, searchValue);
 
-	if (filter !== "all" || !searchValue) {
+	if (filter == "all" || searchValue) {
 		globalFilteredMembers = searchedMembers;
 	} else {
 		globalFilteredMembers = "";

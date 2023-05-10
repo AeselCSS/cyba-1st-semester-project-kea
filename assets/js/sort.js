@@ -8,7 +8,7 @@ function sortAndShowMembers(membersArr) {
 	const searchValue = document.querySelector("#search").value;
 	let sortedMembersResult;
 
-	
+	console.log(globalFilteredMembers);
 
 	if (globalFilteredMembers) {
 		sortedMembersResult = sortFilteredMembers(globalFilteredMembers);
