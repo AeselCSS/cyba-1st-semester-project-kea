@@ -1,34 +1,34 @@
-import {calculateMemberAge} from "./member-detailed-view.js"
+import { calculateMemberAge } from "./member-detailed-view.js";
 import { showMembers } from "./show-members.js";
 
-
-
 function sortAndShowMembers(membersArr) {
-    const sortValue = document.querySelector("#members-sort").value;
-    
-    let sortedMembers = membersArr.sort(picksort)
-    ifIncludesReverse();
-
-    function picksort(member1, member2) {
-        if (!sortValue.includes("-") && sortValue !== "dateOfBirth") {
-            return member1[sortValue].localeCompare(member2[sortValue]);
-        } else if (!sortValue.includes("-") && sortValue === "dateOfBirth") {
-            return calculateMemberAge(member1) - calculateMemberAge(member2);
-        }
+	let sortValue = document.querySelector("#members-sort").value;
+    let sortedMembers;
+    let isToReverse = false;
+	
+    if (sortValue.includes("-")) {
+        const indexOfDash = sortValue.indexOf("-");
+        sortValue = sortValue.slice(0, indexOfDash);
+        isToReverse = true;
     }
 
-    function ifIncludesReverse() {
-        
-        if (sortValue.includes("-reverse")) {
+	if (sortValue !== "dateOfBirth") {
+		sortedMembers = membersArr.sort((member1, member2) => member1[sortValue].localeCompare(member2[sortValue]));
+	} else if (sortValue === "dateOfBirth") {
+		sortedMembers = membersArr.sort(
+			(member1, member2) => calculateMemberAge(member1) - calculateMemberAge(member2)
+		);
+	}
+
+	
+	function ifSortValueIncludesReverse() {
+		if (isToReverse) {
 			sortedMembers.reverse();
 		}
-    }
+	}
 
-    showMembers(sortedMembers);
+	ifSortValueIncludesReverse();
+	showMembers(sortedMembers);
 }
 
-
-
-
-
-export {sortAndShowMembers}
+export { sortAndShowMembers };

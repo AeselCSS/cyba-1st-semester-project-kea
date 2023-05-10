@@ -9,7 +9,6 @@ function showMembers(members) {
 }
 
 function showMember(member) {
-    console.log(member);
     const htmlGrid = /*html*/`
     <article class="grid-item">
         <img src=${member.image}>
