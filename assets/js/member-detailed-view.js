@@ -1,5 +1,6 @@
 // imports
 import { deleteMember } from "./delete-member.js";
+import { updateMemberForm } from "./update-member.js";
 
 function memberDetailsDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -31,7 +32,7 @@ function memberDetailsDialog(member) {
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
 
 	//EVENTLISTENER TIL UPDATE OPGAVE
-	document.querySelector("#details-update-btn").addEventListener("click", () => updateMemberDetails(member));
+	document.querySelector("#details-update-btn").addEventListener("click", () => updateMemberForm(member));
 
 	//EVENTLISTENER TIL DELETE OPGAVE
 	document.querySelector("#details-delete-btn").addEventListener("click", () => deleteMember(member));
