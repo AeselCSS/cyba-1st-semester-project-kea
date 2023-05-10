@@ -21,6 +21,7 @@ function memberDetailsDialog(member) {
                 <ul>
                     <li>Name: ${member.firstName} ${member.lastName}</li>
                     <li>Age: ${memberAge}</li>
+					<li>Gender: ${member.gender}</li>
                     <li>Member Status: ${showMemberActivityStatus(member)}</li>
                     <li>Membertype: ${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}</li>
                     <li>Disciplines: ${showMemberDisciplines(member)}</li>
