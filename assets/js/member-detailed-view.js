@@ -66,7 +66,7 @@ function showMemberCompetitiveStatus(member) {
 }
 
 function showMemberDisciplines(member) {
-    return member.isCompetitive ? member.disciplins.join(", ") : "None"
+    return member.isCompetitive ? member.disciplines.join(", ") : "None"
 }
 
 
