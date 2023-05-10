@@ -4,7 +4,7 @@
 import { initViews } from "./spa-router.js";
 import { apiReadMembers, members } from "./api.js";
 import { showMembers } from "./show-members.js";
-import { sortMembers } from "./sort.js";
+import { sortAndShowMembers } from "./sort.js";
 
 // onload event
 window.addEventListener("load", initApp);
@@ -14,9 +14,9 @@ async function initApp() {
 	console.log(`App is running!`);
 	initViews();
 	await apiReadMembers();
-	showMembers(sortMembers(members));
+	sortAndShowMembers(members)
 	
 
-	document.querySelector("#members-sort").addEventListener("change", () => sortMembers(members));
+	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
 }
 
