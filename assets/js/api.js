@@ -1,4 +1,5 @@
 import { showMembers } from "./show-members.js";
+import {sortAndShowMembers} from "./sort.js"
 
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
@@ -62,7 +63,9 @@ function prepareMembers(membersInObjects) {
 
 export async function refreshMembersView() {
 	await apiReadMembers();
-	showMembers(members);
+	document.querySelector("#filter").value = "all";
+	document.querySelector("#search").value = "";
+	showMembers(members)
 }
 
 // exports
