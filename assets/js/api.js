@@ -30,6 +30,7 @@ async function apiDeleteMember(member) {
 	if (response.ok) {
 		console.log("Member successfully deleted");
 	}
+	document.querySelector("#main-dialog").close();
 }
 
 export { apiReadMembers, members, apiDeleteMember };
