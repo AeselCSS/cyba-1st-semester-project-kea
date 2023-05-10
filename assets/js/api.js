@@ -1,18 +1,50 @@
-
+// module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
 let members = [];
 
-async function apiReadMembers() {
-    const response = await fetch(`${endpoint}/members.json`);    
-    const membersInObjects = await response.json();
-
-    members = prepareMembers(membersInObjects);
+// CRUD functions
+// Create
+async function apiCreateMember(member) {
+	const response = await fetch(`${endpoint}/members.json`, {
+		method: "POST",
+		body: JSON.stringify(member),
+	});
+	return response;
 }
 
-function prepareMembers(membersInObjects) {
-    const arr = []
+// Read
+async function apiReadMembers() {
+	const response = await fetch(`${endpoint}/members.json`);
+	const membersInObjects = await response.json();
 
-    for (const key in membersInObjects) {
+	members = prepareMembers(membersInObjects);
+}
+
+async function apiReadRole(role) {
+	const response = await fetch(`${endpoint}/roles/${role}.json`);
+	return response.json();
+}
+
+// Update
+async function apiUpdateMember(member) {
+	const response = await fetch(`${endpoint}/members/${member.uid}.json`, {
+		method: "PUT",
+		body: JSON.stringify(member),
+	});
+	return response;
+}
+
+// Delete
+async function apiDeleteMember(member) {
+	const response = await fetch(`${endpoint}/members/${member}.json`, { method: "DELETE" });
+	return response;
+}
+
+// Helper functions
+function prepareMembers(membersInObjects) {
+	const arr = [];
+
+	for (const key in membersInObjects) {
 		const member = membersInObjects[key];
 
 		if (!member) {
@@ -23,8 +55,8 @@ function prepareMembers(membersInObjects) {
 		arr.push(member);
 	}
 
-    return arr;
+	return arr;
 }
 
-
-export {apiReadMembers, members}
+// exports
+export { members, apiCreateMember, apiReadMembers, apiReadRole, apiUpdateMember, apiDeleteMember };
