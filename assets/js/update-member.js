@@ -52,7 +52,7 @@ function updateMemberForm(member) {
         <input type="checkbox" name="disciplines" id="medley" value="medley"> Medley
       </div>
 
-        <input type="submit" value="Create member">
+        <input type="submit" value="Update member">
         <input type="reset" value="Reset">
         `;
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", updateMemberForm);
@@ -63,19 +63,62 @@ function updateMemberForm(member) {
 	// Show/hide the disciplines container based on the member type
 	const memberTypeSelect = form.querySelector("#memberType");
 	const disciplinesContainer = form.querySelector("#disciplines-container");
-	// memberTypeSelect.addEventListener("change", () => {
+
 	if (memberTypeSelect.value === "competitive") {
 		disciplinesContainer.style.display = "block";
-		checkBoxValues(member);
+		setCheckBoxValues(member);
 	} else {
 		disciplinesContainer.style.display = "none";
 	}
-	//  });
 
 	// add event listener to submit and reset buttons
-	form.addEventListener("submit", () => updateMember());
+	form.addEventListener("submit", updateMember);
 	form.addEventListener("reset", () => form.reset());
 
+// updateMember function
+async function updateMember(event) {
+	console.log(event);
+	event.preventDefault();
+
+	const dialog = document.querySelector("#main-dialog");
+	const form = event.target;
+
+	const updatedMember = {
+		uid: member.uid,
+		firstName: form.firstName.value,
+		lastName: form.lastName.value,
+		email: form.email.value,
+		image: form.image.value,
+		dateOfBirth: form.dateOfBirth.value,
+		gender: form.gender.value,
+		isActiveMember: form.membershipStatus.value === "active",
+		isCompetitive: form.memberType.value === "competitive",
+		disciplines:
+			form.memberType.value === "competitive"
+				? [...form.disciplines]
+						.filter((discipline) => discipline.checked)
+						.map((discipline) => discipline.value)
+				: [],
+	};
+
+	const response = await apiUpdateMember(updatedMember);
+	if (response.ok) {
+		console.log("Member updated");
+		console.log(updatedMember);
+		// reset the form, close the dialog and clear the dialog content
+		form.reset();
+		dialog.close();
+		dialog.innerHTML = "";
+		// TODO: show success message to user
+		// TODO: update members list
+	} else {
+		console.log("Error occured while updated member");
+		// TODO: show error message to user
+	}
+}
+}
+
+// helper functions for updateMemberForm - might need better function names
 	function showMemberActivityStatus(member) {
 		return member.isActiveMember ? "Active" : "Inactive";
 	}
@@ -87,7 +130,7 @@ function updateMemberForm(member) {
 			: (document.querySelector("#casual").selected = true);
 	}
 
-	function checkBoxValues(member) {
+	function setCheckBoxValues(member) {
 		console.log(member.disciplines);
 		for (const discipline of member.disciplines) {
 			if (discipline.includes("butterfly")) {
@@ -103,53 +146,6 @@ function updateMemberForm(member) {
 			}
 		}
 	}
-	// createMember function
-	async function updateMember(event) {
-		event.preventDefault();
 
-		const dialog = document.querySelector("#main-dialog");
-		const form = event.target;
-
-		const updatedMember = {
-			uid: member.uid,
-			firstName: form.firstName.value,
-			lastName: form.lastName.value,
-			email: form.email.value,
-			image: form.image.value,
-			dateOfBirth: form.dateOfBirth.value,
-			gender: form.gender.value,
-			isActiveMember: form.membershipStatus.value === "active",
-			isCompetitive: form.memberType.value === "competitive",
-
-			// add disciplines as an array of selescted values, but only if member type is competitive
-			// [...form.disciplines] is a spread operator that converts a NodeList to an array
-			// discipline.checked is a boolean value that is true if the checkbox is checked
-			// the .map method is used to retrieve the "value" property of each selected checkbox, and returns them as a new array
-			// the array is then assigned to the disciplines property of the newMember object
-			// if the member type is not "competitive", the disciplines property is set to an empty array
-			disciplines:
-				form.memberType.value === "competitive"
-					? [...form.disciplines]
-							.filter((discipline) => discipline.checked)
-							.map((discipline) => discipline.value)
-					: [],
-		};
-
-		const response = await apiUpdateMember(updatedMember);
-		if (response.ok) {
-			console.log("Member updated");
-			console.log(updatedMember);
-			// reset the form, close the dialog and clear the dialog content
-			form.reset();
-			dialog.close();
-			dialog.innerHTML = "";
-			// TODO: show success message to user
-			// TODO: update members list
-		} else {
-			console.log("Error occured while updated member");
-			// TODO: show error message to user
-		}
-	}
-}
 
 export { updateMemberForm };
