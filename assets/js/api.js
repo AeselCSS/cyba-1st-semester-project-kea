@@ -4,6 +4,14 @@ let members = [];
 
 // CRUD functions
 // Create
+async function apiCreateMember(member) {
+	const response = await fetch(`${endpoint}/members.json`, {
+		method: "POST",
+		body: JSON.stringify(member),
+	});
+	return response;
+}
+
 
 // Read
 async function apiReadMembers() {
@@ -19,10 +27,24 @@ async function apiReadRole(role) {
 }
 
 // Update
+async function apiUpdateMember(member) {
+	const response = await fetch(`${endpoint}/members/${member.uid}.json`, {
+		method: "PUT",
+		body: JSON.stringify(member),
+	});
+	return response;
+}
 
 // Delete
+async function apiDeleteMember(member) {
+	const response = await fetch(`${endpoint}/members/${member.uid}.json`, { method: "DELETE" });
+	if (response.ok) {
+		console.log("Member successfully deleted");
+	}
+}
 
-// Helper functions
+
+// Helper functions 
 function prepareMembers(membersInObjects) {
 	const arr = [];
 
@@ -40,12 +62,5 @@ function prepareMembers(membersInObjects) {
 	return arr;
 }
 
-async function apiDeleteMember(member) {
-	const response = await fetch(`${endpoint}/members/${member.uid}.json`, { method: "DELETE" });
-	if (response.ok) {
-		console.log("Member successfully deleted");
-	}
-	document.querySelector("#main-dialog").close();
-}
-
-export { apiReadMembers, members, apiDeleteMember, apiReadRole };
+// exports
+export { members, apiCreateMember, apiReadMembers, apiReadRole, apiUpdateMember, apiDeleteMember };
