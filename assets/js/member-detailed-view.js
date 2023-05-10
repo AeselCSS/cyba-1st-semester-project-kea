@@ -1,10 +1,11 @@
-
+// imports
+import { deleteMember } from "./delete-member.js";
 
 function memberDetailsDialog(member) {
-    document.querySelector("#main-dialog").innerHTML="";
-    const memberAge = calculateMemberAge(member);
+	document.querySelector("#main-dialog").innerHTML = "";
+	const memberAge = calculateMemberAge(member);
 
-    const html = /*html*/ `
+	const html = /*html*/ `
         <section class="member-details-section">
             <div id="details-btns">
                 <input type="button" id="details-update-btn" value="Update">
@@ -27,20 +28,19 @@ function memberDetailsDialog(member) {
         </section>
     `;
 
-    document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
+	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
 
-    //EVENTLISTENER TIL UPDATE OPGAVE
-    document.querySelector("#details-update-btn").addEventListener("click", () => updateMemberDetails(member));
+	//EVENTLISTENER TIL UPDATE OPGAVE
+	document.querySelector("#details-update-btn").addEventListener("click", () => updateMemberDetails(member));
 
-    //EVENTLISTENER TIL DELETE OPGAVE
-    document.querySelector("#details-delete-btn").addEventListener("click", () => deleteMember(member));
+	//EVENTLISTENER TIL DELETE OPGAVE
+	document.querySelector("#details-delete-btn").addEventListener("click", () => deleteMember(member));
 
-
-    document.querySelector("#main-dialog").showModal();
+	document.querySelector("#main-dialog").showModal();
 }
 
 function calculateMemberAge(member) {
-    //member.dateOfBirth format YYYY-MM-DD
+	//member.dateOfBirth format YYYY-MM-DD
 	const dateArr = member.dateOfBirth.split("-");
 	const date = new Date(dateArr[0], dateArr[1], dateArr[2]);
 	const age = new Date(Date.now() - date.getTime()).getUTCFullYear() - 1970;
@@ -48,9 +48,9 @@ function calculateMemberAge(member) {
 }
 
 function showMemberType(age) {
-    if (age < 18) {
-        return "Junior"
-    } else if (age > 65) {
+	if (age < 18) {
+		return "Junior";
+	} else if (age > 65) {
 		return "Senior+";
 	} else {
 		return "Senior";
@@ -62,12 +62,11 @@ function showMemberActivityStatus(member) {
 }
 
 function showMemberCompetitiveStatus(member) {
-    return member.isCompetitive ? "Competitive swimmer" : "Casual swimmer";
+	return member.isCompetitive ? "Competitive swimmer" : "Casual swimmer";
 }
 
 function showMemberDisciplines(member) {
-    return member.isCompetitive ? member.disciplins.join(", ") : "None"
+	return member.isCompetitive ? member.disciplines.join(", ") : "None";
 }
 
-
-export {memberDetailsDialog}
+export { memberDetailsDialog };
