@@ -5,7 +5,7 @@ import { initViews } from "./spa-router.js";
 import { apiReadMembers, members } from "./api.js";
 import { showMembers } from "./show-members.js";
 import { checkIfLoggedIn } from "./system-access.js";
-
+import { createMemberForm } from "./create-member.js";
 import { filterChange } from "./filter.js";
 
 // onload event
@@ -24,5 +24,6 @@ async function initApp() {
 
 
 	document.querySelector('#filter').addEventListener('change', filterChange)
+	document.querySelector("#add-new-member-btn").addEventListener("click", createMemberForm);
 }
 
