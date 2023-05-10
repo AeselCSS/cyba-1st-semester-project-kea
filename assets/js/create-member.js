@@ -1,5 +1,5 @@
 // imports
-import { apiCreateMember } from "./api.js";
+import { apiCreateMember, updateMemberDisplay } from "./api.js";
 
 const defaultAvatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 
@@ -116,7 +116,7 @@ async function createMember(event) {
 		dialog.close();
 		dialog.innerHTML = "";
 		// TODO: show success message to user
-		// TODO: update members list
+		updateMemberDisplay();
 	} else {
 		console.log("Error occured while creating new member");
 		// TODO: show error message to user

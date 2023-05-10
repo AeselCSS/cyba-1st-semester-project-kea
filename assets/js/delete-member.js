@@ -1,4 +1,5 @@
-import { apiDeleteMember } from "./api.js";
+import { apiDeleteMember, updateMemberDisplay} from "./api.js";
+
 
 async function deleteMember(member) {
 	console.log(member.uid);
@@ -7,6 +8,8 @@ async function deleteMember(member) {
 	if (response.ok) {
 		// Create visual feedback function for user here.
 		console.log("Member successfully deleted");
+		updateMemberDisplay();
+		// TODO: show success message to user
 	} else {
 		//Visual feedback function goes here.
 		console.error("An error has occurred");

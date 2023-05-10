@@ -1,3 +1,5 @@
+import { showMembers } from "./show-members.js";
+
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
 let members = [];
@@ -56,6 +58,11 @@ function prepareMembers(membersInObjects) {
 	}
 
 	return arr;
+}
+
+export async function updateMemberDisplay() {
+	await apiReadMembers();
+	showMembers(members);
 }
 
 // exports
