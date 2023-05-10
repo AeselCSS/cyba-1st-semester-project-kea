@@ -1,6 +1,11 @@
+// module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
 let members = [];
 
+// CRUD functions
+// Create
+
+// Read
 async function apiReadMembers() {
 	const response = await fetch(`${endpoint}/members.json`);
 	const membersInObjects = await response.json();
@@ -8,6 +13,16 @@ async function apiReadMembers() {
 	members = prepareMembers(membersInObjects);
 }
 
+async function apiReadRole(role) {
+	const response = await fetch(`${endpoint}/roles/${role}.json`);
+	return response.json();
+}
+
+// Update
+
+// Delete
+
+// Helper functions
 function prepareMembers(membersInObjects) {
 	const arr = [];
 
@@ -32,4 +47,4 @@ async function apiDeleteMember(member) {
 	}
 }
 
-export { apiReadMembers, members };
+export { apiReadMembers, members, apiReadRole };
