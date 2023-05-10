@@ -68,7 +68,9 @@ function showMemberCompetitiveStatus(member) {
 }
 
 function showMemberDisciplines(member) {
-	return member.isCompetitive ? member.disciplines.join(", ") : "None";
+	if (member.isCompetitive) {
+		 return member.disciplines ? member.disciplines.join(", ") : "No disciplines";
+	}
 }
 
 export { memberDetailsDialog, calculateMemberAge };
