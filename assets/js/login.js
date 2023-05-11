@@ -4,6 +4,9 @@ import { systemAccess } from "./system-access.js";
 
 // create login form upon clicking login button
 function login() {
+    // clear the dialog content if any - we need to do this smarter and uniform in the future
+    document.querySelector("#main-dialog").innerHTML = "";
+    
 	const loginForm = /*html*/ `
     <form id="login-form">
         <label for="username">Username</label>
