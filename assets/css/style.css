@@ -163,7 +163,7 @@ nav button {
     width: fit-content;
 }
 
-#search-bar input, #search-bar select ,#search-bar button {
+#search-bar input, #search-bar select ,#search-bar button, #main-dialog input {
     font-size: var(--font-size-normal);
     font-weight: 200;
     text-transform: capitalize;
@@ -186,8 +186,12 @@ nav button {
 }
 
 /* dialog styling */
+
+#btn-close-modal {
+    /* float: right; */
+}
+
 #main-dialog {
-    height: 37rem;
     margin: auto;
     padding: 1em;
     background-color: var(--accent-color-light);
@@ -200,17 +204,20 @@ nav button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 1rem;
+    gap: 1rem;
 }
 
 #details-img {
-    min-width: 200px;
-    max-width: 300px;
+    max-width: 250px;
+    height: 400px;
     
 }
 #details-img img{
+    /* width: 300px; */
     width: 100%;
-    object-fit: cover;
+    height: 100%;
     border-radius: var(--border-radius);
+    object-fit: cover;
 }
 
 

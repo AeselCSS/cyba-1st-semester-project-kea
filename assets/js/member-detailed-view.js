@@ -18,14 +18,18 @@ function memberDetailsDialog(member) {
 					<img src="${member.image}">
 				</div>
 				<div id="details-else">
-					<ul>
-						<li>Name: ${member.firstName} ${member.lastName}</li>
-						<li>Age: ${memberAge}</li>
-									<li>Gender: ${member.gender}</li>
-						<li>Member Status: ${showMemberActivityStatus(member)}</li>
-						<li>Membertype: ${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}</li>
-						<li>Disciplines: ${showMemberDisciplines(member)}</li>
-					</ul>
+					<h3>Name</h3> 
+					${member.firstName} ${member.lastName}
+					<h3>Age</h3> 
+					${memberAge}
+					<h3>Gender</h3> 
+					${member.gender}
+					<h3>Member Status</h3> 
+					${showMemberActivityStatus(member)}
+					<h3>Membertype</h3> 
+					${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}
+					${member.disciplines ? `<h3>Disciplines</h3>
+					 ${showMemberDisciplines(member)}` : ''}
 				</div>
 			</div>
         </section>
@@ -69,9 +73,7 @@ function showMemberCompetitiveStatus(member) {
 }
 
 function showMemberDisciplines(member) {
-	if (member.isCompetitive) {
-		 return member.disciplines ? member.disciplines.join(", ") : "No disciplines";
-	}
+		return member.disciplines.join(", ");
 }
 
 export { memberDetailsDialog, calculateMemberAge };
