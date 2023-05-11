@@ -187,7 +187,8 @@ nav button {
 
 /* dialog styling */
 #main-dialog {
-    height: 37rem;
+    min-height: fit-content;
+    /* max-height: 37em; */
     margin: auto;
     padding: 1em;
     background-color: var(--accent-color-light);
