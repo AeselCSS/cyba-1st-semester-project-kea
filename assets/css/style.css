@@ -60,7 +60,7 @@ body {
     background-color: var(--accent-color-dark);
 }
 
-header, nav {
+header, nav, footer {
     background-color: var(--accent-color-light);
 }
 
@@ -152,19 +152,37 @@ nav button {
 
 /* search-bar styling */
 #search-bar {
+    background-color: var(--accent-color-light);
     display: flex;
     justify-content: center;
     align-items: center;
     margin: var(--spacing-normal) auto;
     padding: var(--spacing-tiny);
     border: var(--border-solid);
+    border-radius: var(--border-radius);
     width: fit-content;
 }
 
 #search-bar input, #search-bar select ,#search-bar button {
+    font-size: var(--font-size-normal);
+    font-weight: 200;
+    text-transform: capitalize;
     padding: var(--spacing-small);
+    margin: var(--spacing-tiny) var(--spacing-small);
     border: none;
     border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+#search-bar input:focus, #search-bar select:focus {
+    outline: none;
+}
+
+/* section styling */
+.section-title {
+    text-transform: capitalize;
+    text-align: center;
+    padding-top: var(--font-size-small);
 }
 
 /* dialog styling */
