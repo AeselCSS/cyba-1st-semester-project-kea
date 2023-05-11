@@ -10,52 +10,63 @@ function createMemberForm() {
 	// create the form
 	const createMemberForm = /*html*/ `
     <form id="create-member-form">
-        <label for="firstName">First name</label>
-        <input type="text" name="firstName" id="firstName" required>
-        
-        <label for="lastName">Last name</label>
-        <input type="text" name="lastName" id="lastName" required>
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
-        
-        <label for="image">Image</label>
-        <input type="url" name="image" id="image" value=${defaultAvatar} required>
-        
-        <label for="dateOfBirth">Date of birth</label>
-        <input type="date" name="dateOfBirth" id="dateOfBirth" required>
-        
-        <label for="gender">Gender</label>
-        <select name="gender" id="gender" required>
+	<div id="form-content">
+    <label for="firstName">First name</label>
+    <input type="text" name="firstName" id="firstName" required>
+
+    <label for="lastName">Last name</label>
+    <input type="text" name="lastName" id="lastName" required>
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="image">Image</label>
+    <input type="url" name="image" id="image" value=${defaultAvatar} required>
+
+    <label for="dateOfBirth">Date of birth</label>
+    <input type="date" name="dateOfBirth" id="dateOfBirth" required>
+
+    <label for="gender">Gender</label>
+    <select name="gender" id="gender" required>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="non-binary">Non-binary</option>
-        </select>
-        
-        <label for="membershipStatus">Membership status</label>
-        <select name="membershipStatus" id="membershipStatus" required>
-        <option value="active">Active</option>
-        <option value="passiv">Passiv</option>
-        </select>
+    </select>
 
-        <label for="memberType">Member type</label>
-        <select name="memberType" id="memberType" required>
+    <label for="membershipStatus">Membership status</label>
+    <select name="membershipStatus" id="membershipStatus" required>
+        <option value="active">Active</option>
+        <option value="passive">Passive</option>
+    </select>
+
+    <label for="memberType">Member type</label>
+    <select name="memberType" id="memberType" required>
         <option value="casual">Casual</option>
         <option value="competitive">Competitive</option>
-        </select>
+    </select>
 
-        <div id="disciplines-container" style="display: none;">
+    <div id="disciplines-container" style="display: none;">
         <label>Disciplines</label>
-        <br>
-        <input type="checkbox" name="disciplines" value="butterfly"> Butterfly
-        <input type="checkbox" name="disciplines" value="backstroke"> Backstroke
-        <input type="checkbox" name="disciplines" value="breaststroke"> Breaststroke
-        <input type="checkbox" name="disciplines" value="freestyle"> Freestyle
-        <input type="checkbox" name="disciplines" value="medley"> Medley
-      </div>
+        <div id="check-box-container">
+			<label for="butterfly">Butterfly</label>
+            <input type="checkbox" name="disciplines" id="butterfly" value="butterfly">
+			<label for="backstroke">Backstroke</label>
+            <input type="checkbox" name="disciplines" id="backstroke" value="backstroke">
+			<label for="breaststroke">Breaststroke</label>
+            <input type="checkbox" name="disciplines" id="breaststroke" value="breaststroke">
+			<label for="freestyle">Freestyle</label>
+            <input type="checkbox" name="disciplines" id="freestyle" value="freestyle">
+			<label for="medley">Medley</label>
+            <input type="checkbox" name="disciplines" id="medley" value="medley">
+        </div>
+    </div>
+	</div>
+	<div id="form-buttons">
+    <input type="reset" value="Reset">
+    <input type="submit" value="Create member">
+	</div>
+</form>
 
-        <input type="submit" value="Create member">
-        <input type="reset" value="Reset">
         `;
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", createMemberForm);
 	const form = document.querySelector("#create-member-form");

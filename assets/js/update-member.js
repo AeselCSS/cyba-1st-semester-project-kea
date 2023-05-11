@@ -8,6 +8,7 @@ function updateMemberForm(member) {
 	// create the form
 	const updateMemberForm = /*html*/ `
     <form id="update-member-form">
+	<div id="form-content">
         <label for="firstName">First name</label>
         <input type="text" name="firstName" id="firstName" value="${member.firstName}" required>
         
@@ -51,9 +52,12 @@ function updateMemberForm(member) {
         <input type="checkbox" name="disciplines" id="freestyle" value="freestyle"> Freestyle
         <input type="checkbox" name="disciplines" id="medley" value="medley"> Medley
       </div>
-
-        <input type="submit" value="Update member">
-        <input type="reset" value="Reset">
+	</div>
+	  <div id="form-buttons">
+    <input type="reset" value="Reset">
+    <input type="submit" value="Update member">
+	</div>
+	</form>
         `;
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", updateMemberForm);
 
@@ -76,84 +80,82 @@ function updateMemberForm(member) {
 			disciplinesContainer.style.display = "block";
 			if (member.disciplines) {
 				setCheckBoxValues(member);
-
 			}
 		} else {
 			disciplinesContainer.style.display = "none";
 		}
 	}
 
-// updateMember function
-async function updateMember(event) {
-	console.log(event);
-	event.preventDefault();
+	// updateMember function
+	async function updateMember(event) {
+		console.log(event);
+		event.preventDefault();
 
-	const dialog = document.querySelector("#main-dialog");
-	const form = event.target;
+		const dialog = document.querySelector("#main-dialog");
+		const form = event.target;
 
-	const updatedMember = {
-		uid: member.uid,
-		firstName: form.firstName.value,
-		lastName: form.lastName.value,
-		email: form.email.value,
-		image: form.image.value,
-		dateOfBirth: form.dateOfBirth.value,
-		gender: form.gender.value,
-		isActiveMember: form.membershipStatus.value === "active",
-		isCompetitive: form.memberType.value === "competitive",
-		disciplines:
-			form.memberType.value === "competitive"
-				? [...form.disciplines]
-						.filter((discipline) => discipline.checked)
-						.map((discipline) => discipline.value)
-				: [],
-	};
+		const updatedMember = {
+			uid: member.uid,
+			firstName: form.firstName.value,
+			lastName: form.lastName.value,
+			email: form.email.value,
+			image: form.image.value,
+			dateOfBirth: form.dateOfBirth.value,
+			gender: form.gender.value,
+			isActiveMember: form.membershipStatus.value === "active",
+			isCompetitive: form.memberType.value === "competitive",
+			disciplines:
+				form.memberType.value === "competitive"
+					? [...form.disciplines]
+							.filter((discipline) => discipline.checked)
+							.map((discipline) => discipline.value)
+					: [],
+		};
 
-	const response = await apiUpdateMember(updatedMember);
-	if (response.ok) {
-		console.log("Member updated");
-		console.log(updatedMember);
-		// reset the form, close the dialog and clear the dialog content
-		form.reset();
-		dialog.close();
-		dialog.innerHTML = "";
-		// TODO: show success message to user
-		// TODO: update members list
-	} else {
-		console.log("Error occured while updated member");
-		// TODO: show error message to user
+		const response = await apiUpdateMember(updatedMember);
+		if (response.ok) {
+			console.log("Member updated");
+			console.log(updatedMember);
+			// reset the form, close the dialog and clear the dialog content
+			form.reset();
+			dialog.close();
+			dialog.innerHTML = "";
+			// TODO: show success message to user
+			// TODO: update members list
+		} else {
+			console.log("Error occured while updated member");
+			// TODO: show error message to user
+		}
 	}
-}
 }
 
 // helper functions for updateMemberForm - might need better function names
-	function showMemberActivityStatus(member) {
-		return member.isActiveMember ? "Active" : "Inactive";
-	}
+function showMemberActivityStatus(member) {
+	return member.isActiveMember ? "Active" : "Inactive";
+}
 
-	function showMemberCompetitiveStatus(member) {
-		console.log(member.isCompetitive);
-		member.isCompetitive
-			? (document.querySelector("#competitive").selected = true)
-			: (document.querySelector("#casual").selected = true);
-	}
+function showMemberCompetitiveStatus(member) {
+	console.log(member.isCompetitive);
+	member.isCompetitive
+		? (document.querySelector("#competitive").selected = true)
+		: (document.querySelector("#casual").selected = true);
+}
 
-	function setCheckBoxValues(member) {
-		console.log(member.disciplines);
-		for (const discipline of member.disciplines) {
-			if (discipline.includes("butterfly")) {
-				document.querySelector("#butterfly").checked = true;
-			} else if (discipline.includes("backstroke")) {
-				document.querySelector("#backstroke").checked = true;
-			} else if (discipline.includes("breaststroke")) {
-				document.querySelector("#breaststroke").checked = true;
-			} else if (discipline.includes("freestyle")) {
-				document.querySelector("#freestyle").checked = true;
-			} else if (discipline.includes("medley")) {
-				document.querySelector("#medley").checked = true;
-			}
+function setCheckBoxValues(member) {
+	console.log(member.disciplines);
+	for (const discipline of member.disciplines) {
+		if (discipline.includes("butterfly")) {
+			document.querySelector("#butterfly").checked = true;
+		} else if (discipline.includes("backstroke")) {
+			document.querySelector("#backstroke").checked = true;
+		} else if (discipline.includes("breaststroke")) {
+			document.querySelector("#breaststroke").checked = true;
+		} else if (discipline.includes("freestyle")) {
+			document.querySelector("#freestyle").checked = true;
+		} else if (discipline.includes("medley")) {
+			document.querySelector("#medley").checked = true;
 		}
 	}
-
+}
 
 export { updateMemberForm };
