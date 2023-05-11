@@ -5,10 +5,11 @@
 :root {
 /* fonts */
 --font-family: 'Ysabeau', cursive;
---font-size-normal: 1rem;
---font-size-small: 0.8rem;
---font-size-large: 1.2rem;
---font-size-xlarge: 1.5rem;
+--font-size-normal: 1em;
+--font-size-small: 0.8em;
+--font-size-large: 1.2em;
+--font-size-xlarge: 1.8em;
+--font-size-xxlarge: 2.5em;
 /* colors */
 --primary-color: #f5f5f5;
 --secondary-color: #333333;
@@ -19,12 +20,13 @@
 --text-color: var(--secondary-color);
 
 /* spacing */
+--spacing-tiny: 0.25em;
 --spacing-small: 0.5em;
 --spacing-normal: 1em;
 --spacing-large: 1.5em;
 
 /* borders */
---border-radius: 0.5rem;
+--border-radius: 0.5em;
 --border-solid: 1px solid var(--tertiary-color); /* color subject to change */
 --border-none: none;
 
@@ -68,15 +70,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: var(--font-size-xlarge);
+    font-size: var(--font-size-xxlarge);
 }
 
 h2 {
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-xlarge);
 }
 
 h3 {
-    font-size: var(--font-size-normal);
+    font-size: var(--font-size-large);
 }
 
 p {
@@ -107,6 +109,64 @@ button {
     border-radius: var(--border-radius);
 }
 
+/* header styling */
+header {
+    padding: var(--spacing-normal) var(--spacing-normal);
+    width: 100%;
+
+}
+
+header h1 {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+/* nav styling */
+nav {
+    padding: var(--spacing-tiny) var(--spacing-normal);
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    box-shadow: 2px 2px 10px var(--shadow-color);
+}
+
+nav a {
+    font-size: var(--font-size-large);
+    font-weight: 300;
+    padding: var(--spacing-small) var(--spacing-normal);
+}
+
+nav a:hover {
+    text-decoration: underline var(--primary-color) 2px; /* change into a bottom border */
+}
+
+nav a.active {
+    text-decoration: underline var(--primary-color) 2px; /* change into a bottom border */
+}
+
+nav button {
+    margin-left: auto;
+    margin-right: var(--spacing-small);
+}
+
+/* search-bar styling */
+#search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--spacing-normal) auto;
+    padding: var(--spacing-tiny);
+    border: var(--border-solid);
+    width: fit-content;
+}
+
+#search-bar input, #search-bar select ,#search-bar button {
+    padding: var(--spacing-small);
+    border: none;
+    border-radius: var(--border-radius);
+}
+
 /* dialog styling */
 #main-dialog {
     margin: auto;
@@ -124,7 +184,7 @@ button {
 }
 
 .grid-item {
-    border: 1px solid black;
+    border: var(--border-solid);
     padding: 1em;
     background-color: var(--accent-color-light);
     border-radius: var(--border-radius);
@@ -151,11 +211,9 @@ button {
 
 
 .grid-item-bottom {
-    /* display: grid; */
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    padding: 0.5em 0em;
 }
 
 .grid-item-bottom button {
@@ -180,7 +238,25 @@ button {
 
 
 /* button styling */
+button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: var(--font-size-normal);
+    font-weight: 200;
+    border-radius: var(--border-radius);
+    transition: ease-out 0.3s;
+    box-shadow: var(--box-shadow);
+    padding: var(--spacing-small) var(--spacing-normal);
+}
 
+button:hover {
+    transform: var(--scale-on-hover);
+    box-shadow: 3px 3px 10px var(--shadow-color);
+}
+
+button:active {
+    transform: var(--scale-on-click);
+}
 
 /* media queries */
 
@@ -236,9 +312,6 @@ button {
     display: block;
 }
 
-nav a.active {
-    background-color: var(--accent-color-dark);
-    color: var(--accent-color-light);
-}
+
 
 
