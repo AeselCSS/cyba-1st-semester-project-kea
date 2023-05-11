@@ -169,9 +169,33 @@ nav button {
 
 /* dialog styling */
 #main-dialog {
+    height: 37rem;
     margin: auto;
     padding: 1em;
+    background-color: var(--accent-color-light);
+    border: var(--border-solid);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
+
+#details-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1rem;
+}
+
+#details-img {
+    min-width: 200px;
+    max-width: 300px;
+    
+}
+#details-img img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+
 
 /* grid styling */
 
@@ -227,11 +251,6 @@ nav button {
 .member-details-section {
     display: grid;
     grid-template-rows: 1fr;
-}
-
-#details-img img {
-    width: auto;
-    height: 30rem;
 }
 
 /* form styling */

@@ -13,20 +13,21 @@ function memberDetailsDialog(member) {
                 <input type="button" id="details-delete-btn" value="Delete">
             </div>
 
-            <div id="details-img">
-                <img src="${member.image}">
-            </div>
-
-            <div id="details-else">
-                <ul>
-                    <li>Name: ${member.firstName} ${member.lastName}</li>
-                    <li>Age: ${memberAge}</li>
-					<li>Gender: ${member.gender}</li>
-                    <li>Member Status: ${showMemberActivityStatus(member)}</li>
-                    <li>Membertype: ${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}</li>
-                    <li>Disciplines: ${showMemberDisciplines(member)}</li>
-                </ul>
-            </div>
+            <div id="details-body-grid">
+				<div id="details-img">
+					<img src="${member.image}">
+				</div>
+				<div id="details-else">
+					<ul>
+						<li>Name: ${member.firstName} ${member.lastName}</li>
+						<li>Age: ${memberAge}</li>
+									<li>Gender: ${member.gender}</li>
+						<li>Member Status: ${showMemberActivityStatus(member)}</li>
+						<li>Membertype: ${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}</li>
+						<li>Disciplines: ${showMemberDisciplines(member)}</li>
+					</ul>
+				</div>
+			</div>
         </section>
     `;
 
