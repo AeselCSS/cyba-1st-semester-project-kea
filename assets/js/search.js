@@ -2,7 +2,7 @@
 import { filterMembers } from "./filter.js";
 import { sortAndShowMembers } from "./sort.js";
 
-let globalFilteredMembers = [];
+let globalFilteredMembers;
 
 function searchbarAndFilter() {
 	// Get current selected filter and search value
@@ -13,7 +13,7 @@ function searchbarAndFilter() {
 	// Create list by searching through filtered list members properties
 	const searchedMembers = searchMemberProperties(filteredMembers, searchValue);
 	// Update view
-	globalFilteredMembers = filter == "all" || searchValue ? searchedMembers : [];
+	globalFilteredMembers = filter == "all" || searchValue ? searchedMembers : null;
 	sortAndShowMembers(globalFilteredMembers);
 }
 
@@ -22,7 +22,7 @@ function searchMemberProperties(array, searchValue) {
 	const searchMembers = array.filter((member) => {
 		for (const key in member) {
 			// Skips the keys image, isActiveMember, isCompetitive and uid
-			if (["image", "isActiveMember", "isCompetitive", "uid"].includes(key)) continue;
+			if (["image", "uid"].includes(key)) continue;
 			const value = member[key];
 			// Checks strings and arrays for a match and returns true if found
 			if (typeof value === "string" && value.toLowerCase().includes(searchValue)) return true;
@@ -33,6 +33,7 @@ function searchMemberProperties(array, searchValue) {
 	// Returns filtered members
 	return searchMembers;
 }
+
 
 
 // let globalFilteredMembers;
