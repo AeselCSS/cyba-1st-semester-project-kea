@@ -17,11 +17,11 @@ function searchbarAndFilter() {
 	sortAndShowMembers(globalFilteredMembers);
 }
 
-function searchMemberProperties(array, searchValue) {
+function searchMemberProperties(filteredMembersArr, searchValue) {
 	// Filters members by searching through every property
-	const searchMembers = array.filter((member) => {
+	const searchMembers = filteredMembersArr.filter((member) => {
 		for (const key in member) {
-			// Skips the keys image, isActiveMember, isCompetitive and uid
+			// Skips the keys image and uid
 			if (["image", "uid"].includes(key)) continue;
 			const value = member[key];
 			// Checks strings and arrays for a match and returns true if found
