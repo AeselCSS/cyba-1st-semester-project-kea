@@ -1,4 +1,4 @@
-import { apiUpdateMember } from "./api.js";
+import { apiUpdateMember, refreshMembersView } from "./api.js";
 
 function updateMemberForm(member) {
 	console.log(member.uid);
@@ -121,7 +121,7 @@ function updateMemberForm(member) {
 			dialog.close();
 			dialog.innerHTML = "";
 			// TODO: show success message to user
-			// TODO: update members list
+			refreshMembersView();
 		} else {
 			console.log("Error occured while updated member");
 			// TODO: show error message to user
