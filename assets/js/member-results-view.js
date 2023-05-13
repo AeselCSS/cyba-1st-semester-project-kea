@@ -7,11 +7,21 @@ function memberResultsDialog(member) {
 
 	// Basic dialog HTML
 	const basicHtml = /*html*/ `
-    <h2>Results for ${member.firstName} ${member.lastName}</h2>
+    <h2 class="dialog-header-text-center">Results for ${member.firstName} ${member.lastName}</h2>
     <div id="member-dialog-results-container">
-        <ul id="member-dialog-results-list">
-         <!-- Inserts results list -->
-        </ul>
+        <table>
+        <thead>
+        <tr>
+        <th><h3>Date</h3></th>
+        <th><h3>Time</h3></th>
+        <th><h3>Discipline</h3></th>
+        <th><h3>Training/Competition</h3></th>
+        </tr>
+        </thead>
+        <tbody id="member-dialog-results-list">
+        <!-- Inserts result table rows -->
+        </tbody>
+        </table>
     </div>
     `;
 
@@ -43,7 +53,12 @@ function insertResultsHtml(sortedMemberResults) {
 		// If results exist, shows them in list form
 		for (const result of sortedMemberResults) {
 			const html = /*html*/ `
-                <li>${result.date}</li>
+                <tr>
+                <td>${result.date}</td>
+                <td>${result.time}</td>
+                <td>${result.discipline}</td>
+                <td>${result.resultType}</td>
+                </tr>
                 `;
 
 			document.querySelector("#member-dialog-results-list").insertAdjacentHTML("beforeend", html);
