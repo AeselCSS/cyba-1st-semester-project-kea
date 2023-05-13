@@ -75,6 +75,7 @@ h1 {
 
 h2 {
     font-size: var(--font-size-xlarge);
+    text-align: center;
 }
 
 h3 {
@@ -275,7 +276,37 @@ nav button {
     gap: 1em;
 }
 
+/* member results dialog styling */
+
+#member-dialog-results-container {
+    margin: 1rem;
+    width: 700px;
+    min-width: fit-content;
+}
+
 /* table styling */
+table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem;
+}
+
+th {
+    background-color: var(--accent-color-dark);
+}
+
+tr {
+    background-color: var(--accent-color-light);
+}
+
+tr:nth-child(even) {
+    background-color: #1b829b;
+
+}
 
 /* detail view styling */
 
