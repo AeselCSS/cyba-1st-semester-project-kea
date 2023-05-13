@@ -1,9 +1,9 @@
 import { searchbarAndFilter } from "./search.js";
 
-
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
 let members = [];
+let results = [];
 
 // CRUD functions
 // Create
@@ -11,6 +11,15 @@ async function apiCreateMember(member) {
 	const response = await fetch(`${endpoint}/members.json`, {
 		method: "POST",
 		body: JSON.stringify(member),
+	});
+	return response;
+}
+
+// Create result
+async function apiCreateResult(result) {
+	const response = await fetch(`${endpoint}/results.json`, {
+		method: "POST",
+		body: JSON.stringify(result),
 	});
 	return response;
 }
@@ -26,6 +35,11 @@ async function apiReadMembers() {
 async function apiReadRole(role) {
 	const response = await fetch(`${endpoint}/roles/${role}.json`);
 	return response.json();
+}
+
+async function apiReadResults() {
+	const response = await fetch(`${endpoint}/results.json`);
+	results = prepareResults(await response.json()); 
 }
 
 // Update
@@ -49,16 +63,24 @@ function prepareMembers(membersInObjects) {
 
 	for (const key in membersInObjects) {
 		const member = membersInObjects[key];
-
 		if (!member) {
 			continue;
 		}
-
 		member.uid = key;
 		arr.push(member);
 	}
-
 	return arr;
+}
+
+function prepareResults(resultsAsObjects) {
+	const results = [];
+	for (const key in resultsAsObjects) {
+		const result = resultsAsObjects[key];
+		if (result) {
+			results.push(result);
+		}
+	}
+	return results;
 }
 
 export async function refreshMembersView() {
@@ -66,9 +88,19 @@ export async function refreshMembersView() {
 	document.querySelector("#filter").value = "all";
 	document.querySelector("#search").value = "";
 	document.querySelector("#members-sort").value = "firstName";
-	
+
 	searchbarAndFilter();
 }
 
 // exports
-export { members, apiCreateMember, apiReadMembers, apiReadRole, apiUpdateMember, apiDeleteMember };
+export {
+	members,
+	results,
+	apiCreateMember,
+	apiCreateResult,
+	apiReadMembers,
+	apiReadRole,
+	apiReadResults,
+	apiUpdateMember,
+	apiDeleteMember,
+};
