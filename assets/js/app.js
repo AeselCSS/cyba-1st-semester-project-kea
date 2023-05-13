@@ -8,6 +8,7 @@ import { checkIfLoggedIn } from "./system-access.js";
 import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
+import { apiReadResults, results } from "./api.js";
 
 // onload event
 window.addEventListener("load", initApp);
@@ -20,6 +21,8 @@ async function initApp() {
 	await apiReadMembers();
 	//showMembers(members)
 	sortAndShowMembers(members)
+	await apiReadResults();
+	console.log(results);
 	
 
 	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
