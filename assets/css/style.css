@@ -267,8 +267,12 @@ nav button {
     margin-right: auto;
 }
 
-.grid-item-bottom button {
-    margin-top: 1em;
+.grid-item-bottom-btns {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 
 /* table styling */
