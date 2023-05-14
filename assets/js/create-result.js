@@ -80,6 +80,7 @@ function addResultDialog(member) {
 
 	// add event listener to submit and reset buttons
 	form.addEventListener("submit", createResultObject);
+
 	form.addEventListener("reset", () => {
 		competitionFormFields.style.display = "none";
 		form.reset();
@@ -103,6 +104,7 @@ function addResultDialog(member) {
 	async function createResultObject(event) {
 		event.preventDefault();
 
+		// Selects dialog/modal
 		const dialog = document.querySelector("#main-dialog");
 
 		// Selects form
@@ -120,14 +122,14 @@ function addResultDialog(member) {
 			competitionPlacement: form.placement.value,
 		};
 
-		// If training result, remove uneeded properties
+		// If training result, remove uneeded properties from object
 		if (form.resultType.value === "training") {
 			delete result.competitionLocation;
 			delete result.competitionName;
 			delete result.competitionPlacement;
 		}
 
-		// POST to Firebase
+		// POST request to Firebase
 		const response = await apiCreateResult(result);
 
 		if (response.ok) {
