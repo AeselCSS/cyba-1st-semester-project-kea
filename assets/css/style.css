@@ -273,6 +273,14 @@ nav button {
 
 /* table styling */
 
+
+#finances-active-inactive-table, #finances-active-inactive-table tr, #finances-active-inactive-table td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+
 /* detail view styling */
 
 .member-details-section {
