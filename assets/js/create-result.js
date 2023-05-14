@@ -1,7 +1,6 @@
 import { apiCreateResult } from "./api.js";
 
 function addResultDialog(memberUid) {
-
 	document.querySelector("#main-dialog").innerHTML = "";
 
 	// create the form
@@ -84,6 +83,7 @@ function addResultDialog(memberUid) {
 	async function createResultObject(event) {
 		event.preventDefault();
 
+		const dialog = document.querySelector("#main-dialog");
 		const form = event.target;
 
 		const result = {
@@ -104,8 +104,17 @@ function addResultDialog(memberUid) {
 		}
 		console.log(result);
 
-      
+		const response = await apiCreateResult(result);
 
+		if (response.ok) {
+			console.log("Result was added to Firebase! 🔥");
+			console.log(response);
+			form.reset();
+			dialog.close();
+			dialog.innerHTML = "";
+		} else {
+			console.log("Something went wrong with result POST request");
+		}
 	}
 }
 
