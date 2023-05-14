@@ -28,11 +28,8 @@ function memberDetailsDialog(member) {
 					${showMemberActivityStatus(member)}
 					<h3>Membertype</h3> 
 					${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}
-					${
-						member.disciplines
-							? `<h3>Disciplines</h3>
-					 ${showMemberDisciplines(member)}`
-							: ""
+					${member.disciplines ? `<h3>Disciplines</h3>
+					 ${showMemberDisciplines(member)}` : ""
 					}
 				</div>
 			</div>
