@@ -1,10 +1,15 @@
 import { members } from "./api.js";
 
 function calculateMembersCount() {
+
+	//Saves the count of active and inactives members in variables.
 	const activeMembersSum = countActiveMembers();
 	const inactiveMembersSum = countInactiveMembers();
+
+	//Adds the sum of both to get the total count
 	const totalMembersCount = activeMembersSum + inactiveMembersSum;
 
+	//Populates the table with the above variables
 	populateMembersTable(activeMembersSum, inactiveMembersSum, totalMembersCount);
 }
 
@@ -18,17 +23,17 @@ function countInactiveMembers() {
 	return inactiveMembersArr.length;
 }
 
-function populateMembersTable(active, inactive, total) {
-	document.querySelector("#active-member-count").textContent = active;
-	document.querySelector("#inactive-member-count").textContent = inactive;
-	populateTotalNumberInTables(total);
+function populateMembersTable(activeCount, inactiveCount, totalCount) {
+	document.querySelector("#active-member-count").textContent = activeCount;
+	document.querySelector("#inactive-member-count").textContent = inactiveCount;
+	populateTotalNumberInTables(totalCount);
 }
 
-function populateTotalNumberInTables(total) {
+function populateTotalNumberInTables(totalCount) {
 	//Iterates all elements with class-name "total-member-count" and sets .textContent to totalMembersCount
 	const classNavn = document.querySelectorAll(".total-member-count");
 	for (const element of classNavn) {
-		element.textContent = total;
+		element.textContent = totalCount;
 	}
 }
 
