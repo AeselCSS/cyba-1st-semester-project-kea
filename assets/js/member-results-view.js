@@ -31,8 +31,7 @@ function memberResultsDialog(member) {
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", basicHtml);
 
 	// button event listener
-	document.querySelector(".member-dialog-results-btn").addEventListener('click', ()=> 
-	addResultDialog(member.uid));
+	document.querySelector(".member-dialog-results-btn").addEventListener("click", () => addResultDialog(member));
 
 	// Uses filter to add member's results to array, then sorts them by date
 	const memberResults = results.filter(filterMemberResults).sort(sortResultsByDate);
