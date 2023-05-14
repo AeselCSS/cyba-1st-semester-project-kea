@@ -28,8 +28,12 @@ function memberDetailsDialog(member) {
 					${showMemberActivityStatus(member)}
 					<h3>Membertype</h3> 
 					${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}
-					${member.disciplines ? `<h3>Disciplines</h3>
-					 ${showMemberDisciplines(member)}` : ''}
+					${
+						member.disciplines
+							? `<h3>Disciplines</h3>
+					 ${showMemberDisciplines(member)}`
+							: ""
+					}
 				</div>
 			</div>
         </section>
@@ -57,7 +61,7 @@ function calculateMemberAge(member) {
 function showMemberType(age) {
 	if (age < 18) {
 		return "Junior";
-	} else if (age > 65) {
+	} else if (age > 60) {
 		return "Senior+";
 	} else {
 		return "Senior";
@@ -73,7 +77,7 @@ function showMemberCompetitiveStatus(member) {
 }
 
 function showMemberDisciplines(member) {
-		return member.disciplines.join(", ");
+	return member.disciplines.join(", ");
 }
 
 export { memberDetailsDialog, calculateMemberAge };
