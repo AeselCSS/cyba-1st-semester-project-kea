@@ -18,6 +18,9 @@ function memberResultsDialog(member) {
         <th><h3>Time</h3></th>
         <th><h3>Discipline</h3></th>
         <th><h3>Training/Competition</h3></th>
+        <th><h3>Location</h3></th>
+        <th><h3>Name</h3></th>
+        <th><h3>Placement</h3></th>
         </tr>
         </thead>
         <tbody id="member-dialog-results-list">
@@ -66,6 +69,9 @@ function insertResultsHtml(sortedMemberResults) {
                 <td>${result.time}</td>
                 <td>${result.discipline}</td>
                 <td>${result.resultType}</td>
+                <td>${result.competitionLocation ? result.competitionLocation : '-'}</td>
+                <td>${result.competitionName ? result.competitionName : '-'}</td>
+                <td>${result.competitionPlacement ? result.competitionPlacement : '-'}</td>
                 </tr>
                 `;
 
