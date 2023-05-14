@@ -1,6 +1,6 @@
 import { apiCreateResult } from "./api.js";
 
-function addResultDialog(memberUid) {
+function addResultDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
 
 	// create the form
@@ -20,11 +20,12 @@ function addResultDialog(memberUid) {
 
       <label for="discipline">Discipline</label>
     <select name="discipline" id="discipline" required>
-        <option value="butterfly">Butterfly</option>
-        <option value="backstroke">Backstroke</option>
-        <option value="breaststroke">Breaststroke</option>
-        <option value="freestyle">Freestyle</option>
-        <option value="medley">Medley</option>
+        <option value="" hidden>Select discipline</option>
+        <option value="butterfly" hidden>Butterfly</option>
+        <option value="backstroke" hidden>Backstroke</option>
+        <option value="breaststroke" hidden>Breaststroke</option>
+        <option value="freestyle" hidden>Freestyle</option>
+        <option value="medley" hidden>Medley</option>
     </select>
 
     <label for="time">time of result</label>
@@ -52,9 +53,13 @@ function addResultDialog(memberUid) {
 
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
 
+	// Only shows members disciplines in the dropdown menu
+	showMemberDisciplines(member.disciplines);
+
+	// Select form
 	const form = document.querySelector("#create-result-form");
 
-	// add event listener result type dropdown
+	// add event listener to result type dropdown (Training/Competition)
 	const competitionFormFields = document.querySelector("#competition-container");
 
 	// shows competition fields if selected in dropdown menu
@@ -80,14 +85,32 @@ function addResultDialog(memberUid) {
 		form.reset();
 	});
 
+	function showMemberDisciplines(disciplinesArray) {
+		// Selects discipline dropdown menu
+		const disciplineDropDown = document.querySelector("#discipline");
+
+		// Checks member discipline property, unhides the option in dropdown menu if present in disciplines array
+		for (discipline of disciplinesArray) {
+			// Selects disciplines dropdown menu
+			const disciplineOption = disciplineDropDown.querySelector(`option[value="${discipline}"]`);
+			// Shows discipline option if it's present in array
+			if (disciplineOption) {
+				disciplineOption.hidden = false;
+			}
+		}
+	}
+
 	async function createResultObject(event) {
 		event.preventDefault();
 
 		const dialog = document.querySelector("#main-dialog");
+
+		// Selects form
 		const form = event.target;
 
+		// Create result object
 		const result = {
-			memberId: memberUid,
+			memberId: member.uid,
 			resultType: form.resultType.value,
 			date: form.date.value,
 			discipline: form.discipline.value,
@@ -97,13 +120,14 @@ function addResultDialog(memberUid) {
 			competitionPlacement: form.placement.value,
 		};
 
+		// If training result, remove uneeded properties
 		if (form.resultType.value === "training") {
 			delete result.competitionLocation;
 			delete result.competitionName;
 			delete result.competitionPlacement;
 		}
-		console.log(result);
 
+		// POST to Firebase
 		const response = await apiCreateResult(result);
 
 		if (response.ok) {
