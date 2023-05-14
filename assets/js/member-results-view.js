@@ -54,7 +54,10 @@ function insertResultsHtml(sortedMemberResults) {
 	// Checks if member has any results (empty results array)
 	if (!sortedMemberResults.length) {
 		// If no results, shows NO DATA message
-		document.querySelector("#member-dialog-results-container").innerHTML = `<br><h2>NO DATA AVAILABLE</h2>`;
+		document.querySelector("#member-dialog-results-container").innerHTML = `
+		<h2>NOT A COMPETITIVE MEMBER</h2>
+		<h2>NO DATA AVAILABLE</h2>
+		`;
 	} else {
 		// If results exist, shows them in list form
 		for (const result of sortedMemberResults) {
