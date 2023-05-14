@@ -9,6 +9,9 @@ import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
 
+import {calculateMembersCount} from "./member-table.js"
+
+
 // onload event
 window.addEventListener("load", initApp);
 
@@ -29,5 +32,9 @@ async function initApp() {
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
 
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
+
+
+
+	calculateMembersCount();
 }
 
