@@ -1,5 +1,5 @@
 import { results } from "./api.js";
-import { addResult } from "./create-result.js";
+import { addResultDialog } from "./create-result.js";
 
 function memberResultsDialog(member) {
 	console.log(member);
@@ -32,7 +32,7 @@ function memberResultsDialog(member) {
 
 	// button event listener
 	document.querySelector(".member-dialog-results-btn").addEventListener('click', ()=> 
-	addResult(member.uid));
+	addResultDialog(member.uid));
 
 	// Uses filter to add member's results to array, then sorts them by date
 	const memberResults = results.filter(filterMemberResults).sort(sortResultsByDate);
