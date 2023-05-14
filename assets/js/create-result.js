@@ -1,6 +1,6 @@
+import { apiCreateResult } from "./api.js";
+
 function addResultDialog(memberUid) {
-	console.log("ADD RESULT");
-	console.log(memberUid);
 
 	document.querySelector("#main-dialog").innerHTML = "";
 
@@ -59,38 +59,54 @@ function addResultDialog(memberUid) {
 	const competitionFormFields = document.querySelector("#competition-container");
 
 	// shows competition fields if selected in dropdown menu
-    // adds/removes competition fields as required (can't submit training result if true)
+	// adds/removes competition fields as required (can't submit training result if true)
 	document.querySelector("#resultType").addEventListener("change", event => {
 		if (form.resultType.value === "training") {
-
 			competitionFormFields.style.display = "none";
-            form.location.required = true;
-            form.name.required = true;
-            form.placement.required = true;
-
+			form.location.required = true;
+			form.name.required = true;
+			form.placement.required = true;
 		} else if (form.resultType.value === "competition") {
-
 			competitionFormFields.style.display = "grid";
-            form.location.required = false;
+			form.location.required = false;
 			form.name.required = false;
 			form.placement.required = false;
 		}
 	});
 
 	// add event listener to submit and reset buttons
-	form.addEventListener("submit", createResult);
+	form.addEventListener("submit", createResultObject);
 	form.addEventListener("reset", () => {
 		competitionFormFields.style.display = "none";
 		form.reset();
 	});
-}
 
-function createResult(event) {
-	event.preventDefault();
-	console.log("CREATE RESULT");
+	async function createResultObject(event) {
+		event.preventDefault();
 
-	const form = event.target;
-	console.log(form);
+		const form = event.target;
+
+		const result = {
+			memberId: memberUid,
+			resultType: form.resultType.value,
+			date: form.date.value,
+			discipline: form.discipline.value,
+			time: form.time.value,
+			competitionLocation: form.location.value,
+			competitionName: form.name.value,
+			competitionPlacement: form.placement.value,
+		};
+
+		if (form.resultType.value === "training") {
+			delete result.competitionLocation;
+			delete result.competitionName;
+			delete result.competitionPlacement;
+		}
+		console.log(result);
+
+      
+
+	}
 }
 
 export { addResultDialog };
