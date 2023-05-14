@@ -35,13 +35,13 @@ function addResultDialog(memberUid) {
     <!-- competition details, only shows when competition type is selected -->
     <div id="competition-container" style="display: none">
         <label for="location">Location</label>
-        <input type="text" name="location" id="location" placeholder="Location name" required>
+        <input type="text" name="location" id="location" placeholder="Location name">
 
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="Competition name"required>
+        <input type="text" name="name" id="name" placeholder="Competition name">
 
         <label for="placement">Placement</label>
-        <input type="number" name="placement" id="placement" min="1" max="10" placeholder="Placement in competition" required>
+        <input type="number" name="placement" id="placement" min="1" max="10" placeholder="Placement in competition">
     </div>
 	
 	<div id="form-buttons">
@@ -59,11 +59,21 @@ function addResultDialog(memberUid) {
 	const competitionFormFields = document.querySelector("#competition-container");
 
 	// shows competition fields if selected in dropdown menu
+    // adds/removes competition fields as required (can't submit training result if true)
 	document.querySelector("#resultType").addEventListener("change", event => {
 		if (form.resultType.value === "training") {
+
 			competitionFormFields.style.display = "none";
+            form.location.required = true;
+            form.name.required = true;
+            form.placement.required = true;
+
 		} else if (form.resultType.value === "competition") {
+
 			competitionFormFields.style.display = "grid";
+            form.location.required = false;
+			form.name.required = false;
+			form.placement.required = false;
 		}
 	});
 
