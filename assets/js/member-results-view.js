@@ -1,6 +1,8 @@
 import { results } from "./api.js";
+import { addResult } from "./create-result.js";
 
 function memberResultsDialog(member) {
+	console.log(member);
 	document.querySelector("#main-dialog").showModal();
 
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -9,6 +11,7 @@ function memberResultsDialog(member) {
 	const basicHtml = /*html*/ `
     <h2 class="dialog-header-text-center">Results for ${member.firstName} ${member.lastName}</h2>
     <div id="member-dialog-results-container">
+	<div class="member-dialog-results-btn"><button>Add result</button></div>
         <table>
         <thead>
         <tr>
@@ -26,6 +29,10 @@ function memberResultsDialog(member) {
     `;
 
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", basicHtml);
+
+	// button event listener
+	document.querySelector(".member-dialog-results-btn").addEventListener('click', ()=> 
+	addResult(member.uid));
 
 	// Uses filter to add member's results to array, then sorts them by date
 	const memberResults = results.filter(filterMemberResults).sort(sortResultsByDate);

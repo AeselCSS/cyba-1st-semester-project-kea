@@ -284,6 +284,10 @@ nav button {
     min-width: fit-content;
 }
 
+.member-dialog-results-btn {
+    margin-bottom: 1rem;
+}
+
 /* table styling */
 table {
     text-align: center;
