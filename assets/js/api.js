@@ -69,6 +69,8 @@ export async function refreshMembersView() {
 	document.querySelector("#members-sort").value = "firstName";
 	document.querySelector("#checkbox-in-debt").checked = false;
 	
+	displayMembersInDebt();
+
 	searchbarAndFilter();
 }
 
