@@ -41,7 +41,7 @@ async function apiReadRole(role) {
 
 async function apiReadResults() {
 	const response = await fetch(`${endpoint}/results.json`);
-	results = prepareResults(await response.json()); 
+	results = prepareResults(await response.json());
 }
 
 // Update
@@ -93,6 +93,7 @@ function prepareMembers(membersInObjects) {
 
 function prepareResults(resultsAsObjects) {
 	const results = [];
+	// convert results to array and add resultId
 	for (const key in resultsAsObjects) {
 		const result = resultsAsObjects[key];
 		if (result) {
@@ -100,10 +101,21 @@ function prepareResults(resultsAsObjects) {
 			results.push(result);
 		}
 	}
+	// add member name and gender to results if not already present
+	for (const result of results) {
+		if (!result.memberName || !result.memberGender) {
+			const member = members.find((member) => member.uid === result.memberId);
+			if (member) {
+				result.memberName = `${member.firstName} ${member.lastName}`;
+				result.memberGender = member.gender;
+			}
+		}
+	}
+
 	return results;
 }
 
-export async function refreshMembersView() {
+async function refreshMembersView() {
 	await apiReadMembers();
 	document.querySelector("#filter").value = "all";
 	document.querySelector("#search").value = "";
@@ -125,4 +137,5 @@ export {
 	apiUpdateMember,
 	apiUpdateResult,
 	apiDeleteMember,
+	refreshMembersView,
 };
