@@ -9,6 +9,9 @@ import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
 
+import { calculateMembersCount } from "./member-table.js";
+import { displayFinancialTable } from "./member-and-finance-overview.js";
+
 // onload event
 window.addEventListener("load", initApp);
 
@@ -19,8 +22,7 @@ async function initApp() {
 	checkIfLoggedIn(); // check if user is logged in
 	await apiReadMembers();
 	//showMembers(members)
-	sortAndShowMembers(members)
-	
+	sortAndShowMembers(members);
 
 	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
 
@@ -29,5 +31,7 @@ async function initApp() {
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
 
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
-}
 
+	calculateMembersCount();
+	displayFinancialTable();
+}
