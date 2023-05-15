@@ -1,4 +1,5 @@
 import { searchbarAndFilter } from "./search.js";
+import { calculateMemberAge } from "./member-detailed-view.js";
 
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
@@ -51,6 +52,14 @@ async function apiUpdateMember(member) {
 	return response;
 }
 
+async function apiUpdateResult(result) {
+	const response = await fetch(`${endpoint}/results/${result.resultId}.json`, {
+		method: "PUT",
+		body: JSON.stringify(result),
+	});
+	return response;
+}
+
 // Delete
 async function apiDeleteMember(member) {
 	const response = await fetch(`${endpoint}/members/${member}.json`, { method: "DELETE" });
@@ -67,6 +76,15 @@ function prepareMembers(membersInObjects) {
 			continue;
 		}
 		member.uid = key;
+		// calculate members agegroup based on birthyear
+		const age = calculateMemberAge(member);
+		if (age < 18) {
+			member.agegroup = "Junior";
+		} else if (age < 65) {
+			member.agegroup = "Senior";
+		} else {
+			member.agegroup = "Senior+";
+		}
 		arr.push(member);
 	}
 	return arr;
@@ -77,6 +95,7 @@ function prepareResults(resultsAsObjects) {
 	for (const key in resultsAsObjects) {
 		const result = resultsAsObjects[key];
 		if (result) {
+			result.resultId = key;
 			results.push(result);
 		}
 	}
@@ -102,5 +121,6 @@ export {
 	apiReadRole,
 	apiReadResults,
 	apiUpdateMember,
+	apiUpdateResult,
 	apiDeleteMember,
 };
