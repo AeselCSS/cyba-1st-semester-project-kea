@@ -15,67 +15,72 @@ function checkIfLoggedIn() {
 
 // grant access based on user role in local storage
 function systemAccess(role) {
+    // nav links and buttons
+    const membersLink = document.querySelector("#members-link")
+    const financesLink = document.querySelector("#finances-link")
+    const topFiveLink = document.querySelector("#top-five-link")
+    const loginBtn = document.querySelector("#login-btn")
+    const logoutBtn = document.querySelector("#logout-btn")
+
+    // role specific buttons
+    const resultsBtn = document.querySelectorAll(".grid-item-results-btn")
+    const addMemberBtn = document.querySelector("#add-new-member-btn"); 
+
+
 	console.log(`systemAccess: ${role} found in local storage`);
 	if (role === "chairman") {
-		showChairmanNavLinks();
+		// nav links and buttons
+		loginBtn.className = "hidden";
+		logoutBtn.className = "";
+		membersLink.className = "";
+		financesLink.className = "hidden";
+		topFiveLink.className = "hidden";
+		// role specific buttons
+		addMemberBtn.className = "";
+		ResultsBtnClass("hidden");
 	} else if (role === "cashier") {
-		showCashierNavLinks();
+		// nav links and buttons
+		loginBtn.className = "hidden";
+		logoutBtn.className = "";
+		membersLink.className = "";
+		financesLink.className = "";
+		topFiveLink.className = "hidden";
+		// role specific buttons
+		addMemberBtn.className = "hidden";
+		ResultsBtnClass("hidden");
 	} else if (role === "trainer") {
-		showTrainerNavLinks();
+		// nav links and buttons
+		loginBtn.className = "hidden";
+		logoutBtn.className = "";
+		membersLink.className = "";
+		financesLink.className = "hidden";
+		topFiveLink.className = "";
+		// role specific buttons
+		addMemberBtn.className = "hidden";
+		ResultsBtnClass("");
 	} else if (role === "guest") {
 		console.log("no user logged in - guest view shown");
-		showGuestNavLinks();
+		// nav links and buttons
+		loginBtn.className = "";
+		logoutBtn.className = "hidden";
+		membersLink.className = "hidden";
+		financesLink.className = "hidden";
+		topFiveLink.className = "hidden";
 	}
 
-	// show the nav links for guest
-	function showGuestNavLinks() {
-		const guestNavLinks = /*html*/ `
-        <!-- navigation bar -->
-        <a href="#home" class="view-link" id="home-link">Home</a>
-        <button id="login-btn">Log in</button>
-        `;
-		document.querySelector("nav").innerHTML = guestNavLinks;
-        // add event listener to login button
-        document.querySelector("#login-btn").addEventListener("click", login);
-	}
-	// show the nav links for chairman
-	function showChairmanNavLinks() {
-		const chairmanNavLinks = /*html*/ `
-        <!-- navigation bar -->
-        <a href="#home" class="view-link" id="home-link">Home</a>
-        <a href="#members" class="view-link" id="members-link">Members</a>
-        <button id="logout-btn">Log out</button>
-        `;
-		document.querySelector("nav").innerHTML = chairmanNavLinks;
-        // add event listener to logout button
-        document.querySelector("#logout-btn").addEventListener("click", logout);
-	}
-	// show the nav links for cashier
-	function showCashierNavLinks() {
-		const cashierNavLinks = /*html*/ `
-        <!-- navigation bar -->
-        <a href="#home" class="view-link" id="home-link">Home</a>
-        <a href="#members" class="view-link" id="members-link">Members</a>
-        <a href="#finances" class="view-link" id="finances-link">Finances</a>
-        <button id="logout-btn">Log out</button>
-        `;
-		document.querySelector("nav").innerHTML = cashierNavLinks;
-        // add event listener to logout button
-        document.querySelector("#logout-btn").addEventListener("click", logout);
-	}
-	// show the nav links for trainer
-	function showTrainerNavLinks() {
-		const trainerNavLinks = /*html*/ `
-        <!-- navigation bar -->
-        <a href="#home" class="view-link" id="home-link">Home</a>
-        <a href="#members" class="view-link" id="members-link">Members</a>
-        <a href="#top-five" class="view-link" id="top-five-link">Top 5</a>
-        <button id="logout-btn">Log out</button>
-        `;
-		document.querySelector("nav").innerHTML = trainerNavLinks;
-        // add event listener to logout button
-        document.querySelector("#logout-btn").addEventListener("click", logout);
-	}
+    // eventlisteners
+    document.querySelector("#login-btn").addEventListener("click", login);
+    document.querySelector("#logout-btn").addEventListener("click", logout);
+    
+    // show/hide all results buttoms on member grid
+    function ResultsBtnClass (string) {
+        if (string) {
+            resultsBtn.forEach((btn)=> btn.classList.add(string))  
+        } else {
+            resultsBtn.forEach((btn) => btn.classList.remove("hidden")); 
+        }
+    }
 }
+
 
 export { checkIfLoggedIn, systemAccess };
