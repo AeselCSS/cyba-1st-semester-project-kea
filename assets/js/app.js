@@ -29,7 +29,7 @@ async function initApp() {
 	// add event listeners
 	document.querySelector("#add-new-member-btn").addEventListener("click", createMemberForm);
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
-
+	document.querySelector("#checkbox-in-debt").addEventListener("change", searchbarAndFilter);
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
 
 
