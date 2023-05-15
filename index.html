@@ -35,7 +35,7 @@
 			<section id="members" class="view-content">
 				<h2 class="section-title">members</h2>
 				<div id="search-bar">
-                    <input type="text" id="search" name="search" placeholder="Search" />
+					<input type="text" id="search" name="search" placeholder="Search" />
 
 					<label for="sort">Sort after:</label>
 					<select name="sort" id="members-sort">
@@ -57,6 +57,9 @@
 						<option value="casual">Casual</option>
 					</select>
                     
+					<label for="in-debt">Show only indebted</label>
+					<input type="checkbox" name="in-debt" id="checkbox-in-debt">
+
                     <button id="add-new-member-btn">add member</button>
 				</div>
 
@@ -67,6 +70,91 @@
 
 			<section id="finances" class="view-content">
 				<h2 class="section-title">Finances</h2>
+
+				<article id="finances-active-inactive-article">
+					<h3>Distribution of members</h3>
+					<table id="finances-active-inactive-table">
+						<tr>
+							<td>Active Members:</td>
+							<td id="active-member-count"></td>
+						</tr>
+						<tr>
+							<td>Inactive Members:</td>
+							<td id="inactive-member-count"></td>
+						</tr>
+						<tr>
+							<td>Total:</td>
+							<td class="total-member-count"></td>
+						</tr>
+					</table>
+				</article>
+
+				<article id="finances-membertype-overview">
+					<h3>Overview</h3>
+
+					<table id="finance-membertype-table">
+						<tr>
+							<td>Member type</td>
+							<td>Amount</td>
+							<td>Subscription price per year</td>
+							<td>Subscription sub total</td>
+						</tr>
+						<tr>
+							<td>Inactive</td>
+							<td id="inactive-count"></td>
+							<td><span id="inactive-subscription"></span>,-</td>
+							<td><span id="inactive-subscription-subtotal"></span>,-</td>
+						</tr>
+
+						<tr>
+							<td>Junior</td>
+							<td id="junior-count"></td>
+							<td><span id="junior-subscription"></span>,-</td>
+							<td><span id="junior-subscription-subtotal"></span>,-</td>
+						</tr>
+
+						<tr>
+							<td>Senior</td>
+							<td id="senior-count"></td>
+							<td><span id="senior-subscription"></span>,-</td>
+							<td><span id="senior-subscription-subtotal"></span>,-</td>
+						</tr>
+
+						<tr>
+							<td>Senior+</td>
+							<td id="senior-plus-count"></td>
+							<td><span id="senior-plus-subscription"></span>,-</td>
+							<td><span id="senior-plus-subscription-subtotal"></span>,-</td>
+						</tr>
+
+						<tr>
+							<td>Grand Total</td>
+							<td class="total-member-count"></td>
+							<td>--</td>
+							<td><span id="total-member-subscription-grand-total"></span>,-</td>
+						</tr>
+					</table>
+				</article>
+
+				<article id="finances-debt-article">
+					<h3>Members in debt</h3>
+					<table id="finances-debt-table">
+						<tr>
+							<td>Active: </td>
+							<td id="debt-active-count"></td>
+						</tr>
+						<tr>
+							<td>Inactive</td>
+							<td id="debt-inactive-count"></td>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td id="debt-total-count"></td>
+						</tr>
+					</table>
+				</article>
+
+
 			</section>
 
 			<section id="top-five" class="view-content">

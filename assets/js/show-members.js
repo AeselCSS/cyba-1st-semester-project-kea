@@ -10,8 +10,9 @@ function showMembers(members) {
 }
 
 function showMember(member) {
-    const htmlGrid = /*html*/ `
-    <article class="grid-item">
+	//Added class has-payed-true or has-payed-false. If it is has-payed-true, then a class with a red border is displayed
+	const htmlGrid = /*html*/ `
+    <article class="grid-item has-payed-${member.hasPayed}">
     <img src=${member.image}>
         <div class="grid-item-bottom">
             <h2>${member.firstName} ${member.lastName}</h2>
@@ -20,11 +21,14 @@ function showMember(member) {
     </article>
     `;
 
-    document.querySelector("#members-grid").insertAdjacentHTML("beforeend", htmlGrid);
+	document.querySelector("#members-grid").insertAdjacentHTML("beforeend", htmlGrid);
 
     // button event listeners
-    document.querySelector("#members-grid .grid-item:last-child .grid-item-details-btn").addEventListener("click", () => memberDetailsDialog(member));
+	document
+		.querySelector("#members-grid .grid-item:last-child .grid-item-details-btn")
+		.addEventListener("click", () => memberDetailsDialog(member));
 
+	/* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
     document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").addEventListener("click", () => memberResultsDialog(member));
 
     /* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/

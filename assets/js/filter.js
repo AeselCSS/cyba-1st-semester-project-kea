@@ -1,10 +1,13 @@
-import { members } from "./api.js";
+import {membersToFilter} from "./search.js"
+
 
 function filterMembers(filter) {
+	console.log(membersToFilter);
+
 	if (filter === "all") {
-		return members;
+		return membersToFilter;
 	} else {
-		const filteredMembers = members.filter(filterProperty);
+		const filteredMembers = membersToFilter.filter(filterProperty);
 		return filteredMembers;
 
 		function filterProperty(member) {

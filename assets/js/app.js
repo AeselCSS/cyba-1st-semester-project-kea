@@ -8,6 +8,9 @@ import { checkIfLoggedIn } from "./system-access.js";
 import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
+import {displayMembersInDebt} from "./restance.js"
+import { calculateMembersCount } from "./member-table.js";
+import { displayFinancialTable } from "./member-and-finance-overview.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
 
 // onload event
@@ -28,6 +31,7 @@ async function initApp() {
 	document.querySelector("#add-new-member-btn").addEventListener("click", createMemberForm);
 	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
+	document.querySelector("#checkbox-in-debt").addEventListener("change", searchbarAndFilter);
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
 
 	// filters on top five section
@@ -36,4 +40,9 @@ async function initApp() {
 	document.querySelectorAll(".result-type-filter").forEach((checkbox) => {
 		checkbox.addEventListener("change", refreshTop5Results);
 	});
+
+	//fINANCES TAB
+	calculateMembersCount();
+	displayFinancialTable();
+	displayMembersInDebt()
 }

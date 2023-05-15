@@ -1,18 +1,36 @@
 // import { showMembers } from "./show-members.js";
 import { filterMembers } from "./filter.js";
 import { sortAndShowMembers } from "./sort.js";
+import { members } from "./api.js";
 
 let globalFilteredMembers;
 
+//This variable (array) gets exported to filterMembers to get filtered. We had to export it instead of sending it as an argument, because the latter didn't work.
+export let membersToFilter;
+
 function searchbarAndFilter() {
+	const inDebt = document.querySelector("#checkbox-in-debt");
 	// Get current selected filter and search value
 	const filter = document.querySelector("#filter").value;
 	const searchValue = document.querySelector("#search").value.toLowerCase();
-	// Create filtered members list
-	const filteredMembers = filterMembers(filter);
+
+	let filteredMembers = "";
+
+	//If inDebt is checked, then filter the global member array and get a filtered array of only indebted members. Store the indebted members array in membersToFilter variable for export in filterMembers()
+	//Else if inDebt is unchecked, filter the whole global member array.
+	//We filter by using the value of filter
+	if (inDebt.checked === true) {
+		const membersInDebtArr = members.filter((member) => member.hasPayed === false);
+		membersToFilter = membersInDebtArr;
+		filteredMembers = filterMembers(filter);
+	} else if (inDebt.checked === false) {
+		membersToFilter = members;
+		filteredMembers = filterMembers(filter);
+	}
+
 	// Create list by searching through filtered list members properties
 	const searchedMembers = searchMemberProperties(filteredMembers, searchValue);
-	// Update view
+	// Sort and Update view
 	globalFilteredMembers = filter == "all" || searchValue ? searchedMembers : null;
 	sortAndShowMembers(globalFilteredMembers);
 }
