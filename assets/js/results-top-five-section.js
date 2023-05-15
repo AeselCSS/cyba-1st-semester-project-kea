@@ -1,68 +1,65 @@
-function getTop5Results(members, results) {
-	// add name and gender to results
-	for (const result of results) {
-		const member = members.find((member) => member.uid === result.memberId);
-		if (member) {
-			result.memberName = `${member.firstName} ${member.lastName}`;
-			result.memberGender = member.gender;
-		}
-	}
-	// convert time from string to number in seconds 
-	calculateTimeToSeconds(results);
+import { members, results } from "./api.js";
 
-	// Apply filters to members and results
+// Function to refresh the top 5 results based on the current filters
+function refreshTop5Results() {
+	// Get the filtered data based on the current filters
 	const filteredData = applyFilters(members, results);
 	const filteredMembers = filteredData.members;
 	let filteredResults = filteredData.results;
-
+	// filter the results based on the filtered members
 	filteredResults = filteredResults.filter((result) =>
 		filteredMembers.some((member) => member.uid === result.memberId)
 	);
+	// Clear the existing top 5 results from the UI
+	clearTop5Results();
+	// Call getTop5Results with the updated filtered data
+	getTop5Results(filteredResults);
+}
+
+// Function to clear the existing top 5 results from the UI
+function clearTop5Results() {
+	const topFiveGridItems = document.querySelectorAll(".top-five-grid-item");
+	topFiveGridItems.forEach((item) => {
+		item.remove();
+	});
+}
+
+function getTop5Results(results) {
+	// convert time from string to number in seconds
+	calculateTimeToSeconds(results);
+	// Get top 5 results for each discipline
 	const top5AllDisciplines = [];
 	const disciplines = ["butterfly", "freestyle", "backstroke", "breaststroke"];
-
 	for (const discipline of disciplines) {
 		// Get top 5 results for each discipline from filtered results
-		const top5Discipline = filteredResults
+		const top5Discipline = results
 			.filter((result) => result.discipline === discipline)
 			.sort((a, b) => a.time - b.time)
 			.slice(0, 5);
-
-		// Add top 5 results to top5AllDisciplines array
-		top5AllDisciplines.push(...top5Discipline);
+		// Add top 5 results as an array to top5AllDisciplines array
+		top5AllDisciplines.push(top5Discipline);
 	}
-	// convert time back into string
 	convertTimeBackToString(results);
-
-	// Split top5AllDisciplines array into 4 arrays, one for each discipline
-	const top5Butterfly = top5AllDisciplines.filter((result) => result.discipline === "butterfly");
-	const top5Freestyle = top5AllDisciplines.filter((result) => result.discipline === "freestyle");
-	const top5Backstroke = top5AllDisciplines.filter((result) => result.discipline === "backstroke");
-	const top5Breaststroke = top5AllDisciplines.filter((result) => result.discipline === "breaststroke");
-
-	showTop5Results(top5Butterfly);
-	showTop5Results(top5Freestyle);
-	showTop5Results(top5Backstroke);
-	showTop5Results(top5Breaststroke);
+	showTop5Results(top5AllDisciplines);
 }
 
 function showTop5Results(top5results) {
-	if (top5results.length > 0) {
-		// add index of result +1 to each result as a key called top5placement
-		calculateTopFivePlacement(top5results);
-		const discipline = top5results[0].discipline;
-		const gridArticle = document.querySelector(`#top-five-${discipline}`);
-		gridArticle.querySelector("h3").textContent = discipline;
-		for (const result of top5results) {
-			showTop5result(result);
+	top5results.forEach((discipline) => {
+		if (discipline.length > 0) {
+			// add index of result +1 to each result as a key called top5placement
+			calculateTopFivePlacement(discipline);
+			const gridArticle = document.querySelector(`#top-five-${discipline[0].discipline}`);
+			gridArticle.querySelector("h3").textContent = discipline[0].discipline;
+			for (const result of discipline) {
+				showTop5result(result);
+			}
+		} else {
+			noResults();
 		}
-	} else {
-		noResults();
-	}
+	});
 }
 
 function showTop5result(result) {
-	// console.log(result);
 	const gridArticle = document.querySelector(`#top-five-${result.discipline}`);
 	const htmlGridItem = /*html*/ `
 	    <div class="top-five-grid-item">
@@ -77,11 +74,14 @@ function showTop5result(result) {
 }
 
 function noResults() {
-	const grid = document.querySelector("#top-five-grid");
+	const disciplineGrids = document.querySelectorAll(".top-five-disciplines");
+	disciplineGrids.forEach((grid) => {
+		grid.innerHTML = "";
 	const html = /*html*/ `
 		<h3>No results available with the selected filters</h3>
 	`;
 	grid.insertAdjacentHTML("beforeend", html);
+});
 }
 
 // filters
@@ -115,18 +115,6 @@ function applyFilters(members, results) {
 	return { members: filteredMembers, results: filteredResults };
 }
 
-// display filters on the section title for top-five section
-// function displayFilters() {
-//     const ageFilter = document.querySelector("#age-filter").value;
-//     const genderFilter = document.querySelector("#gender-filter").value;
-//     const resultTypeFilters = Array.from(document.querySelectorAll(".result-type-filter:checked")).map(
-//         (checkbox) => checkbox.value
-//     );
-
-//     const filtersString = `Top 5 results for:${ageFilter} ${genderFilter} ${resultTypeFilters.join(" ")}`;
-//     document.querySelector("#top-five-filters").textContent = filtersString;
-// }
-
 // helper functions
 function calculateTimeToSeconds(results) {
 	for (const result of results) {
@@ -157,24 +145,4 @@ function calculateTopFivePlacement(top5results) {
 	}
 }
 
-
-// // check if a result object in results has a date property
-// // if not add a date key and set it to a date between january 2020 and today
-
-// function addDateToResults(results) {
-// 	for (const result of results) {
-// 		const resultId = result.id;
-// 		if (!result.date) {
-// 			const randomDate = new Date(
-// 				2020,
-// 				Math.floor(Math.random() * 12),
-// 				Math.floor(Math.random() * 28) + 1
-// 			).toLocaleDateString();
-// 			result.date = randomDate;
-// 			// update the result in the database
-// 			apiUpdateResult(result);
-// 		}
-// 	}
-// }
-
-export { getTop5Results};
+export { getTop5Results, refreshTop5Results };
