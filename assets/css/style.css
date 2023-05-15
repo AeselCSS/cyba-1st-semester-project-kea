@@ -273,6 +273,11 @@ nav button {
 
 /* table styling */
 
+#finances-debt-table, #finances-debt-table tr, #finances-debt-table td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
 /* detail view styling */
 
 .member-details-section {
