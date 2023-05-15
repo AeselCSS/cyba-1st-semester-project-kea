@@ -8,6 +8,8 @@ import { checkIfLoggedIn } from "./system-access.js";
 import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
+import {displayMembersInDebt} from "./restance.js"
+
 
 // onload event
 window.addEventListener("load", initApp);
@@ -29,5 +31,8 @@ async function initApp() {
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
 
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
+
+
+	displayMembersInDebt()
 }
 
