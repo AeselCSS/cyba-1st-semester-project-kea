@@ -1,15 +1,33 @@
 // import { showMembers } from "./show-members.js";
 import { filterMembers } from "./filter.js";
 import { sortAndShowMembers } from "./sort.js";
+import { members } from "./api.js";
 
 let globalFilteredMembers;
 
+export let membersToFilter;
+
 function searchbarAndFilter() {
+	const inDebt = document.querySelector("#checkbox-in-debt");
 	// Get current selected filter and search value
 	const filter = document.querySelector("#filter").value;
 	const searchValue = document.querySelector("#search").value.toLowerCase();
-	// Create filtered members list
-	const filteredMembers = filterMembers(filter);
+
+	let filteredMembers = "";
+
+	if (inDebt.checked === true) {
+		const membersInDebtArr = members.filter((member) => member.hasPayed === false);
+		membersToFilter = membersInDebtArr;
+		filteredMembers = filterMembers(filter);
+
+	} else if (inDebt.checked === false) {
+		// Create filtered members list
+		membersToFilter = members;
+		filteredMembers = filterMembers(filter);
+	}
+
+
+
 	// Create list by searching through filtered list members properties
 	const searchedMembers = searchMemberProperties(filteredMembers, searchValue);
 	// Update view
