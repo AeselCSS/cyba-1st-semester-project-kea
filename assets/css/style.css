@@ -455,6 +455,10 @@ button:active {
     display: none;
 }
 
+.red-border-in-debt {
+    border: 2px solid red;
+}
+
 /* views */
 
 .view-content {
