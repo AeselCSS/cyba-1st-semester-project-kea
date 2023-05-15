@@ -31,8 +31,8 @@ function populateMembersTable(activeCount, inactiveCount, totalCount) {
 
 function populateTotalNumberInTables(totalCount) {
 	//Iterates all elements with class-name "total-member-count" and sets .textContent to totalMembersCount
-	const classNavn = document.querySelectorAll(".total-member-count");
-	for (const element of classNavn) {
+	const nodeList = document.querySelectorAll(".total-member-count");
+	for (const element of nodeList) {
 		element.textContent = totalCount;
 	}
 }
