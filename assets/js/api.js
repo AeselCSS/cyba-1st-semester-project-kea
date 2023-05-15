@@ -21,6 +21,7 @@ async function apiReadMembers() {
 	const membersInObjects = await response.json();
 
 	members = prepareMembers(membersInObjects);
+	
 }
 
 async function apiReadRole(role) {
@@ -66,6 +67,7 @@ export async function refreshMembersView() {
 	document.querySelector("#filter").value = "all";
 	document.querySelector("#search").value = "";
 	document.querySelector("#members-sort").value = "firstName";
+	document.querySelector("#checkbox-in-debt").checked = false;
 	
 	searchbarAndFilter();
 }
