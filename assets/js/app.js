@@ -9,6 +9,7 @@ import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
 import { apiReadResults, results } from "./api.js";
+import { getTop5Results } from "./results-top-five-section.js";
 
 // onload event
 window.addEventListener("load", initApp);
@@ -19,10 +20,12 @@ async function initApp() {
 	initViews(); // init spa router
 	checkIfLoggedIn(); // check if user is logged in
 	await apiReadMembers();
+	// console.log(members);
 	//showMembers(members)
 	sortAndShowMembers(members)
 	await apiReadResults();
-	console.log(results);
+	// console.log(results);
+	getTop5Results(members, results);
 	
 
 	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
