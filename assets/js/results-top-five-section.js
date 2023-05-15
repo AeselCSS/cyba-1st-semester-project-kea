@@ -1,23 +1,25 @@
 function getTop5Results(members, results) {
-    // add name and gender to results
-    for (const result of results) {
-        const member = members.find((member) => member.uid === result.memberId);
-        if (member) {
+	// add name and gender to results
+	for (const result of results) {
+		const member = members.find((member) => member.uid === result.memberId);
+		if (member) {
 			result.memberName = `${member.firstName} ${member.lastName}`;
 			result.memberGender = member.gender;
 		}
-    }
+	}
+	// convert time from string to number in seconds 
+	calculateTimeToSeconds(results);
+	
 	// Apply filters to members and results
 	const filteredData = applyFilters(members, results);
 	const filteredMembers = filteredData.members;
 	let filteredResults = filteredData.results;
-    
+
 	filteredResults = filteredResults.filter((result) =>
 		filteredMembers.some((member) => member.uid === result.memberId)
 	);
 	const top5AllDisciplines = [];
 	const disciplines = ["butterfly", "freestyle", "backstroke", "breaststroke"];
-	calculateTimeToSeconds(filteredResults);
 
 	for (const discipline of disciplines) {
 		// Get top 5 results for each discipline from filtered results
@@ -25,9 +27,12 @@ function getTop5Results(members, results) {
 			.filter((result) => result.discipline === discipline)
 			.sort((a, b) => a.time - b.time)
 			.slice(0, 5);
+
 		// Add top 5 results to top5AllDisciplines array
 		top5AllDisciplines.push(...top5Discipline);
 	}
+	// convert time back into string
+	convertTimeBackToString(results);
 
 	// Split top5AllDisciplines array into 4 arrays, one for each discipline
 	const top5Butterfly = top5AllDisciplines.filter((result) => result.discipline === "butterfly");
@@ -46,7 +51,6 @@ function showTop5Results(top5results) {
 		// add index of result +1 to each result as a key called top5placement
 		calculateTopFivePlacement(top5results);
 		const discipline = top5results[0].discipline;
-		console.log(discipline);
 		const gridArticle = document.querySelector(`#top-five-${discipline}`);
 		gridArticle.querySelector("h3").textContent = discipline;
 		for (const result of top5results) {
@@ -57,10 +61,10 @@ function showTop5Results(top5results) {
 	}
 }
 
-function showTop5result (result) {
+function showTop5result(result) {
 	// console.log(result);
 	const gridArticle = document.querySelector(`#top-five-${result.discipline}`);
-	const htmlGridItem = /*html*/`
+	const htmlGridItem = /*html*/ `
 	    <div class="top-five-grid-item">
 	    <h4>${result.top5placement}: ${result.memberName}</h4>
 	    <p>Gender: ${result.memberGender}</p>
@@ -69,7 +73,7 @@ function showTop5result (result) {
 	    <p>Type: ${result.resultType}</p>
 	    </div>
     `;
-    gridArticle.insertAdjacentHTML("beforeend", htmlGridItem);
+	gridArticle.insertAdjacentHTML("beforeend", htmlGridItem);
 }
 
 function noResults() {
@@ -77,7 +81,7 @@ function noResults() {
 	const html = /*html*/ `
 		<h3>No results available with the selected filters</h3>
 	`;
-	grid.insertAdjacentHTML("beforeend", html);	
+	grid.insertAdjacentHTML("beforeend", html);
 }
 
 // filters
@@ -88,17 +92,17 @@ function filterByAgeGroup(members) {
 }
 // by gender from dropdown
 function filterByGender(members) {
-    const genderFilter = document.querySelector("#gender-filter").value;
-    return members.filter((member) => member.gender.toLowerCase() === genderFilter.toLowerCase());
+	const genderFilter = document.querySelector("#gender-filter").value;
+	return members.filter((member) => member.gender.toLowerCase() === genderFilter.toLowerCase());
 }
 
 // by result type from checkboxes
 function filterByResultType(results) {
-    // create an array of the checked result types
+	// create an array of the checked result types
 	const checkedResultTypes = Array.from(document.querySelectorAll(".result-type-filter:checked")).map(
 		(checkbox) => checkbox.value
 	);
-    // console.log(checkedResultTypes);
+	// console.log(checkedResultTypes);
 	return checkedResultTypes.length > 0
 		? results.filter((result) => checkedResultTypes.includes(result.resultType))
 		: results;
@@ -125,15 +129,24 @@ function applyFilters(members, results) {
 
 // helper functions
 function calculateTimeToSeconds(results) {
-    for (const result of results) {
-        const time = result.time.split(":");
-        const minutes = Number(time[0]);
-        const seconds = Number(time[1]);
-        // convert minutes to seconds, add seconds and set decimal to 3 digits
-        // Number() converts the result to a number (from string) and toFixed(2) sets the decimal to 2 digits
-        const resultInSeconds = Number((minutes * 60 + seconds).toFixed(2));
-        result.time = resultInSeconds;
-    }
+	for (const result of results) {
+		const time = result.time.split(":");
+		const minutes = Number(time[0]);
+		const seconds = Number(time[1]);
+		// convert minutes to seconds, add seconds and set decimal to 3 digits
+		// Number() converts the result to a number (from string) and toFixed(2) sets the decimal to 2 digits
+		const resultInSeconds = Number((minutes * 60 + seconds).toFixed(2));
+		result.time = resultInSeconds;
+	}
+}
+
+function convertTimeBackToString(results) {
+	for (const result of results) {
+		const minutes = Math.floor(result.time / 60);
+		const seconds = (result.time % 60).toFixed(2);
+		const timeString = `${minutes}:${seconds}`;
+		result.time = timeString;
+	}
 }
 
 function calculateTopFivePlacement(top5results) {
@@ -142,4 +155,24 @@ function calculateTopFivePlacement(top5results) {
 	}
 }
 
-export { getTop5Results };
+
+// // check if a result object in results has a date property
+// // if not add a date key and set it to a date between january 2020 and today
+
+// function addDateToResults(results) {
+// 	for (const result of results) {
+// 		const resultId = result.id;
+// 		if (!result.date) {
+// 			const randomDate = new Date(
+// 				2020,
+// 				Math.floor(Math.random() * 12),
+// 				Math.floor(Math.random() * 28) + 1
+// 			).toLocaleDateString();
+// 			result.date = randomDate;
+// 			// update the result in the database
+// 			apiUpdateResult(result);
+// 		}
+// 	}
+// }
+
+export { getTop5Results};
