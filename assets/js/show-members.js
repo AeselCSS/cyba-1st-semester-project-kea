@@ -22,6 +22,13 @@ function showMember(member) {
     document.querySelector("#members-grid").insertAdjacentHTML("beforeend", htmlGrid);
     document.querySelector("#members-grid .grid-item:last-child .grid-item-details-btn").addEventListener("click", () => memberDetailsDialog(member));
 
+
+    //Added red border to indebted members
+    if (!member.hasPayed) {
+        document.querySelector("#members-grid .grid-item:last-child").classList.add("red-border-in-debt");
+        //Add also table here
+    }
+
     /* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
 }
 
