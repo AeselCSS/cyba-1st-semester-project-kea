@@ -39,7 +39,7 @@ function memberResultsDialog(member) {
 	const memberResults = results.filter(filterMemberResults).sort(sortResultsByDate);
 
 	// Results HTML to insert into DOM
-	insertResultsHtml(memberResults);
+	insertResultsHtml(memberResults, member);
 
 	//Filter and sort functions
 	function filterMemberResults(result) {
@@ -52,14 +52,17 @@ function memberResultsDialog(member) {
 }
 
 // HTML to insert as result
-function insertResultsHtml(sortedMemberResults) {
-	// Checks if member has any results (empty results array)
-	if (!sortedMemberResults.length) {
+function insertResultsHtml(sortedMemberResults, member) {
+	// Checks if member is competitive
+	if (!member.isCompetitive) {
+		document.querySelector("#member-dialog-results-container").innerHTML = "<h2>Not a competitive member</h2>";
+		// Checks if member has any results (empty results array)
+	} else if (!sortedMemberResults.length) {
 		// If no results, shows NO DATA message
-		document.querySelector("#member-dialog-results-container").innerHTML = `
-		<h2>NOT A COMPETITIVE MEMBER</h2>
-		<h2>NO DATA AVAILABLE</h2>
-		`;
+		const html = /*html*/ `
+			<h2>Currently no results</h2>
+			`;
+		document.querySelector("#member-dialog-results-container").insertAdjacentHTML("beforeend", html);
 	} else {
 		// If results exist, shows them in list form
 		for (const result of sortedMemberResults) {
@@ -69,9 +72,9 @@ function insertResultsHtml(sortedMemberResults) {
                 <td>${result.time}</td>
                 <td>${result.discipline}</td>
                 <td>${result.resultType}</td>
-                <td>${result.competitionLocation ? result.competitionLocation : '-'}</td>
-                <td>${result.competitionName ? result.competitionName : '-'}</td>
-                <td>${result.competitionPlacement ? result.competitionPlacement : '-'}</td>
+                <td>${result.competitionLocation ? result.competitionLocation : "-"}</td>
+                <td>${result.competitionName ? result.competitionName : "-"}</td>
+                <td>${result.competitionPlacement ? result.competitionPlacement : "-"}</td>
                 </tr>
                 `;
 
