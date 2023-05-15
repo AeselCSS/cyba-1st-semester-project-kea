@@ -9,27 +9,23 @@ function showMembers(members) {
 }
 
 function showMember(member) {
-    const htmlGrid = /*html*/`
-    <article class="grid-item">
+	//Added class has-payed-true or has-payed-false. If it is has-payed-true, then a class with a red border is displayed
+	const htmlGrid = /*html*/ `
+    <article class="grid-item has-payed-${member.hasPayed}">
     <img src=${member.image}>
         <div class="grid-item-bottom">
             <h2>${member.firstName} ${member.lastName}</h2>
             <p><button class="grid-item-details-btn">Details</button></p>
             </div>
     </article>
-    `
+    `;
 
-    document.querySelector("#members-grid").insertAdjacentHTML("beforeend", htmlGrid);
-    document.querySelector("#members-grid .grid-item:last-child .grid-item-details-btn").addEventListener("click", () => memberDetailsDialog(member));
+	document.querySelector("#members-grid").insertAdjacentHTML("beforeend", htmlGrid);
+	document
+		.querySelector("#members-grid .grid-item:last-child .grid-item-details-btn")
+		.addEventListener("click", () => memberDetailsDialog(member));
 
-
-    //Added red border to indebted members
-    if (!member.hasPayed) {
-        document.querySelector("#members-grid .grid-item:last-child").classList.add("red-border-in-debt");
-        //Add also table here
-    }
-
-    /* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
+	/* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
 }
 
 

@@ -455,7 +455,7 @@ button:active {
     display: none;
 }
 
-.red-border-in-debt {
+.has-payed-false {
     border: 2px solid red;
 }
 
