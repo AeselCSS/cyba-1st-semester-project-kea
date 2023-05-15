@@ -91,7 +91,7 @@ function addResultDialog(member) {
 		const disciplineDropDown = document.querySelector("#discipline");
 
 		// Checks member discipline property, unhides the option in dropdown menu if present in disciplines array
-		for (discipline of disciplinesArray) {
+		for (const discipline of disciplinesArray) {
 			// Selects disciplines dropdown menu
 			const disciplineOption = disciplineDropDown.querySelector(`option[value="${discipline}"]`);
 			// Shows discipline option if it's present in array
