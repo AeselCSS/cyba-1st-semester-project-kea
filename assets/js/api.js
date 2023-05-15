@@ -1,5 +1,6 @@
 import { searchbarAndFilter } from "./search.js";
-
+import { updateFinancialTable } from "./member-and-finance-overview.js";
+import { calculateMembersCount } from "./member-table.js";
 
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
@@ -69,9 +70,12 @@ export async function refreshMembersView() {
 	document.querySelector("#members-sort").value = "firstName";
 	document.querySelector("#checkbox-in-debt").checked = false;
 	
-	displayMembersInDebt();
-
+	
+	
 	searchbarAndFilter();
+	calculateMembersCount();
+	updateFinancialTable();
+	displayMembersInDebt();
 }
 
 // exports
