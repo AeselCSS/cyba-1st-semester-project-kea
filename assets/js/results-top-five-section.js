@@ -9,7 +9,7 @@ function getTop5Results(members, results) {
 	}
 	// convert time from string to number in seconds 
 	calculateTimeToSeconds(results);
-	
+
 	// Apply filters to members and results
 	const filteredData = applyFilters(members, results);
 	const filteredMembers = filteredData.members;
@@ -142,8 +142,10 @@ function calculateTimeToSeconds(results) {
 
 function convertTimeBackToString(results) {
 	for (const result of results) {
-		const minutes = Math.floor(result.time / 60);
-		const seconds = (result.time % 60).toFixed(2);
+		const minutes = Math.floor(result.time / 60)
+			.toString()
+			.padStart(2, "0");
+		const seconds = (result.time % 60).toFixed(2).padStart(5, "0");
 		const timeString = `${minutes}:${seconds}`;
 		result.time = timeString;
 	}
