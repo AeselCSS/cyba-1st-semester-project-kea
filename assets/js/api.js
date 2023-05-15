@@ -1,5 +1,6 @@
 import { searchbarAndFilter } from "./search.js";
 import { calculateMemberAge } from "./member-detailed-view.js";
+import { checkIfLoggedIn } from "./system-access.js";
 
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
@@ -109,6 +110,7 @@ export async function refreshMembersView() {
 	document.querySelector("#members-sort").value = "firstName";
 
 	searchbarAndFilter();
+	checkIfLoggedIn();
 }
 
 // exports
