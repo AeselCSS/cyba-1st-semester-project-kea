@@ -42,14 +42,18 @@ function getTop5Results(members, results) {
 }
 
 function showTop5Results(top5results) {
-    // add index of result +1 to each result as a key called top5placement
-    calculateTopFivePlacement(top5results);
-    const discipline = top5results[0].discipline;
-	// console.log(discipline);
-    const gridArticle = document.querySelector(`#top-five-${discipline}`);
-    gridArticle.querySelector("h3").textContent = discipline;
-	for (const result of top5results) {
-		showTop5result(result);
+	if (top5results.length > 0) {
+		// add index of result +1 to each result as a key called top5placement
+		calculateTopFivePlacement(top5results);
+		const discipline = top5results[0].discipline;
+		console.log(discipline);
+		const gridArticle = document.querySelector(`#top-five-${discipline}`);
+		gridArticle.querySelector("h3").textContent = discipline;
+		for (const result of top5results) {
+			showTop5result(result);
+		}
+	} else {
+		noResults();
 	}
 }
 
@@ -66,6 +70,14 @@ function showTop5result (result) {
 	    </div>
     `;
     gridArticle.insertAdjacentHTML("beforeend", htmlGridItem);
+}
+
+function noResults() {
+	const grid = document.querySelector("#top-five-grid");
+	const html = /*html*/ `
+		<h3>No results available with the selected filters</h3>
+	`;
+	grid.insertAdjacentHTML("beforeend", html);	
 }
 
 // filters
