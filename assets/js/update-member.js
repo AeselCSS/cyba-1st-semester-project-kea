@@ -118,7 +118,7 @@ function updateMemberForm(member) {
 			console.log(updatedMember);
 			// reset the form, close the dialog and clear the dialog content
 			form.reset();
-			document.querySelector("#main-dialog-border").close();
+			document.querySelector("#main-dialog-frame").close();
 			dialog.innerHTML = "";
 			// TODO: show success message to user
 			refreshMembersView();

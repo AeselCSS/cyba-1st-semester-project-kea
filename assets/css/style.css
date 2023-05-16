@@ -201,7 +201,7 @@ nav button {
 	float: right;
 }
 
-#main-dialog-border {
+#main-dialog-frame {
 	min-height: fit-content;
 	/* max-height: 37em; */
 	margin: auto;
@@ -278,9 +278,11 @@ nav button {
 
 /* table styling */
 
-#finances-debt-table, #finances-debt-table tr, #finances-debt-table td {
-    border-collapse: collapse;
-    border: 1px solid black;
+#finances-debt-table,
+#finances-debt-table tr,
+#finances-debt-table td {
+	border-collapse: collapse;
+	border: 1px solid black;
 }
 
 #finances-active-inactive-table,
@@ -478,7 +480,7 @@ button:active {
 }
 
 .has-payed-false {
-    border: 2px solid red;
+	border: 2px solid red;
 }
 
 /* views */
