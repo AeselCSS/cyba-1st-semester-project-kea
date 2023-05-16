@@ -2,7 +2,6 @@ import {membersToFilter} from "./search.js"
 
 
 function filterMembers(filter) {
-	console.log(membersToFilter);
 
 	if (filter === "all") {
 		return membersToFilter;
@@ -21,6 +20,10 @@ function filterMembers(filter) {
 				return member["isCompetitive"] === false;
 			} else if (filter === "male" || filter === "female" || filter === "non-binary") {
 				return member["gender"] === filter;
+			} else if (filter === "junior") {
+				return member["agegroup"] === filter;
+			} else if (filter === "senior") {
+				return member["agegroup"] === filter; 
 			}
 		}
 	}

@@ -82,6 +82,7 @@ h1 {
 
 h2 {
 	font-size: var(--font-size-xlarge);
+    text-align: center;
 }
 
 h3 {
@@ -272,11 +273,75 @@ nav button {
 	margin-right: auto;
 }
 
-.grid-item-bottom button {
-	margin-top: 1em;
+.grid-item-bottom-btns {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+/* member results dialog styling */
+
+#member-dialog-results-container {
+    margin: 1rem;
+    width: 700px;
+    min-width: fit-content;
+}
+
+#competition-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1em;
+    margin-top: 1rem;
+}
+
+.member-dialog-results-btn {
+    margin-bottom: 1rem;
 }
 
 /* table styling */
+table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem;
+}
+
+th {
+    background-color: var(--accent-color-dark);
+}
+
+tr {
+    background-color: var(--accent-color-light);
+}
+
+tr:nth-child(even) {
+    background-color: #1b829b;
+
+}
+
+#finances-debt-table, #finances-debt-table tr, #finances-debt-table td {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+#finances-active-inactive-table,
+#finances-active-inactive-table tr,
+#finances-active-inactive-table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#finance-membertype-table,
+#finance-membertype-table tr,
+#finance-membertype-table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
 
 #finances-debt-table,
 #finances-debt-table tr,

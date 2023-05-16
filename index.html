@@ -47,20 +47,26 @@
 
 					<label for="filter">Filter</label>
 					<select name="filter" id="filter">
-						<option value="all" selected>All (default)</option>
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-						<option value="non-binary">Non-binary</option>
-						<option value="active">Active</option>
-						<option value="inactive">Inactive</option>
-						<option value="competitive">Competitive</option>
-						<option value="casual">Casual</option>
+						<option value="all" id="filter-all" selected>All (default)</option>
+						<option value="male" id="filter-male">Male</option>
+						<option value="female" id="filter-female">Female</option>
+						<option value="non-binary" id="filter-non-binary">Non-binary</option>
+						<option value="active" id="filter-active">Active</option>
+						<option value="inactive" id="filter-inactive">Inactive</option>
+						<option value="competitive" id="filter-competitive">Competitive</option>
+						<option value="casual" id="filter-casual">Casual</option>
+						<option value="junior" id="filter-junior">Junior</option>
+						<option value="senior" id="filter-senior">Senior</option>
 					</select>
-
-					<label for="in-debt">Show only indebted</label>
-					<input type="checkbox" name="in-debt" id="checkbox-in-debt" />
-
-					<button id="add-new-member-btn">add member</button>
+                    <div id="in-debt-container">
+					<label for="in-debt">Show in debt</label>
+					<input type="checkbox" name="in-debt" id="checkbox-in-debt">
+					</div>
+					<div id="competitive-filter-container">
+					<label for="member-type">Competitive Members</label>
+					<input type="checkbox" name="member-type" id="checkbox-competitive">
+					</div>
+                    <button id="add-new-member-btn">add member</button>
 				</div>
 
 				<div id="members-grid"></div>
@@ -69,7 +75,7 @@
 			</section>
 
 			<section id="finances" class="view-content">
-				<h2>Finances</h2>
+				<h2 class="section-title">Finances</h2>
 
 				<article id="finances-active-inactive-article">
 					<h3>Distribution of members</h3>
@@ -156,7 +162,41 @@
 			</section>
 
 			<section id="top-five" class="view-content">
-				<h2>Top 5</h2>
+				<h2 class="section-title">Top 5</h2>
+				
+				<div id="performance-filter-bar">
+					<label for="age-filter">Age group</label>
+					<select name="age-filter" id="age-filter">
+						<option value="junior">Junior (under 18)</option>
+						<option value="Senior">Senior (18+)</option>
+					</select>
+
+					<label for="gender-filter">Gender</label>
+					<select name="gender-filter" id="gender-filter">
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="non-binary">Non-binary</option>
+					</select>
+
+					<label for="result-type">Result type</label>
+					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-training" value="training">Training
+					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-competition" value="competition">Competition
+				</div>
+
+				<section id="top-five-grid">
+					<article class="top-five-disciplines" id="top-five-butterfly">
+						<h3></h3>
+					</article>
+					<article class="top-five-disciplines" id="top-five-freestyle">
+						<h3></h3>
+					</article>
+					<article class="top-five-disciplines" id="top-five-backstroke">
+						<h3></h3>
+					</article>
+					<article class="top-five-disciplines" id="top-five-breaststroke">
+						<h3></h3>
+					</article>
+				</section>
 			</section>
 		</main>
 
