@@ -1,6 +1,7 @@
 // imports
 import { apiReadRole } from "./api.js";
 import { systemAccess } from "./system-access.js";
+import { searchbarAndFilter } from "./search.js";
 
 // create login form upon clicking login button
 function login() {
@@ -39,6 +40,8 @@ async function userAuthentication(event) {
 		systemAccess(localStorage.getItem("user"));
 		// redirect to members page
 		location.href = "#members";
+		//Show members anew with sort, search and filter value in mind
+		searchbarAndFilter();
 		// provide visual feedback that user is logged in
 		// to be created later
 	} else {

@@ -479,7 +479,7 @@ button:active {
 	display: none;
 }
 
-.has-payed-false {
+.member-in-debt {
 	border: 2px solid red;
 }
 
