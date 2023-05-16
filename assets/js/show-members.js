@@ -16,7 +16,7 @@ function showMember(member) {
     <img src=${member.image}>
         <div class="grid-item-bottom">
             <h2>${member.firstName} ${member.lastName}</h2>
-            <p class="grid-item-bottom-btns"><button class="grid-item-details-btn">Details</button><button class="grid-item-results-btn">Results</button></p>
+            <p class="grid-item-bottom-btns"><button class="grid-item-details-btn">Details</button> ${member.isCompetitive ? '<button class="grid-item-results-btn">Results</button>' : ''}</p>
             </div>
     </article>
     `;
@@ -29,7 +29,9 @@ function showMember(member) {
 		.addEventListener("click", () => memberDetailsDialog(member));
 
 	/* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
-    document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").addEventListener("click", () => memberResultsDialog(member));
+    if(member.isCompetitive) {
+        document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").addEventListener("click", () => memberResultsDialog(member));
+    }
 
     /* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
 }
