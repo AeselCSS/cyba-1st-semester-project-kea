@@ -198,11 +198,11 @@ nav button {
 
 /* dialog styling */
 
-#btn-close-modal {
-	/* float: right; */
+#btn-close-dialog-modal {
+	float: right;
 }
 
-#main-dialog {
+#main-dialog-frame {
 	min-height: fit-content;
 	/* max-height: 37em; */
 	margin: auto;
@@ -343,9 +343,11 @@ tr:nth-child(even) {
 	border-collapse: collapse;
 }
 
-#finances-debt-table, #finances-debt-table tr, #finances-debt-table td {
-    border-collapse: collapse;
-    border: 1px solid black;
+#finances-debt-table,
+#finances-debt-table tr,
+#finances-debt-table td {
+	border-collapse: collapse;
+	border: 1px solid black;
 }
 
 #finances-active-inactive-table,
@@ -542,8 +544,8 @@ button:active {
 	display: none;
 }
 
-.has-payed-false {
-    border: 2px solid red;
+.member-in-debt {
+	border: 2px solid red;
 }
 
 /* views */

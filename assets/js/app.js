@@ -9,6 +9,9 @@ import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
 import { displayMembersInDebt } from "./restance.js"
+import {closeDialogEventListener} from "./helpers-module.js"
+
+
 import { calculateMembersCount } from "./member-table.js";
 import { displayFinancialTable } from "./member-and-finance-overview.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
@@ -36,6 +39,7 @@ async function initApp() {
 
 	// add event listeners
 	// filters on members section
+	closeDialogEventListener();
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
 	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
