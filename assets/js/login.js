@@ -21,7 +21,7 @@ function login() {
 	document.querySelector("#login-form").addEventListener("submit", userAuthentication);
 
 	// show dialog modal
-	document.querySelector("#main-dialog").showModal();
+	document.querySelector("#main-dialog-frame").showModal();
 }
 
 async function userAuthentication(event) {
@@ -50,7 +50,7 @@ async function userAuthentication(event) {
 		// to be created later
 	}
 	// close dialog modal
-	document.querySelector("#main-dialog").close();
+	document.querySelector("#main-dialog-frame").close();
 	// clear dialog modal
 	document.querySelector("#main-dialog").innerHTML = "";
 }

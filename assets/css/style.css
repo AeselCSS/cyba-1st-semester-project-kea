@@ -197,11 +197,11 @@ nav button {
 
 /* dialog styling */
 
-#btn-close-modal {
-	/* float: right; */
+#btn-close-dialog-modal {
+	float: right;
 }
 
-#main-dialog {
+#main-dialog-frame {
 	min-height: fit-content;
 	/* max-height: 37em; */
 	margin: auto;

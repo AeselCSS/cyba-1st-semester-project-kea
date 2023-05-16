@@ -28,8 +28,11 @@ function memberDetailsDialog(member) {
 					${showMemberActivityStatus(member)}
 					<h3>Membertype</h3> 
 					${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}
-					${member.disciplines ? `<h3>Disciplines</h3>
-					 ${showMemberDisciplines(member)}` : ""
+					${
+						member.disciplines
+							? `<h3>Disciplines</h3>
+					 ${showMemberDisciplines(member)}`
+							: ""
 					}
 				</div>
 			</div>
@@ -44,7 +47,7 @@ function memberDetailsDialog(member) {
 	//EVENTLISTENER TIL DELETE OPGAVE
 	document.querySelector("#details-delete-btn").addEventListener("click", () => deleteMember(member));
 
-	document.querySelector("#main-dialog").showModal();
+	document.querySelector("#main-dialog-frame").showModal();
 }
 
 function calculateMemberAge(member) {
