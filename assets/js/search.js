@@ -20,20 +20,30 @@ function searchbarAndFilter() {
 	//If inDebt is checked, then filter the global member array and get a filtered array of only indebted members. Store the indebted members array in membersToFilter variable for export in filterMembers()
 	//Else if inDebt is unchecked, filter the whole global member array.
 	//We filter by using the value of filter
+	 const user = localStorage.getItem("user");
+	 if (user === "cashier") {
 	if (inDebt.checked === true) {
+		console.log("inDebt checked");
 		const membersInDebtArr = members.filter((member) => member.hasPayed === false);
 		membersToFilter = membersInDebtArr;
 		filteredMembers = filterMembers(filter);
 	} else if (inDebt.checked === false) {
+		console.log("inDebt unchecked");
 		membersToFilter = members;
 		filteredMembers = filterMembers(filter);
-	}
-
+	} 
+	} else if (user === "trainer") {
 	if (competitive.checked === true) {
+		console.log("competitive checked");
 		const competitiveMembersArr = members.filter((member) => member.isCompetitive === true);
 		membersToFilter = competitiveMembersArr;
 		filteredMembers = filterMembers(filter);
 	} else if (competitive.checked === false) {
+		console.log("competitive unchecked");
+		membersToFilter = members;
+		filteredMembers = filterMembers(filter);
+	}
+	} else {
 		membersToFilter = members;
 		filteredMembers = filterMembers(filter);
 	}
