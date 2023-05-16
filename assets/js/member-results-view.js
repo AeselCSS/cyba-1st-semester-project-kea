@@ -2,7 +2,7 @@ import { results } from "./api.js";
 import { addResultDialog } from "./create-result.js";
 
 function memberResultsDialog(member) {
-	document.querySelector("#main-dialog").showModal();
+	document.querySelector("#main-dialog-frame").showModal();
 
 	document.querySelector("#main-dialog").innerHTML = "";
 
