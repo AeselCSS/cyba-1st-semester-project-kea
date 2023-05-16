@@ -86,7 +86,7 @@ function createMemberForm() {
 	form.addEventListener("submit", createMember);
 	form.addEventListener("reset", () => form.reset());
 
-	document.querySelector("#main-dialog").showModal();
+	document.querySelector("#main-dialog-frame").showModal();
 }
 
 // createMember function
@@ -124,7 +124,7 @@ async function createMember(event) {
 		console.log(newMember);
 		// reset the form, close the dialog and clear the dialog content
 		form.reset();
-		dialog.close();
+		document.querySelector("#main-dialog-frame").close();
 		dialog.innerHTML = "";
 		// TODO: show success message to user
 		refreshMembersView();
