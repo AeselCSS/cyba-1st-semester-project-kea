@@ -8,8 +8,9 @@
 	--font-size-normal: 1em;
 	--font-size-small: 0.8em;
 	--font-size-large: 1.2em;
-	--font-size-xlarge: 1.8em;
-	--font-size-xxlarge: 2.5em;
+	--font-size-xlarge: 1.5em;
+	--font-size-xxlarge: 2em;
+	--font-size-title: 2.5em;
 	/* colors */
 	--primary-color: #f5f5f5;
 	--secondary-color: #333333;
@@ -77,11 +78,11 @@ h6 {
 }
 
 h1 {
-	font-size: var(--font-size-xxlarge);
+	font-size: var(--font-size-title);
 }
 
 h2 {
-	font-size: var(--font-size-xlarge);
+	font-size: var(--font-size-xxlarge);
 	text-align: center;
 }
 
@@ -176,10 +177,9 @@ nav button {
 #search-bar button,
 #performance-filter-bar input,
 #performance-filter-bar select,
-#main-dialog input {
+#main-dialog input{
 	font-size: var(--font-size-normal);
 	font-weight: 200;
-	text-transform: capitalize;
 	padding: var(--spacing-small);
 	margin: var(--spacing-tiny) var(--spacing-small);
 	border: none;
@@ -188,6 +188,7 @@ nav button {
 }
 
 #search-bar input:focus,
+#main-dialog input:focus,
 #search-bar select:focus {
 	outline: none;
 }
@@ -268,6 +269,11 @@ nav button {
 	margin: auto auto;
 	transition: ease-out 0.3s;
 	box-shadow: var(--box-shadow);
+}
+
+.grid-item h2 {
+	font-size: var(--font-size-xlarge);
+	font-weight: 200;
 }
 
 .grid-item img {
@@ -450,7 +456,6 @@ form input,
 form select {
 	font-size: var(--font-size-small);
 	font-weight: 200;
-	text-transform: capitalize;
 	padding: var(--spacing-small);
 	margin: var(--spacing-tiny) var(--spacing-small);
 	border: none;
