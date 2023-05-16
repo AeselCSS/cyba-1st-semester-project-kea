@@ -82,7 +82,7 @@ h1 {
 
 h2 {
 	font-size: var(--font-size-xlarge);
-    text-align: center;
+	text-align: center;
 }
 
 h3 {
@@ -157,8 +157,9 @@ nav button {
 	margin-right: var(--spacing-small);
 }
 
-/* search-bar styling */
-#search-bar {
+/* search-bar & performance filter bar styling */
+#search-bar,
+#performance-filter-bar {
 	background-color: var(--accent-color-light);
 	display: flex;
 	justify-content: center;
@@ -173,6 +174,8 @@ nav button {
 #search-bar input,
 #search-bar select,
 #search-bar button,
+#performance-filter-bar input,
+#performance-filter-bar select,
 #main-dialog input {
 	font-size: var(--font-size-normal);
 	font-weight: 200;
@@ -194,6 +197,20 @@ nav button {
 	text-transform: capitalize;
 	text-align: center;
 	padding-top: var(--font-size-small);
+}
+
+#performance-filter-bar input[type="checkbox"] {
+	margin: var(--spacing-small) var(--spacing-small);
+	height: 1.3em;
+	width: 1.3em;
+}
+
+#performance-filter-bar label {
+	font-size: var(--font-size-normal);
+	font-weight: 300;
+	text-transform: capitalize;
+	padding: var(--spacing-small);
+	margin: var(--spacing-tiny);
 }
 
 /* dialog styling */
@@ -274,15 +291,15 @@ nav button {
 }
 
 .grid-item-bottom-btns {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
+	margin-top: 0.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
 }
 
 /* top 5 results styling */
-.top-five-disciplines h3{
+.top-five-disciplines h3 {
 	text-transform: capitalize;
 	text-align: center;
 	border: var(--border-solid);
@@ -320,49 +337,51 @@ nav button {
 /* member results dialog styling */
 
 #member-dialog-results-container {
-    margin: 1rem;
-    width: 700px;
-    min-width: fit-content;
+	margin: 1rem;
+	width: 700px;
+	min-width: fit-content;
 }
 
 #competition-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 1em;
-    margin-top: 1rem;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 1em;
+	margin-top: 1rem;
 }
 
 .member-dialog-results-btn {
-    margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 
 /* table styling */
 table {
-    text-align: center;
-    width: 100%;
-    border-collapse: collapse;
+	text-align: center;
+	width: 100%;
+	border-collapse: collapse;
 }
 
-th, td {
-    padding: 0.5rem;
+th,
+td {
+	padding: 0.5rem;
 }
 
 th {
-    background-color: var(--accent-color-dark);
+	background-color: var(--accent-color-dark);
 }
 
 tr {
-    background-color: var(--accent-color-light);
+	background-color: var(--accent-color-light);
 }
 
 tr:nth-child(even) {
-    background-color: #1b829b;
-
+	background-color: #1b829b;
 }
 
-#finances-debt-table, #finances-debt-table tr, #finances-debt-table td {
-    border-collapse: collapse;
-    border: 1px solid black;
+#finances-debt-table,
+#finances-debt-table tr,
+#finances-debt-table td {
+	border-collapse: collapse;
+	border: 1px solid black;
 }
 
 #finances-active-inactive-table,
@@ -547,10 +566,10 @@ button:active {
 		grid-template-columns: repeat(1, 1fr);
 	}
 	#top-five-grid {
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	gap: 1em;
-}
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 1em;
+	}
 }
 
 @media (min-width: 480px) {
@@ -558,8 +577,8 @@ button:active {
 		grid-template-columns: repeat(2, 1fr);
 	}
 	#top-five-grid {
-	grid-template-columns: repeat(2, 1fr);
-}
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (min-width: 769px) {
@@ -567,8 +586,8 @@ button:active {
 		grid-template-columns: repeat(3, 1fr);
 	}
 	#top-five-grid {
-	grid-template-columns: repeat(3, 1fr);
-}
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (min-width: 1025px) {
@@ -576,8 +595,8 @@ button:active {
 		grid-template-columns: repeat(4, 1fr);
 	}
 	#top-five-grid {
-	grid-template-columns: repeat(4, 1fr);
-}
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
 @media (min-width: 1201px) {
@@ -585,8 +604,8 @@ button:active {
 		grid-template-columns: repeat(5, 1fr);
 	}
 	#top-five-grid {
-	grid-template-columns: repeat(4, 1fr);
-}
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
 /* animations */
