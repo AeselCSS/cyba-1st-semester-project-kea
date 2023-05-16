@@ -24,7 +24,8 @@ function systemAccess(role) {
 
     // role specific buttons
     const resultsBtn = document.querySelectorAll(".grid-item-results-btn")
-    const addMemberBtn = document.querySelector("#add-new-member-btn"); 
+    const addMemberBtn = document.querySelector("#add-new-member-btn");
+	const inDebt = document.querySelector("#in-debt-container");
 
 
 	console.log(`systemAccess: ${role} found in local storage`);
@@ -38,6 +39,7 @@ function systemAccess(role) {
 		// role specific buttons
 		addMemberBtn.className = "";
 		ResultsBtnClass("hidden");
+		inDebt.className = "hidden";
 	} else if (role === "cashier") {
 		// nav links and buttons
 		loginBtn.className = "hidden";
@@ -48,6 +50,7 @@ function systemAccess(role) {
 		// role specific buttons
 		addMemberBtn.className = "hidden";
 		ResultsBtnClass("hidden");
+		inDebt.className = "";
 	} else if (role === "trainer") {
 		// nav links and buttons
 		loginBtn.className = "hidden";
@@ -58,6 +61,7 @@ function systemAccess(role) {
 		// role specific buttons
 		addMemberBtn.className = "hidden";
 		ResultsBtnClass("");
+		inDebt.className = "hidden";
 	} else if (role === "guest") {
 		console.log("no user logged in - guest view shown");
 		// nav links and buttons
