@@ -8,7 +8,8 @@ import { checkIfLoggedIn } from "./system-access.js";
 import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
-import {displayMembersInDebt} from "./restance.js"
+import { displayMembersInDebt } from "./restance.js"
+import {closeDialogEventListener} from "./helpers-module.js"
 
 
 import { calculateMembersCount } from "./member-table.js";
@@ -33,6 +34,7 @@ async function initApp() {
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
 	document.querySelector("#checkbox-in-debt").addEventListener("change", searchbarAndFilter);
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
+	closeDialogEventListener();
 
 	//fINANCES TAB
 	calculateMembersCount();
