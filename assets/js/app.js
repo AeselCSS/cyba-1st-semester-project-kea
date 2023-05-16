@@ -40,6 +40,7 @@ async function initApp() {
 	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
 	document.querySelector("#add-new-member-btn").addEventListener("click", createMemberForm);
 	document.querySelector("#checkbox-in-debt").addEventListener("change", searchbarAndFilter);
+	document.querySelector("#checkbox-competitive").addEventListener("change", searchbarAndFilter);
 
 	// filters on top five section
 	document.querySelector("#age-filter").addEventListener("change", refreshTop5Results);
