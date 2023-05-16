@@ -44,7 +44,7 @@ function memberDetailsDialog(member) {
 	//EVENTLISTENER TIL DELETE OPGAVE
 	document.querySelector("#details-delete-btn").addEventListener("click", () => deleteMember(member));
 
-	document.querySelector("#main-dialog").showModal();
+	document.querySelector("#main-dialog-border").showModal();
 }
 
 function calculateMemberAge(member) {

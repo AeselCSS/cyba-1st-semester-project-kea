@@ -14,7 +14,7 @@ async function deleteMember(member) {
 		// TODO: show error message to user
 		console.error("An error has occurred");
 	}
-	document.querySelector("#main-dialog").close();
+	document.querySelector("#main-dialog-border").close();
 }
 
 export { deleteMember };
