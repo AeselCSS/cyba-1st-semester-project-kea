@@ -281,6 +281,42 @@ nav button {
     gap: 1em;
 }
 
+/* top 5 results styling */
+.top-five-disciplines h3{
+	text-transform: capitalize;
+	text-align: center;
+	border: var(--border-solid);
+	padding: var(--spacing-tiny) var(--spacing-small);
+	background-color: var(--accent-color-light);
+	border-radius: var(--border-radius);
+	min-width: fit-content;
+	margin: var(--spacing-small);
+}
+
+#top-five-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1em;
+}
+
+.top-five-grid-item {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	border: var(--border-solid);
+	padding: var(--spacing-small);
+	background-color: var(--accent-color-light);
+	border-radius: var(--border-radius);
+	min-width: fit-content;
+	margin: var(--spacing-small);
+	transition: ease-out 0.3s;
+	box-shadow: var(--box-shadow);
+}
+
+/* .top-five-grid-item:hover {
+	transform: var(--scale-on-hover);
+	box-shadow: 3px 3px 10px var(--shadow-color);
+} */
+
 /* member results dialog styling */
 
 #member-dialog-results-container {
@@ -510,30 +546,47 @@ button:active {
 	#members-grid {
 		grid-template-columns: repeat(1, 1fr);
 	}
+	#top-five-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 1em;
+}
 }
 
 @media (min-width: 480px) {
 	#members-grid {
 		grid-template-columns: repeat(2, 1fr);
 	}
+	#top-five-grid {
+	grid-template-columns: repeat(2, 1fr);
+}
 }
 
 @media (min-width: 769px) {
 	#members-grid {
 		grid-template-columns: repeat(3, 1fr);
 	}
+	#top-five-grid {
+	grid-template-columns: repeat(3, 1fr);
+}
 }
 
 @media (min-width: 1025px) {
 	#members-grid {
 		grid-template-columns: repeat(4, 1fr);
 	}
+	#top-five-grid {
+	grid-template-columns: repeat(4, 1fr);
+}
 }
 
 @media (min-width: 1201px) {
 	#members-grid {
 		grid-template-columns: repeat(5, 1fr);
 	}
+	#top-five-grid {
+	grid-template-columns: repeat(4, 1fr);
+}
 }
 
 /* animations */
