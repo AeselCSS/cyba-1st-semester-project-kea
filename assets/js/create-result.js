@@ -106,6 +106,7 @@ function addResultDialog(member) {
 
 		// Selects dialog/modal
 		const dialog = document.querySelector("#main-dialog");
+		const dialogFrame = document.querySelector("#main-dialog-frame");
 
 		// Selects form
 		const form = event.target;
@@ -136,7 +137,7 @@ function addResultDialog(member) {
 			console.log("Result was added to Firebase! 🔥");
 			console.log(response);
 			form.reset();
-			dialog.close();
+			dialogFrame.close();
 			dialog.innerHTML = "";
 			//Fetch and update whole results arr.
 			await apiReadResults();
