@@ -1,4 +1,4 @@
-import { apiCreateResult } from "./api.js";
+import { apiCreateResult, apiReadResults } from "./api.js";
 
 function addResultDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -67,14 +67,14 @@ function addResultDialog(member) {
 	document.querySelector("#resultType").addEventListener("change", event => {
 		if (form.resultType.value === "training") {
 			competitionFormFields.style.display = "none";
-			form.location.required = true;
-			form.name.required = true;
-			form.placement.required = true;
-		} else if (form.resultType.value === "competition") {
-			competitionFormFields.style.display = "grid";
 			form.location.required = false;
 			form.name.required = false;
 			form.placement.required = false;
+		} else if (form.resultType.value === "competition") {
+			competitionFormFields.style.display = "grid";
+			form.location.required = true;
+			form.name.required = true;
+			form.placement.required = true;
 		}
 	});
 
@@ -138,6 +138,8 @@ function addResultDialog(member) {
 			form.reset();
 			dialog.close();
 			dialog.innerHTML = "";
+			//Fetch and update whole results arr.
+			await apiReadResults();
 		} else {
 			console.log("Something went wrong with result POST request");
 		}

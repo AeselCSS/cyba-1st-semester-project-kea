@@ -24,7 +24,8 @@ async function initApp() {
 	// members
 	await apiReadMembers();
 	//showMembers(members)
-	sortAndShowMembers(members);
+	// sortAndShowMembers(members);
+	searchbarAndFilter()
 	// top 5 results
 	await apiReadResults();
 	refreshTop5Results();
