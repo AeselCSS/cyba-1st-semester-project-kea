@@ -278,9 +278,11 @@ nav button {
 
 /* table styling */
 
-#finances-debt-table, #finances-debt-table tr, #finances-debt-table td {
-    border-collapse: collapse;
-    border: 1px solid black;
+#finances-debt-table,
+#finances-debt-table tr,
+#finances-debt-table td {
+	border-collapse: collapse;
+	border: 1px solid black;
 }
 
 #finances-active-inactive-table,
@@ -477,8 +479,8 @@ button:active {
 	display: none;
 }
 
-.has-payed-false {
-    border: 2px solid red;
+.member-in-debt {
+	border: 2px solid red;
 }
 
 /* views */
