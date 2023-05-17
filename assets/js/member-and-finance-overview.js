@@ -22,9 +22,7 @@ function displayFinancialTable() {
 	subscriptionSubTotal(totalInactiveMembers, totalJuniorMembers, totalSeniorMembers, totalSeniorPlusMembers);
 }
 
-function displayGrandTotalExcludingIndebted() {
-	
-}
+
 
 function updateFinancialTable() {
 	countAllMemberTypes();
@@ -97,13 +95,47 @@ function subscriptionSubTotal(inactiveCount, juniorCount, seniorCount, seniorPlu
 		// addCommaInNumber returns a new array of prices as strings
 	] = addCommaInNumber(subTotalArr);
 
+	
 	//Displays the total subscription price for each member type and the total sum /grand total category in the table overview
 	document.querySelector("#inactive-subscription-subtotal").textContent = inactiveSubTotalWithComma;
 	document.querySelector("#junior-subscription-subtotal").textContent = juniorSubTotalWithComma;
 	document.querySelector("#senior-subscription-subtotal").textContent = seniorSubTotalWithComma;
 	document.querySelector("#senior-plus-subscription-subtotal").textContent = seniorPlusSubTotalWithComma;
 	document.querySelector("#total-member-subscription-grand-total").textContent = grandTotalWithComma;
+
+	displayGrandTotalExcludingIndebted(grandTotal)
 }
+
+function displayGrandTotalExcludingIndebted(grandTotalIncludingDebt) {
+	const debt = calculateDebt();
+	
+	const grandTotalExcludingDebt = grandTotalIncludingDebt - debt;
+	const [grandTotalExcludingDebtWithComma] = addCommaInNumber(grandTotalExcludingDebt.toString().split(" "));
+
+	document.querySelector("#total-member-subscription-grand-total-excluding-indebted").textContent = grandTotalExcludingDebtWithComma;
+}
+
+function calculateDebt() {
+	let amount = 0;
+	//Created array of indebted members using filter
+	const membersInDebtArr = members.filter((member) => member.hasPayed === false);
+
+	for (const debtedMember of membersInDebtArr) {
+		if (!debtedMember.isActiveMember) {
+			amount += 500;
+		} else if (debtedMember.agegroup === "junior") {
+			amount += 1000;
+		} else if (debtedMember.agegroup === "senior") {
+			amount += 1600;
+		} else if (debtedMember.agegroup === "senior+") {
+			amount += 1200;
+		}
+	}
+	return amount;
+}
+
+
+
 
 //
 function addCommaInNumber(subTotalArr) {
