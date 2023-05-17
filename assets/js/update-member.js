@@ -60,6 +60,7 @@ function updateMemberForm(member) {
 	</form>
         `;
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", updateMemberForm);
+	document.querySelector("#gender").value = member.gender;
 
 	// convert the boolean value from isCompetitive to a selection in the member type dropdown
 	showMemberCompetitiveStatus(member);
