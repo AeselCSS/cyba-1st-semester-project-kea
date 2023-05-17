@@ -105,6 +105,7 @@ async function createMember(event) {
 		gender: form.gender.value,
 		isActiveMember: form.membershipStatus.value === "active",
 		isCompetitive: form.memberType.value === "competitive",
+		hasPayed: true,
 		// add disciplines as an array of selescted values, but only if member type is competitive
 		// [...form.disciplines] is a spread operator that converts a NodeList to an array
 		// discipline.checked is a boolean value that is true if the checkbox is checked
