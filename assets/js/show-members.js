@@ -36,11 +36,16 @@ function showMember(member) {
 	} else {
 		document.querySelector(".grid-item:last-child").classList.remove("member-in-debt");
 	}
-
+	
+    if (member.isCompetitive) {
+		document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").addEventListener("click", () => memberResultsDialog(member));
+		//hides result-button if user is not trainer
+		if (localStorage.getItem("user") !== "trainer") {
+			document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").classList.add("hidden");
+		}
+	}
+	
 	/* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
-    if(member.isCompetitive) {
-        document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").addEventListener("click", () => memberResultsDialog(member));
-    }
 
     /* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
 }
