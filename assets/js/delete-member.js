@@ -15,7 +15,6 @@ async function deleteMember(member) {
 		// }
 		// await apiReadResult()
 		//}
-		}
 		// TODO: show success message to user
 	} else {
 		//Visual feedback function goes here.
