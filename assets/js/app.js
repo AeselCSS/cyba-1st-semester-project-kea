@@ -9,7 +9,7 @@ import { createMemberForm } from "./create-member.js";
 import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
 import { displayMembersInDebt } from "./restance.js"
-import {closeDialogEventListener} from "./helpers-module.js"
+import { closeDialogEventListener, resetFilterSearchSort } from "./helpers-module.js";
 
 
 import { calculateMembersCount } from "./member-table.js";
@@ -24,6 +24,7 @@ async function initApp() {
 	console.log(`App is running!`);
 	initViews(); // init spa router
 	checkIfLoggedIn(); // check if user is logged in
+	resetFilterSearchSort() // Resets search, filter and sort values on load/refresh
 	// members
 	await apiReadMembers();
 	//showMembers(members)

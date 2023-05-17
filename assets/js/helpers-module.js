@@ -8,4 +8,12 @@ function closeDialogEventListener() {
 	});
 }
 
-export { closeDialogEventListener };
+function resetFilterSearchSort() {
+	document.querySelector("#search").value = "";
+	document.querySelector("#members-sort").value = "firstName";
+	document.querySelector("#filter").value = "all";
+	document.querySelector("#checkbox-in-debt").checked = false;
+	document.querySelector("#checkbox-competitive").checked = true;
+}
+
+export { closeDialogEventListener, resetFilterSearchSort };

@@ -32,9 +32,9 @@ function updateMemberForm(member) {
         </select>
         
         <label for="membershipStatus">Membership status</label>
-        <select name="membershipStatus" id="membershipStatus" value="${showMemberActivityStatus(member)}" required>
+        <select name="membershipStatus" id="membershipStatus" required>
         <option value="active">Active</option>
-        <option value="passiv">Passiv</option>
+        <option value="inactive">Inactive</option>
         </select>
 
         <label for="memberType">Member type</label>
@@ -61,6 +61,7 @@ function updateMemberForm(member) {
         `;
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", updateMemberForm);
 	document.querySelector("#gender").value = member.gender;
+	document.querySelector("#membershipStatus").value = showMemberActivityStatus(member);
 
 	// convert the boolean value from isCompetitive to a selection in the member type dropdown
 	showMemberCompetitiveStatus(member);
@@ -132,7 +133,7 @@ function updateMemberForm(member) {
 
 // helper functions for updateMemberForm - might need better function names
 function showMemberActivityStatus(member) {
-	return member.isActiveMember ? "Active" : "Inactive";
+	return member.isActiveMember ? "active" : "inactive";
 }
 
 function showMemberCompetitiveStatus(member) {
