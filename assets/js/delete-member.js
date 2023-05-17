@@ -1,4 +1,5 @@
-import { apiDeleteMember, refreshMembersView } from "./api.js";
+import { apiDeleteMember, refreshMembersView, apiUpdateResult, apiReadResults } from "./api.js";
+import { results } from "./api.js";
 
 async function deleteMember(member) {
 	console.log(member.uid);
@@ -15,6 +16,7 @@ async function deleteMember(member) {
 		// }
 		// await apiReadResult()
 		//}
+		await deleteAllResultsUnderMember(member.uid)
 		// TODO: show success message to user
 	} else {
 		//Visual feedback function goes here.
@@ -22,6 +24,20 @@ async function deleteMember(member) {
 		console.error("An error has occurred");
 	}
 	document.querySelector("#main-dialog-frame").close();
+}
+
+async function deleteAllResultsUnderMember(memberUserId) {
+	
+	for (const result of results) {
+		if (result.memberId === memberUserId) {
+			const response = await apiUpdateResult(result)
+
+			if (response.ok) {
+				console.log(`${result.resultId} has been deleted`);
+			}
+		}
+	}
+	await apiReadResults();
 }
 
 export { deleteMember };
