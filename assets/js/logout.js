@@ -1,9 +1,11 @@
 // imports
 import { checkIfLoggedIn } from "./system-access.js";
+import { resetFilterSearchSort } from "./helpers-module.js";
 
 function logout() {
 	localStorage.removeItem("user");
 	removeMemberInDebtClass();
+	resetFilterSearchSort();
 	checkIfLoggedIn();
 }
 
