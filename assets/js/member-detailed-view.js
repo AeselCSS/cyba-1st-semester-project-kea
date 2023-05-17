@@ -24,6 +24,8 @@ function memberDetailsDialog(member) {
 					${memberAge}
 					<h3>Gender</h3> 
 					${member.gender}
+					<h3>Email</h3> 
+					${member.email}
 					<h3>Member Status</h3> 
 					${showMemberActivityStatus(member)}
 					<h3>Membertype</h3> 
