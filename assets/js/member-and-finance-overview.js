@@ -22,6 +22,10 @@ function displayFinancialTable() {
 	subscriptionSubTotal(totalInactiveMembers, totalJuniorMembers, totalSeniorMembers, totalSeniorPlusMembers);
 }
 
+function displayGrandTotalExcludingIndebted() {
+	
+}
+
 function updateFinancialTable() {
 	countAllMemberTypes();
 	populateAmountInTable(totalInactiveMembers, totalJuniorMembers, totalSeniorMembers, totalSeniorPlusMembers);
