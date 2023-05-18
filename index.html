@@ -58,20 +58,35 @@
 						<option value="junior" id="filter-junior">Junior</option>
 						<option value="senior" id="filter-senior">Senior</option>
 					</select>
-                    <div id="in-debt-container">
-					<label for="in-debt">Show in debt</label>
-					<input type="checkbox" name="in-debt" id="checkbox-in-debt">
+					<div id="in-debt-container">
+						<label for="in-debt">Show in debt</label>
+						<input type="checkbox" name="in-debt" id="checkbox-in-debt" />
 					</div>
 					<div id="competitive-filter-container">
-					<label for="member-type">Competitive Members</label>
-					<input type="checkbox" name="member-type" id="checkbox-competitive">
+						<label for="member-type">Competitive Members</label>
+						<input type="checkbox" name="member-type" id="checkbox-competitive" />
 					</div>
-                    <button id="add-new-member-btn">add member</button>
+					<button id="add-new-member-btn">add member</button>
 				</div>
 
 				<div id="members-grid"></div>
 
-				<div id="members-table"></div>
+				<div id="members-table">
+					<p>TEST</p>
+					<table>
+						<thead>
+							<tr>
+								<th><h3>image</h3></th>
+								<th><h3>Name</h3></th>
+								<th><h3>Age</h3></th>
+								<th><h3>Gender</h3></th>
+								<th><h3>E-mail</h3></th>
+								<th><h3>Status</h3></th>
+								<th><h3>Competitive/casual</h3></th>
+							</tr>
+						</thead>
+					</table>
+				</div>
 			</section>
 
 			<section id="finances" class="view-content">
@@ -163,7 +178,7 @@
 
 			<section id="top-five" class="view-content">
 				<h2 class="section-title">Top 5</h2>
-				
+
 				<div id="performance-filter-bar">
 					<label for="age-filter">Age group</label>
 					<select name="age-filter" id="age-filter">
@@ -179,8 +194,20 @@
 					</select>
 
 					<label for="result-type">Result type</label>
-					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-training" value="training">Training
-					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-competition" value="competition">Competition
+					<input
+						type="checkbox"
+						name="result-type"
+						class="result-type-filter"
+						id="result-type-training"
+						value="training"
+					/>Training
+					<input
+						type="checkbox"
+						name="result-type"
+						class="result-type-filter"
+						id="result-type-competition"
+						value="competition"
+					/>Competition
 				</div>
 
 				<section id="top-five-grid">
