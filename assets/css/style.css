@@ -177,7 +177,7 @@ nav button {
 #search-bar button,
 #performance-filter-bar input,
 #performance-filter-bar select,
-#main-dialog input{
+#main-dialog input {
 	font-size: var(--font-size-normal);
 	font-weight: 200;
 	padding: var(--spacing-small);
@@ -248,6 +248,21 @@ nav button {
 	height: 100%;
 	border-radius: var(--border-radius);
 	object-fit: cover;
+}
+
+/* Notification feedback dialog */
+
+#notification-feedback {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius);
+	position: fixed;
+	top: 90%;
+	left: 10%;
+	padding: 1rem;
+	width: fit-content;
+	height: 3em;
 }
 
 /* grid styling */
@@ -615,10 +630,32 @@ button:active {
 
 /* animations */
 
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.fade-out {
+	animation-name: fade-out;
+	animation-duration: 6s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
 /* classes */
 
 .hidden {
 	display: none;
+	background-color: red;
+	color: #f5f5f5;
 }
 
 .member-in-debt {
