@@ -1,4 +1,5 @@
 import { apiUpdateMember, refreshMembersView } from "./api.js";
+import { notificationFeedback } from "./notification-feedback.js";
 
 function updateMemberForm(member) {
 	console.log(member.uid);
@@ -122,11 +123,11 @@ function updateMemberForm(member) {
 			form.reset();
 			document.querySelector("#main-dialog-frame").close();
 			dialog.innerHTML = "";
-			// TODO: show success message to user
+			notificationFeedback(`${member.firstName} ${member.lastName} has been updated`, true);
 			refreshMembersView();
 		} else {
 			console.log("Error occured while updated member");
-			// TODO: show error message to user
+			notificationFeedback("Error occured while updated member", false);
 		}
 	}
 }
