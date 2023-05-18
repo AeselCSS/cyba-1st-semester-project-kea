@@ -1,15 +1,17 @@
 import { memberDetailsDialog } from "./member-detailed-view.js";
 import { memberResultsDialog } from "./member-results-view.js";
+import { calculateMemberAge } from "./member-detailed-view.js";
 
 function showMembers(members) {
 	clearContent();
 
 	for (const member of members) {
-		showMember(member);
+		showMemberGrid(member);
+		showMemberTable(member);
 	}
 }
 
-function showMember(member) {
+function showMemberGrid(member) {
 	//Added class has-payed-true or has-payed-false. If it is has-payed-true, then a class with a red border is displayed
 	const htmlGrid = /*html*/ `
     <article class="grid-item">
@@ -47,12 +49,31 @@ function showMember(member) {
 	
 	/* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
 
+
     /* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
+	
+}
+
+function showMemberTable(member) {
+	const html = /*html*/ `
+		<tr>
+		<td><img src=${member.image}></td>
+		<td>${member.firstName}</td>
+		<td>${calculateMemberAge(member)}</td>
+		<td>${member.gender}</td>
+		<td>${member.email}</td>
+		<td>${member.isActiveMember ? 'Active' : 'Inactive'}</td>
+		<td>${member.isCompetitive ? 'Competitive' : "Casual"}</td>
+		
+		</tr>
+		
+		`;
+	document.querySelector("#members-table-content").insertAdjacentHTML("beforeend", html);
 }
 
 function clearContent() {
 	document.querySelector("#members-grid").innerHTML = "";
-	document.querySelector("#members-table").innerHTML = "";
+	document.querySelector("#members-table-content").innerHTML = "";
 }
 
 export { showMembers };
