@@ -18,14 +18,16 @@ function showMemberGrid(member) {
     <img src=${member.image}>
         <div class="grid-item-bottom">
             <h2>${member.firstName} ${member.lastName}</h2>
-            <p class="grid-item-bottom-btns"><button class="grid-item-details-btn">Details</button> ${member.isCompetitive ? '<button class="grid-item-results-btn">Results</button>' : ''}</p>
+            <p class="grid-item-bottom-btns"><button class="grid-item-details-btn">Details</button> ${
+				member.isCompetitive ? '<button class="grid-item-results-btn">Results</button>' : ""
+			}</p>
             </div>
     </article>
     `;
 
 	document.querySelector("#members-grid").insertAdjacentHTML("beforeend", htmlGrid);
 
-    // button event listeners
+	// button event listeners
 	document
 		.querySelector("#members-grid .grid-item:last-child .grid-item-details-btn")
 		.addEventListener("click", () => memberDetailsDialog(member));
@@ -38,37 +40,46 @@ function showMemberGrid(member) {
 	} else {
 		document.querySelector(".grid-item:last-child").classList.remove("member-in-debt");
 	}
-	
-    if (member.isCompetitive) {
-		document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").addEventListener("click", () => memberResultsDialog(member));
+
+	if (member.isCompetitive) {
+		document
+			.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn")
+			.addEventListener("click", () => memberResultsDialog(member));
 		//hides result-button if user is not trainer
 		if (localStorage.getItem("user") !== "trainer") {
-			document.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn").classList.add("hidden");
+			document
+				.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn")
+				.classList.add("hidden");
 		}
 	}
-	
+
 	/* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
 
-
-    /* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
-	
+	/* TABLE DOM kommer her og bliver outputtet i #members-table. Kommer også en eventlistener på dens knap.*/
 }
 
 function showMemberTable(member) {
 	const html = /*html*/ `
-		<tr>
+		<tr class="table-item">
 		<td><img src=${member.image}></td>
 		<td>${member.firstName}</td>
 		<td>${calculateMemberAge(member)}</td>
 		<td>${member.gender}</td>
 		<td>${member.email}</td>
-		<td>${member.isActiveMember ? 'Active' : 'Inactive'}</td>
-		<td>${member.isCompetitive ? 'Competitive' : "Casual"}</td>
+		<td>${member.isActiveMember ? "Active" : "Inactive"}</td>
+		<td>${member.isCompetitive ? "Competitive" : "Casual"}</td>
+		<td id="table-flex-container-btn"> 
+			 <button class="table-item-details-btn">Details</button> 
+			${member.isCompetitive ? "<button>Results</button>" : ""} 
+</td>
 		
 		</tr>
 		
 		`;
 	document.querySelector("#members-table-content").insertAdjacentHTML("beforeend", html);
+	document
+		.querySelector("#members-table .table-item:last-child .table-item-details-btn")
+		.addEventListener("click", () => memberDetailsDialog(member));
 }
 
 function clearContent() {
