@@ -44,7 +44,7 @@ function getTop5Results(results) {
 				// Check if the member has already been added for this discipline
 				if (!uniqueMembers[result.memberId]) {
 					// Add the member to the unique members object and push the result to the accumulator
-					uniqueMembers[result.memberId] = true;
+					uniqueMembers[result.memberId] = result.memberName;
 					uniqueResults.push(result);
 				}
 				return uniqueResults;
@@ -61,7 +61,6 @@ function getTop5Results(results) {
 
 
 function showTop5Results(allDisciplines) {
-	console.log(allDisciplines);
 	Object.keys(allDisciplines).forEach((discipline) => {
 		const disciplineResults = allDisciplines[discipline];
 
