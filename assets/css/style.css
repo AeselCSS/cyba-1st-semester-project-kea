@@ -177,7 +177,7 @@ nav button {
 #search-bar button,
 #performance-filter-bar input,
 #performance-filter-bar select,
-#main-dialog input{
+#main-dialog input {
 	font-size: var(--font-size-normal);
 	font-weight: 200;
 	padding: var(--spacing-small);
@@ -423,6 +423,28 @@ tr:nth-child(even) {
 #finance-membertype-table td {
 	border: 1px solid black;
 	border-collapse: collapse;
+}
+
+/*Displaying all members in table*/
+
+#members-table img {
+	height: 3em;
+	width: 3em;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+	border: var(--accent-color-dark);
+	border-radius: var(--border-radius);
+}
+#members-table img:hover {
+	transform: scale(2);
+}
+
+#table-flex-container-btn {
+	display: flex;
+	flex-direction: column;
+}
+#table-flex-container-btn button {
+	margin: 0.3em;
 }
 
 /* detail view styling */
