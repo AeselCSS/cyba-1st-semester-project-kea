@@ -1,5 +1,6 @@
 // imports
 import { apiCreateMember, refreshMembersView } from "./api.js";
+import { notificationFeedback } from "./notification-feedback.js";
 
 const defaultAvatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 
@@ -127,11 +128,11 @@ async function createMember(event) {
 		form.reset();
 		document.querySelector("#main-dialog-frame").close();
 		dialog.innerHTML = "";
-		// TODO: show success message to user
+		notificationFeedback("Member has been added", true);
 		refreshMembersView();
 	} else {
 		console.log("Error occured while creating new member");
-		// TODO: show error message to user
+		notificationFeedback("Error occured while creating new member", false);
 	}
 }
 
