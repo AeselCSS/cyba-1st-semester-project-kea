@@ -10,11 +10,13 @@ import { searchbarAndFilter } from "./search.js";
 import { sortAndShowMembers } from "./sort.js";
 import { displayMembersInDebt } from "./restance.js"
 import { closeDialogEventListener, resetFilterSearchSort } from "./helpers-module.js";
+import { displayJoinForm } from "./home.js";
 
 
 import { calculateMembersCount } from "./member-table.js";
 import { displayFinancialTable } from "./member-and-finance-overview.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
+
 
 // onload event
 window.addEventListener("load", initApp);
@@ -39,6 +41,7 @@ async function initApp() {
 	displayMembersInDebt();
 
 	// add event listeners
+	document.querySelector("#join-btn").addEventListener("click", displayJoinForm)
 	// filters on members section
 	closeDialogEventListener();
 	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
