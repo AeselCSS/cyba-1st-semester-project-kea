@@ -25,36 +25,57 @@ function clearTop5Results() {
 }
 
 function getTop5Results(results) {
-	// convert time from string to number in seconds
+	// Convert time from string to number in seconds
 	calculateTimeToSeconds(results);
+
 	// Get top 5 results for each discipline
-	const top5AllDisciplines = [];
+	const top5AllDisciplines = {};
 	const disciplines = ["butterfly", "freestyle", "backstroke", "breaststroke"];
+
 	for (const discipline of disciplines) {
-		// Get top 5 results for each discipline from filtered results
-		const top5Discipline = results
+		// Track unique members for the current discipline
+		const uniqueMembers = {};
+
+		// Get top 5 results for the current discipline from filtered results
+		const uniqueResults = results
 			.filter((result) => result.discipline === discipline)
 			.sort((a, b) => a.time - b.time)
+			.reduce((uniqueResults, result) => {
+				// Check if the member has already been added for this discipline
+				if (!uniqueMembers[result.memberId]) {
+					// Add the member to the unique members object and push the result to the accumulator
+					uniqueMembers[result.memberId] = result.memberName;
+					uniqueResults.push(result);
+				}
+				return uniqueResults;
+			}, [])
 			.slice(0, 5);
-		// Add top 5 results as an array to top5AllDisciplines array
-		top5AllDisciplines.push(top5Discipline);
+
+		// Add top 5 results as an array to top5AllDisciplines object
+		top5AllDisciplines[discipline] = uniqueResults;
 	}
+
 	convertTimeBackToString(results);
 	showTop5Results(top5AllDisciplines);
 }
 
-function showTop5Results(top5results) {
-	top5results.forEach((discipline) => {
-		if (discipline.length > 0) {
-			// add index of result +1 to each result as a key called top5placement
-			calculateTopFivePlacement(discipline);
-			const gridArticle = document.querySelector(`#top-five-${discipline[0].discipline}`);
-			gridArticle.querySelector("h3").textContent = discipline[0].discipline;
-			for (const result of discipline) {
+
+function showTop5Results(allDisciplines) {
+	Object.keys(allDisciplines).forEach((discipline) => {
+		const disciplineResults = allDisciplines[discipline];
+
+		if (disciplineResults.length > 0) {
+			// Add index of result + 1 to each result as a key called top5placement
+			calculateTopFivePlacement(disciplineResults);
+
+			// const gridArticle = document.querySelector(`#top-five-${discipline}`);
+			// gridArticle.querySelector("h3").textContent = discipline;
+
+			for (const result of disciplineResults) {
 				showTop5result(result);
 			}
 		} else {
-			noResults();
+			noResults(discipline);
 		}
 	});
 }
@@ -73,46 +94,53 @@ function showTop5result(result) {
 	gridArticle.insertAdjacentHTML("beforeend", htmlGridItem);
 }
 
-function noResults() {
-	const disciplineGrids = document.querySelectorAll(".top-five-disciplines");
-	disciplineGrids.forEach((grid) => {
-		grid.innerHTML = "";
-	const html = /*html*/ `
-		<h3>No results available with the selected filters</h3>
-	`;
-	grid.insertAdjacentHTML("beforeend", html);
-});
+function noResults(discipline) {
+	console.log(discipline);
+const gridArticle = document.querySelector(`#top-five-${discipline}`);
+	const htmlGridItem = /*html*/ `
+	    <div class="top-five-grid-item">
+	    <h4>No results available</h4>
+	    </div>
+    `;
+	gridArticle.insertAdjacentHTML("beforeend", htmlGridItem);
 }
+
 
 // filters
-// filter members by agegroup
+// filter members by age group
 function filterByAgeGroup(members) {
-	const ageFilter = document.querySelector("#age-filter").value;
-	return members.filter((member) => member.agegroup.toLowerCase() === ageFilter.toLowerCase());
-}
-// by gender from dropdown
-function filterByGender(members) {
-	const genderFilter = document.querySelector("#gender-filter").value;
-	return members.filter((member) => member.gender.toLowerCase() === genderFilter.toLowerCase());
+  const ageFilter = document.querySelector("#age-filter").value;
+  return members.filter((member) => member.agegroup.toLowerCase() === ageFilter.toLowerCase());
 }
 
-// by result type from checkboxes
+// filter by gender from dropdown
+function filterByGender(members) {
+  const genderFilter = document.querySelector("#gender-filter").value;
+  return members.filter((member) => member.gender.toLowerCase() === genderFilter.toLowerCase());
+}
+
+// filter by result type from checkboxes
 function filterByResultType(results) {
-	// create an array of the checked result types
-	const checkedResultTypes = Array.from(document.querySelectorAll(".result-type-filter:checked")).map(
-		(checkbox) => checkbox.value
-	);
-	// console.log(checkedResultTypes);
-	return checkedResultTypes.length > 0
-		? results.filter((result) => checkedResultTypes.includes(result.resultType))
-		: results;
+  // create an array of the checked result types
+  const checkedResultTypes = Array.from(document.querySelectorAll(".result-type-filter:checked")).map(
+    (checkbox) => checkbox.value
+  );
+
+  return results.filter((result) => {
+    if (checkedResultTypes.length === 0) {
+      // If no result type checkboxes are checked, exclude all results
+      return false;
+    } else {
+      return checkedResultTypes.includes(result.resultType);
+    }
+  });
 }
 
 function applyFilters(members, results) {
-	let filteredMembers = filterByAgeGroup(members);
-	filteredMembers = filterByGender(filteredMembers);
-	const filteredResults = filterByResultType(results);
-	return { members: filteredMembers, results: filteredResults };
+  let filteredMembers = filterByAgeGroup(members);
+  filteredMembers = filterByGender(filteredMembers);
+  const filteredResults = filterByResultType(results);
+  return { members: filteredMembers, results: filteredResults };
 }
 
 // helper functions
