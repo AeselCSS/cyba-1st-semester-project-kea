@@ -19,7 +19,7 @@ function showMemberGrid(member) {
         <div class="grid-item-bottom">
             <h2>${member.firstName} ${member.lastName}</h2>
             <p class="grid-item-bottom-btns"><button class="grid-item-details-btn">Details</button> ${
-				member.isCompetitive ? '<button class="grid-item-results-btn">Results</button>' : ""
+				member.isCompetitive ? '<button class="grid-and-table-item-results-btn">Results</button>' : ""
 			}</p>
             </div>
     </article>
@@ -43,12 +43,13 @@ function showMemberGrid(member) {
 
 	if (member.isCompetitive) {
 		document
-			.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn")
+			.querySelector("#members-grid .grid-item:last-child .grid-and-table-item-results-btn")
 			.addEventListener("click", () => memberResultsDialog(member));
+
 		//hides result-button if user is not trainer
 		if (localStorage.getItem("user") !== "trainer") {
 			document
-				.querySelector("#members-grid .grid-item:last-child .grid-item-results-btn")
+				.querySelector("#members-grid .grid-item:last-child .grid-and-table-item-results-btn")
 				.classList.add("hidden");
 		}
 	}
@@ -70,16 +71,23 @@ function showMemberTable(member) {
 		<td>${member.isCompetitive ? "Competitive" : "Casual"}</td>
 		<td id="table-flex-container-btn"> 
 			 <button class="table-item-details-btn">Details</button> 
-			${member.isCompetitive ? "<button>Results</button>" : ""} 
+			${member.isCompetitive ? "<button class='grid-and-table-item-results-btn' >Results</button>" : ""} 
 </td>
 		
 		</tr>
 		
 		`;
 	document.querySelector("#members-table-content").insertAdjacentHTML("beforeend", html);
+
 	document
 		.querySelector("#members-table .table-item:last-child .table-item-details-btn")
 		.addEventListener("click", () => memberDetailsDialog(member));
+
+	if (member.isCompetitive) {
+		document
+			.querySelector("#members-table .table-item:last-child .grid-and-table-item-results-btn")
+			.addEventListener("click", () => memberResultsDialog(member));
+	}
 }
 
 function clearContent() {
