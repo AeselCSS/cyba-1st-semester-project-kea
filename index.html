@@ -21,6 +21,7 @@
 			<a href="#finances" class="view-link" id="finances-link">Finances</a>
 			<a href="#top-five" class="view-link" id="top-five-link">Top 5</a>
 
+			<p id="logged-in-as-p"></p>
 			<button id="login-btn">Log in</button>
 			<button id="logout-btn">Log out</button>
 		</nav>
@@ -180,46 +181,56 @@
 					<h3>Overview</h3>
 
 					<table id="finance-membertype-table">
-						<tr>
-							<td>Member type</td>
-							<td>Amount</td>
-							<td>Subscription price per year</td>
-							<td>Subscription sub total</td>
-						</tr>
-						<tr>
-							<td>Inactive</td>
-							<td id="inactive-count"></td>
-							<td><span id="inactive-subscription"></span>,-</td>
-							<td><span id="inactive-subscription-subtotal"></span>,-</td>
-						</tr>
+						<thead>
+							<tr>
+								<td>Member type</td>
+								<td>Amount</td>
+								<td>Subscription price per year</td>
+								<td>Subscription sub total</td>
+							</tr>
+						</thead>
 
-						<tr>
-							<td>Junior</td>
-							<td id="junior-count"></td>
-							<td><span id="junior-subscription"></span>,-</td>
-							<td><span id="junior-subscription-subtotal"></span>,-</td>
-						</tr>
-
-						<tr>
-							<td>Senior</td>
-							<td id="senior-count"></td>
-							<td><span id="senior-subscription"></span>,-</td>
-							<td><span id="senior-subscription-subtotal"></span>,-</td>
-						</tr>
-
-						<tr>
-							<td>Senior+</td>
-							<td id="senior-plus-count"></td>
-							<td><span id="senior-plus-subscription"></span>,-</td>
-							<td><span id="senior-plus-subscription-subtotal"></span>,-</td>
-						</tr>
-
-						<tr>
-							<td>Grand Total</td>
-							<td class="total-member-count"></td>
-							<td>--</td>
-							<td><span id="total-member-subscription-grand-total"></span>,-</td>
-						</tr>
+						<tbody>
+							<tr>
+								<td>Inactive</td>
+								<td id="inactive-count"></td>
+								<td><span id="inactive-subscription"></span>,-</td>
+								<td><span id="inactive-subscription-subtotal"></span>,-</td>
+							</tr>
+	
+							<tr>
+								<td>Junior</td>
+								<td id="junior-count"></td>
+								<td><span id="junior-subscription"></span>,-</td>
+								<td><span id="junior-subscription-subtotal"></span>,-</td>
+							</tr>
+	
+							<tr>
+								<td>Senior</td>
+								<td id="senior-count"></td>
+								<td><span id="senior-subscription"></span>,-</td>
+								<td><span id="senior-subscription-subtotal"></span>,-</td>
+							</tr>
+	
+							<tr>
+								<td>Senior+</td>
+								<td id="senior-plus-count"></td>
+								<td><span id="senior-plus-subscription"></span>,-</td>
+								<td><span id="senior-plus-subscription-subtotal"></span>,-</td>
+							</tr>
+	
+							<tr>
+								<td>Grand Total</td>
+								<td class="total-member-count"></td>
+								<td>--</td>
+								<td><span id="total-member-subscription-grand-total"></span>,-</td>
+							</tr>
+	
+							<tr>
+								<td colspan="3">Grand Total Excluding Indebted</td>
+								<td><span id="total-member-subscription-grand-total-excluding-indebted"></span>,-</td>
+							</tr>
+						</tbody>
 					</table>
 				</article>
 
@@ -260,34 +271,22 @@
 					</select>
 
 					<label for="result-type">Result type</label>
-					<input
-						type="checkbox"
-						name="result-type"
-						class="result-type-filter"
-						id="result-type-training"
-						value="training"
-					/>Training
-					<input
-						type="checkbox"
-						name="result-type"
-						class="result-type-filter"
-						id="result-type-competition"
-						value="competition"
-					/>Competition
+					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-training" value="training" checked>Training
+					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-competition" value="competition" checked>Competition
 				</div>
 
 				<section id="top-five-grid">
 					<article class="top-five-disciplines" id="top-five-butterfly">
-						<h3></h3>
+						<h3>ButterFly</h3>
 					</article>
 					<article class="top-five-disciplines" id="top-five-freestyle">
-						<h3></h3>
+						<h3>Freestyle</h3>
 					</article>
 					<article class="top-five-disciplines" id="top-five-backstroke">
-						<h3></h3>
+						<h3>Backstroke</h3>
 					</article>
 					<article class="top-five-disciplines" id="top-five-breaststroke">
-						<h3></h3>
+						<h3>Breaststroke</h3>
 					</article>
 				</section>
 			</section>

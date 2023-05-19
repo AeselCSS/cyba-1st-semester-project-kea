@@ -64,6 +64,7 @@ function systemAccess(role) {
 		filterJunior.setAttribute("hidden", "");
 		filterSenior.setAttribute("hidden", "");
 		competitiveCheckbox.checked = false;
+		document.querySelector("#logged-in-as-p").textContent = "Logged in as Chairman";
 	} else if (role === "cashier") {
 		// nav links and buttons
 		loginBtn.className = "hidden";
@@ -87,6 +88,7 @@ function systemAccess(role) {
 		filterJunior.setAttribute("hidden", "");
 		filterSenior.setAttribute("hidden", "");
 		competitiveCheckbox.checked = false;
+		document.querySelector("#logged-in-as-p").textContent = "Logged in as Cashier";
 	} else if (role === "trainer") {
 		// nav links and buttons
 		loginBtn.className = "hidden";
@@ -110,6 +112,7 @@ function systemAccess(role) {
 		filterJunior.removeAttribute("hidden");
 		filterSenior.removeAttribute("hidden");
 		competitiveCheckbox.checked = true;
+		document.querySelector("#logged-in-as-p").textContent = "Logged in as Trainer";
 	} else if (role === "guest") {
 		console.log("no user logged in - guest view shown");
 		// nav links and buttons
@@ -118,6 +121,7 @@ function systemAccess(role) {
 		membersLink.className = "hidden";
 		financesLink.className = "hidden";
 		topFiveLink.className = "hidden";
+		document.querySelector("#logged-in-as-p").textContent = "";
 	}
 
 	// apply searchbar and filter to members section

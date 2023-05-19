@@ -71,6 +71,11 @@ async function apiDeleteMember(member) {
 	return response;
 }
 
+async function apiDeleteResult(result) {
+	const response = await fetch(`${endpoint}/results/${result}.json`, { method: "DELETE" });
+	return response;
+}
+
 // Helper functions
 function prepareMembers(membersInObjects) {
 	const arr = [];
@@ -146,4 +151,5 @@ export {
 	apiUpdateResult,
 	apiDeleteMember,
 	refreshMembersView,
+	apiDeleteResult,
 };
