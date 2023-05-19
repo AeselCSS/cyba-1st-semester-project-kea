@@ -1,9 +1,7 @@
 import { apiUpdateMember, refreshMembersView } from "./api.js";
+import { memberDetailsDialog } from "./member-detailed-view.js";
 
 function updateMemberForm(member) {
-	console.log(member.uid);
-	console.log("update function");
-
 	document.querySelector("#main-dialog").innerHTML = "";
 	// create the form
 	const updateMemberForm = /*html*/ `
@@ -73,7 +71,7 @@ function updateMemberForm(member) {
 	memberTypeSelect.addEventListener("change", displayDisciplines);
 
 	// add event listener to submit and reset buttons
-	form.addEventListener("submit", updateMember);
+	form.addEventListener("submit", confirmUpdateMember);
 	form.addEventListener("reset", () => form.reset());
 
 	function displayDisciplines() {
@@ -88,47 +86,76 @@ function updateMemberForm(member) {
 		}
 	}
 
-	// updateMember function
-	async function updateMember(event) {
-		console.log(event);
+	function confirmUpdateMember(event) {
 		event.preventDefault();
-
-		const dialog = document.querySelector("#main-dialog");
+		const dialogContent = document.querySelector("#main-dialog");
 		const form = event.target;
 
-		const updatedMember = {
-			uid: member.uid,
-			firstName: form.firstName.value,
-			lastName: form.lastName.value,
-			email: form.email.value,
-			image: form.image.value,
-			dateOfBirth: form.dateOfBirth.value,
-			gender: form.gender.value,
-			isActiveMember: form.membershipStatus.value === "active",
-			isCompetitive: form.memberType.value === "competitive",
-			disciplines:
-				form.memberType.value === "competitive"
-					? [...form.disciplines]
-							.filter((discipline) => discipline.checked)
-							.map((discipline) => discipline.value)
-					: [],
-		};
+		dialogContent.innerHTML = "";
 
-		const response = await apiUpdateMember(updatedMember);
-		if (response.ok) {
-			console.log("Member updated");
-			console.log(updatedMember);
-			// reset the form, close the dialog and clear the dialog content
-			form.reset();
-			document.querySelector("#main-dialog-frame").close();
-			dialog.innerHTML = "";
-			// TODO: show success message to user
-			refreshMembersView();
-		} else {
-			console.log("Error occured while updated member");
-			// TODO: show error message to user
+		const html = /*html*/ `
+		
+		<h2> </h2>
+	 <p>First name: ${form.firstName.value}</p>
+	 <p>Last name: ${form.lastName.value}</p>
+	 <p>E-mail: ${form.email.value}</p>
+	 <p>Image: <img src="${form.image.value}"></p>
+	 <p>Date of Birth: ${form.dateOfBirth.value}</p>
+	 <p>Gender: ${form.gender.value}</p>
+	 <p>Membership Status: ${form.membershipStatus.value}</p>
+	 <p>Member Type: ${form.memberType.value}</p>
+	 <p>${
+			form.memberType.value === "competitive"
+				? "Disciplines: " +
+				  [...form.disciplines].filter((discipline) => discipline.checked).map((discipline) => discipline.value)
+				: ""
+		}</p>
+	 <p><button id="confirm-update-btn" >Confirm update</button></p>
+	 <p><button id="cancel-update-btn" >Cancel update</button></p>
+
+	`;
+
+		dialogContent.insertAdjacentHTML("beforeend", html);
+		document.querySelector("#confirm-update-btn").addEventListener("click", () => updateMember());
+		document.querySelector("#cancel-update-btn").addEventListener("click", () => memberDetailsDialog(member));
+
+		async function updateMember() {
+			const updatedMember = {
+				uid: member.uid,
+				firstName: form.firstName.value,
+				lastName: form.lastName.value,
+				email: form.email.value,
+				image: form.image.value,
+				dateOfBirth: form.dateOfBirth.value,
+				gender: form.gender.value,
+				isActiveMember: form.membershipStatus.value === "active",
+				isCompetitive: form.memberType.value === "competitive",
+				disciplines:
+					form.memberType.value === "competitive"
+						? [...form.disciplines]
+								.filter((discipline) => discipline.checked)
+								.map((discipline) => discipline.value)
+						: [],
+			};
+
+			const response = await apiUpdateMember(updatedMember);
+
+			if (response.ok) {
+				console.log("Member updated");
+				console.log(updatedMember);
+				// reset the form, close the dialog and clear the dialog content
+				form.reset();
+				document.querySelector("#main-dialog-frame").close();
+				// TODO: show success message to user
+				refreshMembersView();
+			} else {
+				console.log("Error occured while updated member");
+				// TODO: show error message to user
+			}
 		}
 	}
+
+	// updateMember function
 }
 
 // helper functions for updateMemberForm - might need better function names
