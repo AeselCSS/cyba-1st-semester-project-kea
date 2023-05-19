@@ -177,7 +177,7 @@ nav button {
 #search-bar button,
 #performance-filter-bar input,
 #performance-filter-bar select,
-#main-dialog input{
+#main-dialog input {
 	font-size: var(--font-size-normal);
 	font-weight: 200;
 	padding: var(--spacing-small);
@@ -430,6 +430,62 @@ tr:nth-child(even) {
 .member-details-section {
 	display: grid;
 	grid-template-rows: 1fr;
+}
+
+/* home section styling */
+#home-content {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--spacing-normal);
+	grid-template-areas:
+		"title title title"
+		"news news info"
+		"news news info"
+		"news news info"
+		"signup signup signup";
+}
+#home-title {
+	grid-area: title;
+	border: var(--border-solid);
+	background-color: green;
+	margin: var(--spacing-normal) 0 0 var(--spacing-normal);
+}
+
+#home-news {
+	grid-area: news;
+	border: var(--border-solid);
+	background-color: red;
+	margin: var(--spacing-normal) 0 0 var(--spacing-normal);
+}
+
+#home-info {
+	grid-area: info;
+	border: var(--border-solid);
+	background-color: yellow;
+	margin: var(--spacing-normal) var(--spacing-normal) 0 0;
+}
+
+#home-signup {
+	grid-area: signup;
+	border: var(--border-solid);
+	background-color: blue;
+	margin: 0 var(--spacing-normal);
+}
+
+.home-section-grid-item {
+	border: var(--border-solid);
+	background-color: var(--accent-color-light);
+	border-radius: var(--border-radius);
+	padding: var(--spacing-normal);
+	box-shadow: var(--box-shadow);
+}
+.blog-post {
+	border: var(--border-solid);
+	background-color: var(--accent-color-light);
+	border-radius: var(--border-radius);
+	padding: var(--spacing-normal);
+	margin-bottom: var(--spacing-normal);
+	box-shadow: var(--box-shadow);
 }
 
 /* form styling */
