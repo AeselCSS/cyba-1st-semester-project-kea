@@ -47,10 +47,11 @@ function memberDetailsDialog(member) {
 	document.querySelector("#details-update-btn").addEventListener("click", () => updateMemberForm(member));
 
 	//EVENTLISTENER TIL DELETE OPGAVE
-	// document.querySelector("#details-delete-btn").addEventListener("click", () => deleteMember(member));
 	document.querySelector("#details-delete-btn").addEventListener("click", () => confirmDeleteMember(member));
 
-	document.querySelector("#main-dialog-frame").showModal();
+	// Open dialog/modal, if it's not already open
+	const dialogFrame = document.querySelector("#main-dialog-frame");
+	if (!dialogFrame.open) dialogFrame.showModal();
 }
 
 function calculateMemberAge(member) {
