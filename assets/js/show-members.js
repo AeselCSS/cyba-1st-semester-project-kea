@@ -30,19 +30,10 @@ function showMemberGrid(member) {
 
 	document.querySelector("#members-grid").insertAdjacentHTML("beforeend", htmlGrid);
 
-	// button event listeners
+	// Adds event listener on details btn
 	document
 		.querySelector("#members-grid .grid-item:last-child .grid-item-details-btn")
 		.addEventListener("click", () => memberDetailsDialog(member));
-
-	//Kode en if-statement, der kontrollerer at man er logget ind som cashier OG member er i gæld.
-	//Hvis ovenstående er true, så smid en class "member-in-debt" på den grid-item.
-
-	// if (localStorage.getItem("user") === "cashier" && member.hasPayed === false) {
-	// 	document.querySelector(".grid-item:last-child").classList.add("member-in-debt");
-	// } else {
-	// 	document.querySelector(".grid-item:last-child").classList.remove("member-in-debt");
-	// }
 
 	showMembersIndebtForCashier("grid", member);
 	ResultBtnSetup(member);
@@ -68,6 +59,7 @@ function showMemberTable(member) {
 		`;
 	document.querySelector("#members-table-content").insertAdjacentHTML("beforeend", html);
 
+	// Adds event listener on details btn
 	document
 		.querySelector("#members-table .table-item:last-child .table-item-details-btn")
 		.addEventListener("click", () => memberDetailsDialog(member));
@@ -101,6 +93,8 @@ function eventListenerAndTrainerVisiblity(gridOrTable, member) {
 	}
 }
 
+//Kode en if-statement, der kontrollerer at man er logget ind som cashier OG member er i gæld.
+//Hvis ovenstående er true, så smid en class "member-in-debt" på den grid-item.
 function showMembersIndebtForCashier(gridOrTable, member) {
 	const person = document.querySelector(`.${gridOrTable}-item:last-child`);
 
