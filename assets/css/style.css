@@ -119,7 +119,7 @@ button {
 }
 
 /* header styling */
-header {
+header, footer {
 	padding: var(--spacing-normal) var(--spacing-normal);
 	width: 100%;
 }
@@ -127,6 +127,13 @@ header {
 header h1 {
 	text-align: center;
 	color: var(--secondary-color);
+}
+
+footer {
+	margin-top: var(--spacing-large);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* nav styling */
@@ -439,42 +446,50 @@ tr:nth-child(even) {
 
 /* home section styling */
 #home-content {
+	position: relative;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: 2fr 1fr;
 	gap: var(--spacing-normal);
 	grid-template-areas:
-		"title title title"
-		"news news info"
-		"news news info"
-		"news news info"
-		"signup signup signup";
+		"title title"
+		"news info"
+		"news info"
+		"news info";
 }
 #home-title {
 	grid-area: title;
-	border: var(--border-solid);
-	background-color: green;
+	/* border: var(--border-solid); */
+	/* background-color: green; */
 	margin: var(--spacing-normal) 0 0 var(--spacing-normal);
 }
 
 #home-news {
 	grid-area: news;
 	border: var(--border-solid);
-	background-color: red;
+	/* background-color: red; */
 	margin: var(--spacing-normal) 0 0 var(--spacing-normal);
 }
 
 #home-info {
 	grid-area: info;
 	border: var(--border-solid);
-	background-color: yellow;
+	/* background-color: yellow; */
 	margin: var(--spacing-normal) var(--spacing-normal) 0 0;
 }
 
-#home-signup {
-	grid-area: signup;
-	border: var(--border-solid);
-	background-color: blue;
-	margin: 0 var(--spacing-normal);
+#home-info article {
+	margin-bottom: var(--spacing-normal);
+}
+
+#home-info article:first-of-type {
+	margin-top: var(--spacing-normal);
+
+}
+
+#home-info-other {
+	width: 28.5%;
+	position: absolute;
+    bottom: var(--spacing-normal);
 }
 
 .home-section-grid-item {
@@ -491,6 +506,10 @@ tr:nth-child(even) {
 	padding: var(--spacing-normal);
 	margin-bottom: var(--spacing-normal);
 	box-shadow: var(--box-shadow);
+}
+
+.blog-post:first-of-type {
+	margin-top: var(--spacing-normal);
 }
 
 /* form styling */
@@ -553,6 +572,21 @@ form input[type="date"] {
 	font-weight: 200;
 	text-transform: uppercase;
 }
+
+#join-form {
+	margin-top: 2.25em;
+}
+#join-form #home-form-button {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+#join-form #home-form-input-button{
+	margin: var(--spacing-normal) 0;
+}
+
+
 
 /* show disciplines container when competitive is selected */
 #memberType[value="competitive"] ~ #disciplines-container {
@@ -623,6 +657,21 @@ button:hover {
 
 button:active {
 	transform: var(--scale-on-click);
+}
+
+#btn-close-dialog-modal {
+	margin-bottom: var(--spacing-normal);
+}
+
+#join-btn {
+	font-size: var(--font-size-small);
+	padding: var(--spacing-small) var(--spacing-normal);
+	margin-top: var(--spacing-normal);
+}
+
+/* join form */
+#join-form {
+	min-width: 30em;
 }
 
 /* media queries */
