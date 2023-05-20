@@ -413,9 +413,9 @@ td {
 	padding: 0.5rem;
 }
 
-th {
+/* th {
 	background-color: var(--accent-color-dark);
-}
+} */
 
 tr {
 	background-color: var(--accent-color-light);
@@ -474,14 +474,18 @@ tr:nth-child(even) {
 	margin-left: auto;
 	margin-right: auto;
 	width: 95%;
-	border: 1px solid white;
+	border: 1px solid var(--tertiary-color);
 	border-radius: 10px;
 	box-shadow: var(--box-shadow);
 	border-collapse: separate;
 }
 
-#members-table thead {
+#members-table thead{
 	color: var(--tertiary-color);
+}
+#members-table thead tr{
+	color: var(--tertiary-color);
+	background-color: #17698c;
 }
 
 #members-table img {
