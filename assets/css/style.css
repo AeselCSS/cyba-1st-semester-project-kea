@@ -264,13 +264,6 @@ nav button {
 	object-fit: cover;
 }
 
-/* .member-details-section .details-else {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-} */
-/* Confirmation dialog */
-
 /* Confirmation btns */
 #confirmation-update-btns {
 	display: flex;
