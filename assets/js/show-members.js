@@ -14,7 +14,6 @@ function showMembers(members) {
 		delay += 0.05;
 
 		const tableElement = showMemberTable(member);
-		console.log(tableElement);
 		tableElement.style.setProperty("--delay", delay + "s");
 		delay += 0.01;
 	}

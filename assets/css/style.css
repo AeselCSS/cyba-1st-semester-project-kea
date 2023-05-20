@@ -298,7 +298,7 @@ nav button {
 }
 
 .grid-item {
-	border: var(--border-solid);
+	outline: var(--border-solid);
 	padding: 1em;
 	background-color: var(--accent-color-light);
 	border-radius: var(--border-radius);
@@ -398,10 +398,14 @@ nav button {
 }
 
 /* table styling */
+
+
 table {
 	text-align: center;
 	width: 100%;
-	border-collapse: collapse;
+	/* border-collapse: collapse; */
+	border-spacing: 0;
+	overflow: hidden;
 }
 
 th,
@@ -465,17 +469,36 @@ tr:nth-child(even) {
 
 /*Displaying all members in table*/
 
+
+#members-table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	border: 1px solid white;
+	border-radius: 10px;
+	box-shadow: var(--box-shadow);
+	border-collapse: separate;
+}
+
+#members-table thead {
+	color: var(--tertiary-color);
+}
+
 #members-table img {
-	height: 3em;
+	height: 4em;
 	width: 3em;
 	object-fit: cover;
-	transition: transform 0.3s ease;
-	border: var(--accent-color-dark);
+	border: 1px solid var(--tertiary-color);
 	border-radius: var(--border-radius);
+	box-shadow: var(--box-shadow);
+	transition: 0.4s;
 }
+
 #members-table img:hover {
 	transform: scale(2);
+	z-index: 1;
 }
+
 
 #table-flex-container-btn {
 	display: flex;
@@ -808,12 +831,10 @@ button:active {
 
 .hidden {
 	display: none;
-	background-color: red;
-	color: #f5f5f5;
 }
 
 .member-in-debt {
-	border: 2px solid red;
+	outline: 2px solid rgb(188, 0, 0);
 }
 
 /* views */
