@@ -10,8 +10,8 @@ function confirmDeleteMember(member) {
 
 	const html = /*html*/ `
 	
-	<h2>Are you sure you want to delete </h2>
-	 <p>${member.firstName}</p> 
+	<h2>Are you sure you want to delete ${member.firstName} </h2>
+	
 	 <button id="confirm-delete-btn" >Confirm delete</button>
 	`;
 
@@ -32,7 +32,7 @@ async function deleteMember(member) {
 		refreshMembersView();
 
 		await deleteAllResultsUnderMember(member.uid);
-		refreshTop5Results()
+		refreshTop5Results();
 		notificationFeedback(`${firstName} ${lastName} has been deleted`, true);
 	} else {
 		//Visual feedback function goes here.

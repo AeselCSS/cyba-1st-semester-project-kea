@@ -13,8 +13,8 @@ function memberDetailsDialog(member) {
                 <input type="button" id="details-delete-btn" value="Delete">
             </div>
 
-            <div id="details-body-grid">
-				<div id="details-img">
+            <div class="details-body-grid">
+				<div class="details-img">
 					<img src="${member.image}">
 				</div>
 				<div id="details-else">

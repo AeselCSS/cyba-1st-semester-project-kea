@@ -120,7 +120,8 @@ button {
 }
 
 /* header styling */
-header, footer {
+header,
+footer {
 	padding: var(--spacing-normal) var(--spacing-normal);
 	width: 100%;
 }
@@ -190,7 +191,8 @@ nav button {
 #search-bar button,
 #performance-filter-bar input,
 #performance-filter-bar select,
-#main-dialog input {
+#main-dialog input,
+#main-dialog button {
 	font-size: var(--font-size-normal);
 	font-weight: 200;
 	padding: var(--spacing-small);
@@ -245,18 +247,18 @@ nav button {
 	animation: fade-in 0.2s forwards;
 }
 
-#details-body-grid {
+.details-body-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	margin: 1rem;
 	gap: 1rem;
 }
 
-#details-img {
+.details-img {
 	max-width: 250px;
 	height: 400px;
 }
-#details-img img {
+.details-img img {
 	/* width: 300px; */
 	width: 100%;
 	height: 100%;
@@ -264,8 +266,14 @@ nav button {
 	object-fit: cover;
 }
 
-/* Notification feedback dialog */
+/* Confirmation btns */
+#confirmation-update-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
 
+/* Notification feedback dialog */
 #notification-feedback {
 	display: none;
 	justify-content: center;
@@ -527,13 +535,12 @@ tr:nth-child(even) {
 
 #home-info article:first-of-type {
 	margin-top: var(--spacing-normal);
-
 }
 
 #home-info-other {
 	width: 28.5%;
 	position: absolute;
-    bottom: var(--spacing-normal);
+	bottom: var(--spacing-normal);
 }
 
 .home-section-grid-item {
@@ -626,11 +633,9 @@ form input[type="date"] {
 	width: 100%;
 }
 
-#join-form #home-form-input-button{
+#join-form #home-form-input-button {
 	margin: var(--spacing-normal) 0;
 }
-
-
 
 /* show disciplines container when competitive is selected */
 #memberType[value="competitive"] ~ #disciplines-container {

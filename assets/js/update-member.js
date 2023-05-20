@@ -95,24 +95,45 @@ function updateMemberForm(member) {
 		dialogContent.innerHTML = "";
 
 		const html = /*html*/ `
+		<h2>Summary of update changes</h2>
 		
-		<h2> </h2>
-	 <p>First name: ${form.firstName.value}</p>
-	 <p>Last name: ${form.lastName.value}</p>
-	 <p>E-mail: ${form.email.value}</p>
-	 <p>Image: <img src="${form.image.value}"></p>
-	 <p>Date of Birth: ${form.dateOfBirth.value}</p>
-	 <p>Gender: ${form.gender.value}</p>
-	 <p>Membership Status: ${form.membershipStatus.value}</p>
-	 <p>Member Type: ${form.memberType.value}</p>
-	 <p>${
-			form.memberType.value === "competitive"
-				? "Disciplines: " +
-				  [...form.disciplines].filter((discipline) => discipline.checked).map((discipline) => discipline.value)
-				: ""
-		}</p>
-	 <p><button id="confirm-update-btn" >Confirm update</button></p>
-	 <p><button id="cancel-update-btn" >Cancel update</button></p>
+		<section class="member-details-section"> 
+
+			<div class="details-body-grid"> 
+				<div class="details-img"> 
+					<img src="${form.image.value}">
+				</div>
+				<div class="details-else"> 
+					<h3>First name</h3>
+					<p>${form.firstName.value}</p> 
+					<h3>Last name</h3>
+					<p>${form.lastName.value}</p>
+					<h3>E-mail</h3>
+					<p>${form.email.value}</p> 
+					<h3>Date of Birth</h3>
+					<p>${form.dateOfBirth.value}</p> 
+					<h3>Gender</h3>
+					<p>${form.gender.value}</p> 
+					<h3>Membership Status</h3>
+					<p>${form.membershipStatus.value}</p> 
+					<h3>Member Type</h3>
+					<p>${form.memberType.value}</p> 
+					<h3>${
+						form.memberType.value === "competitive"
+							? "Disciplines:</h3> " +
+							  [...form.disciplines]
+									.filter((discipline) => discipline.checked)
+									.map((discipline) => discipline.value)
+							: ""
+					}
+				</div>
+				
+			</div>
+			<div id="confirmation-update-btns"> 
+					<p><button id="confirm-update-btn" >Confirm update</button></p>
+					<p><button id="cancel-update-btn" >Cancel update</button></p>
+				</div>
+	 </section>
 
 	`;
 
