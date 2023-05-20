@@ -16,6 +16,7 @@ import { displayJoinForm } from "./home.js";
 import { calculateMembersCount } from "./member-table.js";
 import { displayFinancialTable } from "./member-and-finance-overview.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
+import { toggleTableGridView } from "./toggle-table-grid.js";
 
 
 // onload event
@@ -50,6 +51,7 @@ async function initApp() {
 	document.querySelector("#add-new-member-btn").addEventListener("click", createMemberForm);
 	document.querySelector("#checkbox-in-debt").addEventListener("change", searchbarAndFilter);
 	document.querySelector("#checkbox-competitive").addEventListener("change", searchbarAndFilter);
+	document.querySelector("#toggle-table-grid").addEventListener("click", toggleTableGridView);
 
 	// filters on top five section
 	document.querySelector("#age-filter").addEventListener("change", refreshTop5Results);

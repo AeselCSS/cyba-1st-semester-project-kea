@@ -262,6 +262,21 @@ nav button {
 	object-fit: cover;
 }
 
+/* Notification feedback dialog */
+
+#notification-feedback {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius);
+	position: fixed;
+	top: 90%;
+	left: 10%;
+	padding: 1rem;
+	width: fit-content;
+	height: 3em;
+}
+
 /* grid styling */
 
 #members-grid {
@@ -435,6 +450,28 @@ tr:nth-child(even) {
 #finance-membertype-table td {
 	border: 1px solid black;
 	border-collapse: collapse;
+}
+
+/*Displaying all members in table*/
+
+#members-table img {
+	height: 3em;
+	width: 3em;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+	border: var(--accent-color-dark);
+	border-radius: var(--border-radius);
+}
+#members-table img:hover {
+	transform: scale(2);
+}
+
+#table-flex-container-btn {
+	display: flex;
+	flex-direction: column;
+}
+#table-flex-container-btn button {
+	margin: 0.3em;
 }
 
 /* detail view styling */
@@ -725,10 +762,32 @@ button:active {
 
 /* animations */
 
+@keyframes fade-out {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.fade-out {
+	animation-name: fade-out;
+	animation-duration: 6s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
 /* classes */
 
 .hidden {
 	display: none;
+	background-color: red;
+	color: #f5f5f5;
 }
 
 .member-in-debt {
