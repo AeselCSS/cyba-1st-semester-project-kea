@@ -7,9 +7,16 @@ let isGrid = true;
 function showMembers(members) {
 	clearContent();
 
+	let delay = 0;
 	for (const member of members) {
-		showMemberGrid(member);
-		showMemberTable(member);
+		const gridElement = showMemberGrid(member);
+		gridElement.style.setProperty("--delay", delay + "s");
+		delay += 0.05;
+
+		const tableElement = showMemberTable(member);
+		console.log(tableElement);
+		tableElement.style.setProperty("--delay", delay + "s");
+		delay += 0.01;
 	}
 }
 
@@ -37,6 +44,10 @@ function showMemberGrid(member) {
 
 	showMembersIndebtForCashier("grid", member);
 	ResultBtnSetup(member);
+
+	const memberGridElement = document.querySelector("#members-grid .grid-item:last-child");
+
+	return memberGridElement;
 }
 
 function showMemberTable(member) {
@@ -66,6 +77,10 @@ function showMemberTable(member) {
 
 	showMembersIndebtForCashier("table", member);
 	ResultBtnSetup(member);
+
+	const memberTableElement = document.querySelector("#members-table .table-item:last-child");
+
+	return memberTableElement;
 }
 
 function ResultBtnSetup(member) {

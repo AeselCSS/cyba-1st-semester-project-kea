@@ -241,6 +241,7 @@ nav button {
 	border: var(--border-solid);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
+	animation: fade-in 0.2s forwards;
 }
 
 #details-body-grid {
@@ -296,6 +297,7 @@ nav button {
 	margin: auto auto;
 	transition: ease-out 0.3s;
 	box-shadow: var(--box-shadow);
+	animation: fade-in 0.4s backwards var(--delay);
 }
 
 .grid-item h2 {
@@ -472,6 +474,10 @@ tr:nth-child(even) {
 }
 #table-flex-container-btn button {
 	margin: 0.3em;
+}
+
+.table-item {
+	animation: fade-in 0.5s backwards var(--delay);
 }
 
 /* detail view styling */
@@ -780,6 +786,16 @@ button:active {
 	animation-timing-function: linear;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 /* classes */
