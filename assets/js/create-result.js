@@ -1,5 +1,6 @@
 import { apiCreateResult, apiReadResults } from "./api.js";
 import { notificationFeedback } from "./notification-feedback.js";
+import { refreshTop5Results } from "./results-top-five-section.js";
 
 function addResultDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -49,7 +50,7 @@ function addResultDialog(member) {
         <input type="reset" value="Reset">
         <input type="submit" value="Add result">
 	</div>
-</form>
+	</form>
         `;
 
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
@@ -142,6 +143,7 @@ function addResultDialog(member) {
 			dialog.innerHTML = "";
 			//Fetch and update whole results arr.
 			await apiReadResults();
+			refreshTop5Results();
 		} else {
 			console.log("Something went wrong with result POST request");
 			notificationFeedback("Something went wrong with result POST request", false);

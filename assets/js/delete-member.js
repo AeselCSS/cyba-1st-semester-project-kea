@@ -1,6 +1,7 @@
 import { apiDeleteMember, refreshMembersView, apiUpdateResult, apiReadResults } from "./api.js";
 import { results } from "./api.js";
 import { notificationFeedback } from "./notification-feedback.js";
+import { refreshTop5Results } from "./results-top-five-section.js";
 
 function confirmDeleteMember(member) {
 	const dialogContent = document.querySelector("#main-dialog");
@@ -31,7 +32,7 @@ async function deleteMember(member) {
 		refreshMembersView();
 
 		await deleteAllResultsUnderMember(member.uid);
-
+		refreshTop5Results()
 		notificationFeedback(`${firstName} ${lastName} has been deleted`, true);
 	} else {
 		//Visual feedback function goes here.
