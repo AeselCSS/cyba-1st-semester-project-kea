@@ -1,4 +1,5 @@
 import { apiCreateResult, apiReadResults } from "./api.js";
+import { notificationFeedback } from "./notification-feedback.js";
 
 function addResultDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -64,7 +65,7 @@ function addResultDialog(member) {
 
 	// shows competition fields if selected in dropdown menu
 	// adds/removes competition fields as required (can't submit training result if true)
-	document.querySelector("#resultType").addEventListener("change", event => {
+	document.querySelector("#resultType").addEventListener("change", (event) => {
 		if (form.resultType.value === "training") {
 			competitionFormFields.style.display = "none";
 			form.location.required = false;
@@ -135,7 +136,7 @@ function addResultDialog(member) {
 
 		if (response.ok) {
 			console.log("Result was added to Firebase! 🔥");
-			console.log(response);
+			notificationFeedback(`Added result for ${member.firstName}`, true);
 			form.reset();
 			dialogFrame.close();
 			dialog.innerHTML = "";
@@ -143,6 +144,7 @@ function addResultDialog(member) {
 			await apiReadResults();
 		} else {
 			console.log("Something went wrong with result POST request");
+			notificationFeedback("Something went wrong with result POST request", false);
 		}
 	}
 }

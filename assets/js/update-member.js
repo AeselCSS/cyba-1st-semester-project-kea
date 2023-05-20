@@ -1,5 +1,6 @@
 import { apiUpdateMember, refreshMembersView } from "./api.js";
 import { memberDetailsDialog } from "./member-detailed-view.js";
+import { notificationFeedback } from "./notification-feedback.js";
 
 function updateMemberForm(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -139,23 +140,21 @@ function updateMemberForm(member) {
 			};
 
 			const response = await apiUpdateMember(updatedMember);
-
 			if (response.ok) {
 				console.log("Member updated");
 				console.log(updatedMember);
 				// reset the form, close the dialog and clear the dialog content
 				form.reset();
 				document.querySelector("#main-dialog-frame").close();
-				// TODO: show success message to user
+				dialog.innerHTML = "";
+				notificationFeedback(`${member.firstName} ${member.lastName} has been updated`, true);
 				refreshMembersView();
 			} else {
 				console.log("Error occured while updated member");
-				// TODO: show error message to user
+				notificationFeedback("Error occured while updated member", false);
 			}
 		}
 	}
-
-	// updateMember function
 }
 
 // helper functions for updateMemberForm - might need better function names

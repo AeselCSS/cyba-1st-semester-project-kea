@@ -59,20 +59,42 @@
 						<option value="junior" id="filter-junior">Junior</option>
 						<option value="senior" id="filter-senior">Senior</option>
 					</select>
-                    <div id="in-debt-container">
-					<label for="in-debt">Show in debt</label>
-					<input type="checkbox" name="in-debt" id="checkbox-in-debt">
+					<button id="toggle-table-grid">View table</button>
+					<div id="in-debt-container">
+						<label for="in-debt">Show in debt</label>
+						<input type="checkbox" name="in-debt" id="checkbox-in-debt" />
 					</div>
 					<div id="competitive-filter-container">
-					<label for="member-type">Competitive Members</label>
-					<input type="checkbox" name="member-type" id="checkbox-competitive">
+						<label for="member-type">Competitive Members</label>
+						<input type="checkbox" name="member-type" id="checkbox-competitive" />
 					</div>
-                    <button id="add-new-member-btn">add member</button>
+					<button id="add-new-member-btn">add member</button>
 				</div>
 
-				<div id="members-grid"></div>
+				<div>
+					<table id="members-table" class="hidden">
+						<thead>
+							<tr>
+								<th><h3>image</h3></th>
+								<th><h3>Name</h3></th>
+								<th><h3>Age</h3></th>
+								<th><h3>Gender</h3></th>
+								<th><h3>E-mail</h3></th>
+								<th><h3>Status</h3></th>
+								<th><h3>Competitive/casual</h3></th>
+							</tr>
+						</thead>
+						<tbody id="members-table-content">
+							<!-- Inserts member rows -->
+						</tbody>
+					</table>
+				</div>
 
-				<div id="members-table"></div>
+				<section class="member-grid-wrapper">
+					<div id="members-grid">
+						<!-- Inserts member grid items -->
+					</div>
+				</section>
 			</section>
 
 			<section id="finances" class="view-content">
@@ -116,35 +138,35 @@
 								<td><span id="inactive-subscription"></span>,-</td>
 								<td><span id="inactive-subscription-subtotal"></span>,-</td>
 							</tr>
-	
+
 							<tr>
 								<td>Junior</td>
 								<td id="junior-count"></td>
 								<td><span id="junior-subscription"></span>,-</td>
 								<td><span id="junior-subscription-subtotal"></span>,-</td>
 							</tr>
-	
+
 							<tr>
 								<td>Senior</td>
 								<td id="senior-count"></td>
 								<td><span id="senior-subscription"></span>,-</td>
 								<td><span id="senior-subscription-subtotal"></span>,-</td>
 							</tr>
-	
+
 							<tr>
 								<td>Senior+</td>
 								<td id="senior-plus-count"></td>
 								<td><span id="senior-plus-subscription"></span>,-</td>
 								<td><span id="senior-plus-subscription-subtotal"></span>,-</td>
 							</tr>
-	
+
 							<tr>
 								<td>Grand Total</td>
 								<td class="total-member-count"></td>
 								<td>--</td>
 								<td><span id="total-member-subscription-grand-total"></span>,-</td>
 							</tr>
-	
+
 							<tr>
 								<td colspan="3">Grand Total Excluding Indebted</td>
 								<td><span id="total-member-subscription-grand-total-excluding-indebted"></span>,-</td>
@@ -174,7 +196,7 @@
 
 			<section id="top-five" class="view-content">
 				<h2 class="section-title">Top 5</h2>
-				
+
 				<div id="performance-filter-bar">
 					<label for="age-filter">Age group</label>
 					<select name="age-filter" id="age-filter">
@@ -190,8 +212,22 @@
 					</select>
 
 					<label for="result-type">Result type</label>
-					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-training" value="training" checked>Training
-					<input type="checkbox" name="result-type" class="result-type-filter" id="result-type-competition" value="competition" checked>Competition
+					<input
+						type="checkbox"
+						name="result-type"
+						class="result-type-filter"
+						id="result-type-training"
+						value="training"
+						checked
+					/>Training
+					<input
+						type="checkbox"
+						name="result-type"
+						class="result-type-filter"
+						id="result-type-competition"
+						value="competition"
+						checked
+					/>Competition
 				</div>
 
 				<section id="top-five-grid">
@@ -215,13 +251,14 @@
 			<!-- footer -->
 		</footer>
 
+		<div id="notification-feedback">
+			<!-- dialog box for user feedback e.g. "something created/updated/deleted"-->
+		</div>
+
 		<dialog id="main-dialog-frame">
 			<button id="btn-close-dialog-modal">X</button>
 			<!-- main dialog box -->
 			<section id="main-dialog"></section>
-		</dialog>
-		<dialog id="notification-dialog">
-			<!-- dialog box for user feedback e.g. "something created/updated/deleted"-->
 		</dialog>
 	</body>
 </html>
