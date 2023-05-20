@@ -84,6 +84,7 @@ h1 {
 h2 {
 	font-size: var(--font-size-xxlarge);
 	text-align: center;
+	color: var(--primary-color);
 }
 
 h3 {
@@ -302,7 +303,7 @@ nav button {
 
 .grid-item h2 {
 	font-size: var(--font-size-xlarge);
-	font-weight: 200;
+	font-weight: 300;
 }
 
 .grid-item img {
