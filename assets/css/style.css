@@ -14,7 +14,7 @@
 	/* colors */
 	--primary-color: #f5f5f5;
 	--secondary-color: #333333;
-	--tertiary-color: #c9c9c9;
+	--tertiary-color: #b7e3f5;
 	--accent-color-light: #1e90ac;
 	--accent-color-dark: #11596b;
 	--shadow-color: #111;
@@ -36,7 +36,7 @@
 	/* gradient colors are subject to change */
 	--gradient: linear-gradient(to bottom right, var(--accent-color-light), var(--accent-color-dark));
 	--transition-transform: transform 0.4s ease-in-out;
-	--scale-on-hover: scale(1.01);
+	--scale-on-hover: scale(1.03);
 	--scale-on-click: scale(0.95);
 
 	/* media queries */
@@ -408,14 +408,15 @@ table {
 	overflow: hidden;
 }
 
+thead tr{
+	color: var(--tertiary-color);
+	background-color: #17698c;
+}
+
 th,
 td {
 	padding: 0.5rem;
 }
-
-/* th {
-	background-color: var(--accent-color-dark);
-} */
 
 tr {
 	background-color: var(--accent-color-light);
@@ -469,8 +470,7 @@ tr:nth-child(even) {
 
 /*Displaying all members in table*/
 
-
-#members-table {
+#members-table, #member-dialog-results-table {
 	margin-left: auto;
 	margin-right: auto;
 	width: 95%;
@@ -478,15 +478,9 @@ tr:nth-child(even) {
 	border-radius: 10px;
 	box-shadow: var(--box-shadow);
 	border-collapse: separate;
+	animation: fade-in 0.3s forwards;
 }
 
-#members-table thead{
-	color: var(--tertiary-color);
-}
-#members-table thead tr{
-	color: var(--tertiary-color);
-	background-color: #17698c;
-}
 
 #members-table img {
 	height: 4em;
@@ -715,8 +709,8 @@ form label {
 }
 
 /* button styling */
-button {
-	background-color: var(--primary-color);
+button, input[type="button"]{
+	background-color: var(--tertiary-color);
 	color: var(--secondary-color);
 	font-size: var(--font-size-normal);
 	font-weight: 200;
@@ -726,13 +720,15 @@ button {
 	padding: var(--spacing-small) var(--spacing-normal);
 }
 
-button:hover {
+button:hover, input[type="button"]:hover {
 	transform: var(--scale-on-hover);
 	box-shadow: 3px 3px 10px var(--shadow-color);
+	filter: brightness(1.2);
 }
 
-button:active {
+button:active, input[type="button"]:active {
 	transform: var(--scale-on-click);
+	transition: 0.1s;
 }
 
 #btn-close-dialog-modal {
