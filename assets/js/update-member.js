@@ -146,7 +146,7 @@ function updateMemberForm(member) {
 				// reset the form, close the dialog and clear the dialog content
 				form.reset();
 				document.querySelector("#main-dialog-frame").close();
-				dialog.innerHTML = "";
+
 				notificationFeedback(`${member.firstName} ${member.lastName} has been updated`, true);
 				refreshMembersView();
 			} else {
