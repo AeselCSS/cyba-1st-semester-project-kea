@@ -119,6 +119,10 @@ button {
 	border-radius: var(--border-radius);
 }
 
+main {
+	min-height: 75vh;
+}
+
 /* header styling */
 header,
 footer {
@@ -181,9 +185,11 @@ nav button {
 	align-items: center;
 	margin: var(--spacing-normal) auto;
 	padding: var(--spacing-tiny);
-	border: var(--border-solid);
+	outline: var(--border-solid);
 	border-radius: var(--border-radius);
 	width: fit-content;
+	gap: 2rem;
+	box-shadow: var(--box-shadow);
 }
 
 #search-bar input,
@@ -208,6 +214,12 @@ nav button {
 	outline: none;
 }
 
+.search-bar-group-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 /* section styling */
 .section-title {
 	text-transform: capitalize;
@@ -225,8 +237,6 @@ nav button {
 	font-size: var(--font-size-normal);
 	font-weight: 300;
 	text-transform: capitalize;
-	padding: var(--spacing-small);
-	margin: var(--spacing-tiny);
 }
 
 /* dialog styling */
