@@ -13,7 +13,7 @@ function memberResultsDialog(member) {
 		<div class="member-dialog-results-btn">
 			<button id="member-dialog-results-button">Add result</button>
 		</div>
-        <table>
+        <table id="member-dialog-results-table">
         	<thead>
         		<tr>
         			<th><h3>Date</h3></th>

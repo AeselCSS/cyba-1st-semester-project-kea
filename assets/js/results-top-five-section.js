@@ -71,8 +71,11 @@ function showTop5Results(allDisciplines) {
 			// const gridArticle = document.querySelector(`#top-five-${discipline}`);
 			// gridArticle.querySelector("h3").textContent = discipline;
 
+			let delay = 0;
 			for (const result of disciplineResults) {
-				showTop5result(result);
+				const gridElement = showTop5result(result);
+				gridElement.style.setProperty("--delay", delay + "s");
+				delay += 0.05;
 			}
 		} else {
 			noResults(discipline);
@@ -92,6 +95,8 @@ function showTop5result(result) {
 	    </div>
     `;
 	gridArticle.insertAdjacentHTML("beforeend", htmlGridItem);
+
+	return gridArticle;
 }
 
 function noResults(discipline) {
