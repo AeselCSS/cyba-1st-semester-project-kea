@@ -6,6 +6,7 @@ function updateMemberForm(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
 	// create the form
 	const updateMemberForm = /*html*/ `
+	<h2>Update member</h2>
     <form id="update-member-form">
 	<div id="form-content">
         <label for="firstName">First name</label>
