@@ -10,6 +10,7 @@ function createMemberForm() {
 	document.querySelector("#main-dialog").innerHTML = "";
 	// create the form
 	const createMemberForm = /*html*/ `
+	<h2>Create new member</h2>
     <form id="create-member-form">
 	<div id="form-content">
     <label for="firstName">First name</label>
