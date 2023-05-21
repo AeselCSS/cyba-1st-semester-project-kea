@@ -121,6 +121,7 @@ button {
 
 select, input {
 	cursor: pointer;
+	background-color: var(--primary-color);
 }
 
 main {
@@ -640,25 +641,6 @@ form select:focus {
 	outline: none;
 }
 
-form button,
-form input[type="submit"],
-form input[type="reset"] {
-	margin-top: var(--spacing-small);
-}
-
-form button:hover,
-form input[type="submit"]:hover,
-form input[type="reset"]:hover {
-	transform: var(--scale-on-hover);
-	box-shadow: 3px 3px 10px var(--shadow-color);
-}
-
-form button:active,
-form input[type="submit"]:active,
-form input[type="reset"]:active {
-	transform: var(--scale-on-click);
-}
-
 form input[type="date"] {
 	font-family: var(--font-family);
 	font-weight: 200;
@@ -729,7 +711,7 @@ form label {
 }
 
 /* button styling */
-button, input[type="button"]{
+button, input[type="button"], input[type="reset"], input[type="submit"]{
 	background-color: var(--tertiary-color);
 	color: var(--secondary-color);
 	font-size: var(--font-size-normal);
@@ -742,13 +724,13 @@ button, input[type="button"]{
 
 }
 
-button:hover, input[type="button"]:hover {
+button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
 	transform: var(--scale-on-hover);
 	box-shadow: 3px 3px 10px var(--shadow-color);
 	filter: brightness(1.2);
 }
 
-button:active, input[type="button"]:active {
+button:active, input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active {
 	transform: var(--scale-on-click);
 	transition: 0.1s;
 }
