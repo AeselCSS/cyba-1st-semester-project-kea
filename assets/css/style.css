@@ -163,17 +163,36 @@ nav {
 
 nav a {
 	font-size: var(--font-size-large);
-	font-weight: 300;
+	font-weight: 600;
 	padding: var(--spacing-small) var(--spacing-normal);
+	position: relative;
+	text-decoration: none;
 }
 
-nav a:hover {
-	text-decoration: underline var(--primary-color) 2px; /* change into a bottom border */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0.5em;
+  left: 0;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* nav a:hover {
+	text-decoration: underline var(--primary-color) 2px;
 }
 
 nav a.active {
 	text-decoration: underline var(--primary-color) 2px; /* change into a bottom border */
-}
+} */
 
 nav button {
 	/* margin-left: auto; */
