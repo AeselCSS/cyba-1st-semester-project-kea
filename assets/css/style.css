@@ -145,7 +145,7 @@ header h1 {
 }
 
 footer {
-	margin-top: auto;
+	margin-top: 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -478,6 +478,11 @@ tr:nth-child(even) {
 	font-weight: bolder;
 }
 
+#finances-membertype-overview tbody tr td:first-child,
+#finances-active-inactive-article tbody tr td:first-child, 
+#finances-debt-table tbody tr td:first-child {
+	text-align: left;
+}
 
 
 #finances-membertype-overview {
