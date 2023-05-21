@@ -463,6 +463,7 @@ tr:nth-child(even) {
 	gap: 2rem;
 	margin-top: 1rem;
 	margin-bottom: 2rem;
+	width: 100%;
 }
 
 #finances-membertype-overview h3 {
@@ -471,17 +472,20 @@ tr:nth-child(even) {
 	margin-bottom: 0.5rem;
 }
 
-#finances h3, #finances-top-container table tr td:nth-child(odd), #finances-membertype-overview thead tr:first-child,#finances-membertype-overview tbody tr td:nth-child(1), 
+#finances h3, #finances-top-container table tr td:nth-child(odd),
+#finances-top-container table tr:last-child, #finances-membertype-overview thead tr:first-child,#finances-membertype-overview tbody tr td:nth-child(1), 
 #finances-membertype-overview tbody tr:last-child{
 	font-weight: bolder;
 }
 
 
 
-#finance-membertype-table {
+#finances-membertype-overview {
 	margin-bottom: 2rem;
-	width: 100%;
+	
 }
+
+
 
 #finance-membertype-table tbody tr:last-child,
 #finances-top-container tbody tr:last-child{
@@ -501,6 +505,10 @@ tr:nth-child(even) {
 	border-collapse: separate;
 	animation: fade-in 0.3s forwards;
 	overflow: hidden;
+}
+
+#finance-membertype-table {
+	width: 100%;
 }
 
 
