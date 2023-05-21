@@ -59,6 +59,9 @@ body {
 	font-size: var(--font-size-normal);
 	color: var(--text-color);
 	background-color: var(--accent-color-dark);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 header,
@@ -141,7 +144,7 @@ header h1 {
 }
 
 footer {
-	margin-top: var(--spacing-large);
+	margin-top: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -420,7 +423,6 @@ nav button {
 
 /* table styling */
 
-
 table {
 	text-align: center;
 	width: 100%;
@@ -429,7 +431,7 @@ table {
 	overflow: hidden;
 }
 
-thead tr{
+thead tr {
 	color: var(--tertiary-color);
 	background-color: #17698c;
 }
@@ -491,7 +493,8 @@ tr:nth-child(even) {
 
 /*Displaying all members in table*/
 
-#members-table, #member-dialog-results-table {
+#members-table,
+#member-dialog-results-table {
 	margin-left: auto;
 	margin-right: auto;
 	width: 95%;
@@ -501,7 +504,6 @@ tr:nth-child(even) {
 	border-collapse: separate;
 	animation: fade-in 0.3s forwards;
 }
-
 
 #members-table img {
 	height: 4em;
@@ -517,7 +519,6 @@ tr:nth-child(even) {
 	transform: scale(2);
 	z-index: 1;
 }
-
 
 #table-flex-container-btn {
 	display: flex;
@@ -805,7 +806,7 @@ button:active, input[type="button"]:active, input[type="reset"]:active, input[ty
 	0% {
 		opacity: 0;
 		transform: scale(0.4);
-		animation-timing-function: cubic-bezier(.17,.67,.34,1.25) ;
+		animation-timing-function: cubic-bezier(0.17, 0.67, 0.34, 1.25);
 	}
 	10% {
 		opacity: 1;
@@ -814,8 +815,7 @@ button:active, input[type="button"]:active, input[type="reset"]:active, input[ty
 	90% {
 		opacity: 1;
 		transform: scale(1);
-		animation-timing-function: cubic-bezier(.68,-0.32,.83,.66) ;
-		
+		animation-timing-function: cubic-bezier(0.68, -0.32, 0.83, 0.66);
 	}
 	100% {
 		opacity: 0;
