@@ -426,6 +426,7 @@ nav button {
 	margin: var(--spacing-small);
 	transition: ease-out 0.3s;
 	box-shadow: var(--box-shadow);
+	animation: fade-in 0.4s backwards var(--delay);
 }
 
 /* .top-five-grid-item:hover {
