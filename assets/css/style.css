@@ -267,6 +267,13 @@ nav button {
 	animation: fade-in 0.2s forwards;
 }
 
+
+.member-details-section h3 {
+	font-weight: bolder;
+	line-height: 2rem;
+}
+
+
 .details-body-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -629,7 +636,6 @@ tr:nth-child(even) {
 form {
 	margin: var(--spacing-normal) auto;
 	padding: var(--spacing-normal);
-	background-color: var(--accent-color-light);
 }
 
 form #form-content {
