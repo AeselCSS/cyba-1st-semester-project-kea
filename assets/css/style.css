@@ -450,52 +450,48 @@ tr:nth-child(even) {
 	background-color: #22a5c5;
 }
 
-#finances-debt-table,
-#finances-debt-table tr,
-#finances-debt-table td {
-	border-collapse: collapse;
-	border: 1px solid black;
+/* Finances tables*/
+
+#finances {
+	width: 95%;
+	margin: auto;
 }
 
-#finances-active-inactive-table,
-#finances-active-inactive-table tr,
-#finances-active-inactive-table td {
-	border: 1px solid black;
-	border-collapse: collapse;
+#finances-top-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
 }
 
-#finance-membertype-table,
-#finance-membertype-table tr,
-#finance-membertype-table td {
-	border: 1px solid black;
-	border-collapse: collapse;
+#finances-membertype-overview h3 {
+	text-align: center;
+	color: var(--tertiary-color);
+	margin-bottom: 0.5rem;
 }
 
-#finances-debt-table,
-#finances-debt-table tr,
-#finances-debt-table td {
-	border-collapse: collapse;
-	border: 1px solid black;
+#finances h3, #finances-top-container table tr td:nth-child(odd), #finances-membertype-overview thead tr:first-child,#finances-membertype-overview tbody tr td:nth-child(1), 
+#finances-membertype-overview tbody tr:last-child{
+	font-weight: bolder;
 }
 
-#finances-active-inactive-table,
-#finances-active-inactive-table tr,
-#finances-active-inactive-table td {
-	border: 1px solid black;
-	border-collapse: collapse;
+
+
+#finance-membertype-table {
+	margin-bottom: 2rem;
+	width: 100%;
 }
 
-#finance-membertype-table,
-#finance-membertype-table tr,
-#finance-membertype-table td {
-	border: 1px solid black;
-	border-collapse: collapse;
+#finance-membertype-table tbody tr:last-child,
+#finances-top-container tbody tr:last-child{
+	outline: 2px dotted var(--secondary-color);
 }
 
 /*Displaying all members in table*/
 
 #members-table,
-#member-dialog-results-table {
+#member-dialog-results-table, #finances-active-inactive-article, #finances-debt-table, #finance-membertype-table {
 	margin-left: auto;
 	margin-right: auto;
 	width: 95%;
@@ -504,7 +500,9 @@ tr:nth-child(even) {
 	box-shadow: var(--box-shadow);
 	border-collapse: separate;
 	animation: fade-in 0.3s forwards;
+	overflow: hidden;
 }
+
 
 #members-table img {
 	height: 4em;

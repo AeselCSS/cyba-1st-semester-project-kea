@@ -186,26 +186,55 @@
 			<section id="finances" class="view-content">
 				<h2 class="section-title">Finances</h2>
 
-				<article id="finances-active-inactive-article">
-					<h3>Distribution of members</h3>
-					<table id="finances-active-inactive-table">
-						<tr>
-							<td>Active Members:</td>
-							<td id="active-member-count"></td>
-						</tr>
-						<tr>
-							<td>Inactive Members:</td>
-							<td id="inactive-member-count"></td>
-						</tr>
-						<tr>
-							<td>Total:</td>
-							<td class="total-member-count"></td>
-						</tr>
-					</table>
-				</article>
+				<section id="finances-top-container">
+					<article id="finances-active-inactive-article">
+						<table id="finances-active-inactive-table">
+							<thead>
+								<td colspan="2">
+									<h3>Distribution of members</h3>
+								</td>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Active Members:</td>
+									<td id="active-member-count"></td>
+								</tr>
+								<tr>
+									<td>Inactive Members:</td>
+									<td id="inactive-member-count"></td>
+								</tr>
+								<tr>
+									<td>Total:</td>
+									<td class="total-member-count"></td>
+								</tr>
+							</tbody>
+						</table>
+					</article>
+					<article id="finances-debt-article">
+						<table id="finances-debt-table">
+							<thead>
+								<td colspan="2">
+								<h3>Members in debt</h3>
+								</td>
+							</thead>
+							<tr>
+								<td>Active:</td>
+								<td id="debt-active-count"></td>
+							</tr>
+							<tr>
+								<td>Inactive</td>
+								<td id="debt-inactive-count"></td>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td id="debt-total-count"></td>
+							</tr>
+						</table>
+					</article>
+				</section>
 
 				<article id="finances-membertype-overview">
-					<h3>Overview</h3>
+					<h3 >Membership Overview</h3>
 
 					<table id="finance-membertype-table">
 						<thead>
@@ -258,24 +287,6 @@
 								<td><span id="total-member-subscription-grand-total-excluding-indebted"></span>,-</td>
 							</tr>
 						</tbody>
-					</table>
-				</article>
-
-				<article id="finances-debt-article">
-					<h3>Members in debt</h3>
-					<table id="finances-debt-table">
-						<tr>
-							<td>Active:</td>
-							<td id="debt-active-count"></td>
-						</tr>
-						<tr>
-							<td>Inactive</td>
-							<td id="debt-inactive-count"></td>
-						</tr>
-						<tr>
-							<td>Total</td>
-							<td id="debt-total-count"></td>
-						</tr>
 					</table>
 				</article>
 			</section>
