@@ -313,19 +313,20 @@ nav button {
 
 .grid-item {
 	outline: var(--border-solid);
-	padding: 1em;
-	background-color: var(--accent-color-light);
 	border-radius: var(--border-radius);
-	max-width: 20em;
-	margin: auto auto;
-	transition: ease-out 0.3s;
+	background-color: var(--accent-color-light);
 	box-shadow: var(--box-shadow);
+	padding: 1em;
+	width: 100%;
+	max-width: 18em;
+	margin: 0 auto;
+	transition: ease-out 0.3s;
 	animation: fade-in 0.4s backwards var(--delay);
 }
 
 .grid-item h2 {
 	font-size: var(--font-size-xlarge);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .grid-item img {
