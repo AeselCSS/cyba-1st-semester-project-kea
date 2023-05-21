@@ -259,7 +259,8 @@ nav button {
 	/* max-height: 37em; */
 	margin: auto;
 	padding: 1em;
-	background-color: var(--accent-color-light);
+	/* background-color: var(--accent-color-light); */
+	background: linear-gradient(var(--accent-color-light), #1a829c);
 	border: var(--border-solid);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
@@ -290,6 +291,12 @@ nav button {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* Notification feedback dialog */
@@ -861,6 +868,7 @@ button:active, input[type="button"]:active, input[type="reset"]:active, input[ty
 
 .member-in-debt {
 	outline: 2px solid rgb(188, 0, 0);
+	background: linear-gradient(to bottom right, var(--accent-color-light), rgb(213, 78, 78));
 }
 
 /* views */
