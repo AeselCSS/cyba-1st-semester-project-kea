@@ -10,9 +10,10 @@ function confirmDeleteMember(member) {
 
 	const html = /*html*/ `
 	
-	<h2>Are you sure you want to delete ${member.firstName} </h2>
+	<h2>Are you sure you want to delete: <p>${member.firstName} ${member.lastName}</p></h2>
+	<br>
 	
-	 <button id="confirm-delete-btn" >Confirm delete</button>
+	 <div class="center"><button id="confirm-delete-btn" >Confirm deletion</button></div>
 	`;
 
 	dialogContent.insertAdjacentHTML("beforeend", html);
