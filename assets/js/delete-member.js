@@ -1,4 +1,4 @@
-import { apiDeleteMember, refreshMembersView, apiUpdateResult, apiReadResults } from "./api.js";
+import { apiDeleteMember, refreshMembersView, apiDeleteResult, apiReadResults } from "./api.js";
 import { results } from "./api.js";
 import { notificationFeedback } from "./notification-feedback.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
@@ -22,10 +22,8 @@ function confirmDeleteMember(member) {
 
 async function deleteMember(member) {
 	const firstName = member.firstName;
-	console.log(member);
 	const lastName = member.lastName;
-	console.log(member.uid);
-	const response = await apiDeleteMember(member.uid);
+	const response = await apiDeleteMember(member);
 
 	if (response.ok) {
 		// Create visual feedback function for user here.
@@ -47,10 +45,10 @@ async function deleteMember(member) {
 async function deleteAllResultsUnderMember(memberUserId) {
 	for (const result of results) {
 		if (result.memberId === memberUserId) {
-			const response = await apiUpdateResult(result);
+			const response = await apiDeleteResult(result);
 
 			if (response.ok) {
-				console.log(`${result.resultId} has been deleted`);
+				console.log(`Result ${result.resultId} has been deleted`);
 			}
 		}
 	}
