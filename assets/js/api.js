@@ -67,12 +67,12 @@ async function apiUpdateResult(result) {
 
 // Delete
 async function apiDeleteMember(member) {
-	const response = await fetch(`${endpoint}/members/${member}.json`, { method: "DELETE" });
+	const response = await fetch(`${endpoint}/members/${member.uid}.json`, { method: "DELETE" });
 	return response;
 }
 
 async function apiDeleteResult(result) {
-	const response = await fetch(`${endpoint}/results/${result}.json`, { method: "DELETE" });
+	const response = await fetch(`${endpoint}/results/${result.resultId}.json`, { method: "DELETE" });
 	return response;
 }
 
