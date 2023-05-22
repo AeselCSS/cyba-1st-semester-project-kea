@@ -11,6 +11,7 @@ function confirmDeleteMember(member) {
 	const html = /*html*/ `
 	
 	<h2>Are you sure you want to delete: <p>${member.firstName} ${member.lastName}</p></h2>
+	<h3 class="center">${resultCountOfMember(member.uid)} results will be deleted</h3>
 	<br>
 	
 	 <div class="center"><button id="confirm-delete-btn" >Confirm deletion</button></div>
@@ -18,6 +19,18 @@ function confirmDeleteMember(member) {
 
 	dialogContent.insertAdjacentHTML("beforeend", html);
 	document.querySelector("#confirm-delete-btn").addEventListener("click", () => deleteMember(member));
+
+}
+
+function resultCountOfMember(memberUserId) {
+	let count = 0;
+	for (const result of results) {
+		if (result.memberId === memberUserId) {
+			count++;
+		}
+	}
+	
+	return count
 }
 
 async function deleteMember(member) {
