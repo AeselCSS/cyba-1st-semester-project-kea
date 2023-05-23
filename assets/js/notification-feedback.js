@@ -8,7 +8,7 @@ function notificationFeedback(messageString, isSuccessful) {
 	});
 
 	if (isSuccessful) {
-		dialog.style.backgroundColor = "white";
+		dialog.style.backgroundColor = "rgb(255, 216, 143)";
 	} else {
 		dialog.style.backgroundColor = "rgb(249, 95, 95)";
 	}
