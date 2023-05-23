@@ -29,14 +29,17 @@ function login() {
 async function userAuthentication(event) {
 	event.preventDefault();
 	// get username and password from form
-	const username = document.querySelector("#username").value;
+	let username = document.querySelector("#username").value;
 	const password = document.querySelector("#password").value;
 	// get role from api
 	const user = await apiReadRole(username);
 	// check if role exists and if password is correct
 	if (user && user.password === password) {
+		// Makes first letter uppercase
+		username = username.charAt(0).toUpperCase() + username.slice(1);
+
 		console.log(`${username} logged in`);
-		notificationFeedback(`${username} logged in ✅`, true);
+		notificationFeedback(`<b>${username}</b> logged in ✅`, true);
 		// save users role in local storage
 		localStorage.setItem("user", user.role);
 		// check user role in local storage and grant access
