@@ -715,6 +715,23 @@ form input[type="date"] {
 	margin: var(--spacing-normal) 0;
 }
 
+#login-form {
+	display: grid;
+}
+
+#login-form label {
+	margin: var(--spacing-tiny);
+	padding-bottom: 0;	
+}
+
+#login-form button {
+	margin-top: var(--spacing-large);
+}
+
+#login-form h3 {
+	text-align: center;
+}
+
 /* show disciplines container when competitive is selected */
 #memberType[value="competitive"] ~ #disciplines-container {
 	display: block;
