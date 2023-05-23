@@ -247,7 +247,7 @@ nav button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: var(--spacing-normal) auto;
+	margin: var(--spacing-large) auto;
 	padding: var(--spacing-tiny);
 	outline: var(--border-solid);
 	border-radius: var(--border-radius);
@@ -530,7 +530,7 @@ tr:nth-child(even) {
 /* Finances tables*/
 
 #finances {
-	width: 95%;
+	width: 70%;
 	margin: auto;
 }
 
@@ -540,7 +540,8 @@ tr:nth-child(even) {
 	gap: 2rem;
 	margin-top: 1rem;
 	margin-bottom: 2rem;
-	width: 100%;
+	width: 80%;
+	margin: 1rem auto;
 }
 
 #finances-membertype-overview h3 {
