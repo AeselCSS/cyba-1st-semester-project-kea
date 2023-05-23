@@ -43,6 +43,10 @@ function memberDetailsDialog(member) {
 
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
 
+	if (localStorage.getItem("user") !== "chairman") {
+		document.querySelector("#details-btns").classList.add("hidden");
+	}
+
 	//EVENTLISTENER TIL UPDATE OPGAVE
 	document.querySelector("#details-update-btn").addEventListener("click", () => updateMemberForm(member));
 
