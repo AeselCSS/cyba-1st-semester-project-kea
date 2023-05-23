@@ -379,7 +379,6 @@ nav button {
 	height: 3em;
 	box-shadow: var(--box-shadow);
 	z-index: 1;
-	background-color: var(--primary-color);
 }
 
 /* grid styling */
