@@ -17,7 +17,7 @@
 	--tertiary-color: #b7e3f5;
 	--accent-color-light: #24adcf;
 	--accent-color-dark: #11596b;
-	--color-orange: #ffd88f;
+	--color-orange: rgb(255, 216, 143);
 	--shadow-color: #111;
 	--text-color: var(--secondary-color);
 
@@ -133,7 +133,6 @@ header {
 	padding: var(--spacing-small) var(--spacing-normal);
 	background-image: url(/assets/images/header-background.svg);
 	background-size: 100% 150px;
-	filter: blur();
 }
 
 header h1 {
@@ -151,19 +150,6 @@ header img {
 	filter: drop-shadow(3px 3px 10px black)
 }
 
-footer {
-	background-color: var(--accent-color-light);
-	padding: 1rem 0;
-	margin-top: 2rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-top: solid 2px var(--accent-color-dark);
-	box-shadow: 0px -2px 10px var(--shadow-color);
-}
-
-
-
 .logo-container {
 	display: flex;
 	position: relative;
@@ -177,6 +163,17 @@ footer {
 	left: 4rem;
 }
 
+footer {
+	background: linear-gradient(var(--accent-color-light), var(--accent-color-dark));
+	padding: 1rem 0;
+	margin-top: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: solid 2px var(--accent-color-dark);
+	box-shadow: 0px -2px 10px var(--shadow-color);
+}
+
 /* nav styling */
 nav {
 	padding: var(--spacing-tiny) var(--spacing-normal);
@@ -187,7 +184,8 @@ nav {
 	box-shadow: 0 2px 10px var(--shadow-color);
 	border-top: solid 2px var(--accent-color-dark);
 	border-bottom: solid 2px var(--accent-color-dark);
-	background: linear-gradient( rgb(65, 169, 249), rgb(154, 228, 255), rgb(0, 106, 152));
+	background: linear-gradient( rgb(65, 169, 249), rgb(115, 218, 255), rgb(0, 106, 152));
+	filter: hue-rotate(350deg);
 }
 
 nav a {
