@@ -11,7 +11,7 @@ The application has 4 different user roles, each with different permissions.
 - Guest - Can only view the public page "Home".
 - Chairman - Can view the pages Members and Home, and create, edit and delete members.
 - Cashier - Can view pages Members, Finances and Home. In addition the cashier can see members who have not paid their membership fee.
-- Trainer - Can view pages Members, Top Results and Home. In addition trainer can see and add results to competitative members.
+- Trainer - Can view pages Members, Top Results and Home. In addition trainer can see and add results to competitive members.
 
 ## Contributors
 
