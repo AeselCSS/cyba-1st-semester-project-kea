@@ -17,6 +17,7 @@
 	--tertiary-color: #b7e3f5;
 	--accent-color-light: #24adcf;
 	--accent-color-dark: #11596b;
+	--color-orange: #ffb833;
 	--shadow-color: #111;
 	--text-color: var(--secondary-color);
 
@@ -182,14 +183,14 @@ nav a::after {
 	height: 2px;
 	bottom: 0.5em;
 	left: 0;
-	background-color: var(--tertiary-color);
+	background-color: var(--color-orange);
 	transform: scaleX(0);
 	transform-origin: center;
 	transition: transform 0.2s ease-in-out;
 }
 
 nav a:hover::after {
-	transform: scaleX(1);
+	transform: scaleX(.6);
 }
 
 nav button {
@@ -206,6 +207,10 @@ nav button {
 	margin-left: auto;
 	margin-right: var(--spacing-small);
 	font-weight: bold;
+}
+
+.view-link.active {
+	color: var(--color-orange);
 }
 
 /* search-bar & performance filter bar styling */
@@ -944,4 +949,5 @@ input[type="submit"]:active {
 
 .view-content.active {
 	display: block;
+	
 }
