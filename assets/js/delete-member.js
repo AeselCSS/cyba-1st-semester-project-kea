@@ -45,7 +45,7 @@ async function deleteMember(member) {
 
 		await deleteAllResultsUnderMember(member.uid);
 		refreshTop5Results();
-		notificationFeedback(`${firstName} ${lastName} has been deleted ✅`, true);
+		notificationFeedback(`<b>${firstName} ${lastName}</b> has been deleted ✅`, true);
 	} else {
 		//Visual feedback function goes here.
 

@@ -178,7 +178,7 @@ function updateMemberForm(member) {
 				form.reset();
 				document.querySelector("#main-dialog-frame").close();
 
-				notificationFeedback(`${member.firstName} ${member.lastName} has been updated ✅`, true);
+				notificationFeedback(`<b>${member.firstName} ${member.lastName}</b> has been updated ✅`, true);
 				refreshMembersView();
 			} else {
 				console.log("Error occured while updated member");

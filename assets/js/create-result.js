@@ -150,7 +150,7 @@ function addResultDialog(member) {
 
 		if (response.ok) {
 			console.log("Result was added to Firebase! 🔥");
-			notificationFeedback(`Added new result for ${member.firstName} ✅`, true);
+			notificationFeedback(`Added new result for <b>${member.firstName} ${member.lastName}</b> ✅`, true);
 			form.reset();
 			dialogFrame.close();
 			dialog.innerHTML = "";
