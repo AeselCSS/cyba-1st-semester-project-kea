@@ -193,7 +193,9 @@ nav a {
 	font-weight: 600;
 	padding: var(--spacing-small) var(--spacing-normal);
 	position: relative;
-	text-decoration: none;
+	/* text-decoration: none; */
+	filter: drop-shadow(1px 1px 1px var(--shadow-color));
+	color: var(--secondary-color);
 }
 
 nav a:hover {
