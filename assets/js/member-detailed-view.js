@@ -77,7 +77,7 @@ function showMemberActivityStatus(member) {
 }
 
 function showMemberCompetitiveStatus(member) {
-	return member.isCompetitive ? "Competitive swimmer" : "Casual swimmer";
+	return member.isCompetitive ? "Competitive Swimmer" : "Casual Swimmer";
 }
 
 function showMemberDisciplines(member) {
