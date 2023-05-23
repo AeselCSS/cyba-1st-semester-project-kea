@@ -17,7 +17,7 @@
 	--tertiary-color: #b7e3f5;
 	--accent-color-light: #24adcf;
 	--accent-color-dark: #11596b;
-	--color-orange: #ffb833;
+	--color-orange: #ffd88f;
 	--shadow-color: #111;
 	--text-color: var(--secondary-color);
 
@@ -137,13 +137,23 @@ main {
 /* header styling */
 header,
 footer {
-	padding: var(--spacing-normal) var(--spacing-normal);
+	padding: var(--spacing-small) var(--spacing-normal);
 	width: 100%;
 }
 
 header h1 {
 	text-align: center;
 	color: var(--secondary-color);
+	z-index: 1;
+	font-weight: 800;
+	color: var(--color-orange);
+	text-shadow: 2px 2px 0px var(--shadow-color),
+	3px 3px 3px var(--shadow-color);
+
+}
+
+header img {
+	filter: drop-shadow(3px 3px 10px black)
 }
 
 footer {
@@ -151,6 +161,18 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.logo-container {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+}
+
+.dolphin-logo {
+	position: relative;
+	width: 8rem;
+	left: 4rem;
 }
 
 /* nav styling */
@@ -809,7 +831,7 @@ input[type="reset"]:hover,
 input[type="submit"]:hover {
 	transform: var(--scale-on-hover);
 	box-shadow: 3px 3px 10px var(--shadow-color);
-	filter: brightness(1.2);
+	background-color: var(--color-orange);
 }
 
 button:active,
