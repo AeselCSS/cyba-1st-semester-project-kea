@@ -1,6 +1,7 @@
 // imports
 import { apiCreateMember, refreshMembersView } from "./api.js";
 import { notificationFeedback } from "./notification-feedback.js";
+import { createMinMaxDate } from "./helpers-module.js";
 
 const defaultAvatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 
@@ -26,7 +27,9 @@ function createMemberForm() {
     <input type="url" name="image" id="image" pattern=".*\.(jpg|jpeg|png|svg|webp|bmp|JPG|JPEG|PNG|SVG|WEBP|BMP)$" title="Please enter a valid URL ending with .jpg, .jpeg, .png, .svg, .webp, or .bmp" value=${defaultAvatar} required>
 
     <label for="dateOfBirth">Date of birth</label>
-    <input type="date" name="dateOfBirth" id="dateOfBirth" min="1900-01-01" max="2018-01-01" required>
+    <input type="date" name="dateOfBirth" id="dateOfBirth" min=${createMinMaxDate(100)} max=${createMinMaxDate(
+		5
+	)} required>
 
     <label for="gender">Gender</label>
     <select name="gender" id="gender" required>
