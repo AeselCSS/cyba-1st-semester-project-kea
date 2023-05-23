@@ -14,19 +14,19 @@ function createMemberForm() {
     <form id="create-member-form">
 	<div id="form-content">
     <label for="firstName">First name</label>
-    <input type="text" name="firstName" id="firstName" required>
+    <input type="text" name="firstName" id="firstName" minlength="2" maxlength="20" required>
 
     <label for="lastName">Last name</label>
-    <input type="text" name="lastName" id="lastName" required>
+    <input type="text" name="lastName" id="lastName" minlength="2" maxlength="20" required>
 
     <label for="email">Email</label>
     <input type="email" name="email" id="email" required>
 
     <label for="image">Image</label>
-    <input type="url" name="image" id="image" value=${defaultAvatar} required>
+    <input type="url" name="image" id="image" pattern=".*\.(jpg|jpeg|png|svg|webp|bmp)$" title="Please enter a valid URL ending with .jpg, .jpeg, .png, .svg, .webp, or .bmp (lower case)" value=${defaultAvatar} required>
 
     <label for="dateOfBirth">Date of birth</label>
-    <input type="date" name="dateOfBirth" id="dateOfBirth" required>
+    <input type="date" name="dateOfBirth" id="dateOfBirth" min="1900-01-01" max="2018-01-01" required>
 
     <label for="gender">Gender</label>
     <select name="gender" id="gender" required>

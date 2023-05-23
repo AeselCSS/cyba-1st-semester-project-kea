@@ -10,19 +10,19 @@ function updateMemberForm(member) {
     <form id="update-member-form">
 	<div id="form-content">
         <label for="firstName">First name</label>
-        <input type="text" name="firstName" id="firstName" value="${member.firstName}" required>
+        <input type="text" name="firstName" id="firstName" minlength="2" maxlength="20" value="${member.firstName}" required>
         
         <label for="lastName">Last name</label>
-        <input type="text" name="lastName" id="lastName" value="${member.lastName}" required>
+        <input type="text" name="lastName" id="lastName" minlength="2" maxlength="20" value="${member.lastName}" required>
         
         <label for="email">Email</label>
         <input type="email" name="email" id="email" value="${member.email}" required>
         
         <label for="image">Image</label>
-        <input type="url" name="image" id="image" value=${member.image} required>
+        <input type="url" name="image" id="image" pattern=".*\.(jpg|jpeg|png|svg|webp|bmp)$" title="Please enter a valid URL ending with .jpg, .jpeg, .png, .svg, .webp, or .bmp (lower case)"  value=${member.image} required>
         
         <label for="dateOfBirth">Date of birth</label>
-        <input type="date" name="dateOfBirth" id="dateOfBirth" value="${member.dateOfBirth}" required>
+        <input type="date" name="dateOfBirth" id="dateOfBirth" min="1900-01-01" max="2018-01-01" value="${member.dateOfBirth}" required>
         
         <label for="gender">Gender</label>
         <select name="gender" id="gender" value="${member.gender}" required>
