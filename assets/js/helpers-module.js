@@ -16,11 +16,13 @@ function resetFilterSearchSort() {
 	document.querySelector("#checkbox-competitive").checked = true;
 }
 
-// create max date for date input
-function currentDate() {
+// create min/max date for date input
+function createMinMaxDate(yearsToSubtract) {
 	const today = new Date();
-	// set max date to today
-	return today.toISOString().split("T")[0];
+	// subtract years from today
+	const date = today.setFullYear(today.getFullYear() - yearsToSubtract);
+	// convert in ISO string
+	return new Date(date).toISOString().split("T")[0];
 }
 
-export { closeDialogEventListener, resetFilterSearchSort, currentDate };
+export { closeDialogEventListener, resetFilterSearchSort, createMinMaxDate };
