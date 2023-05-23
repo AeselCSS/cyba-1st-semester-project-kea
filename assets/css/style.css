@@ -366,7 +366,7 @@ nav button {
 	outline: 2px solid var(--secondary-color);
 	position: fixed;
 	top: 85%;
-	left: 10%;
+	left: 5%;
 	padding: 2rem;
 	width: fit-content;
 	height: 3em;
