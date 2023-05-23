@@ -3,14 +3,14 @@ import { logout } from "./logout.js";
 import { searchbarAndFilter } from "./search.js";
 
 function checkIfLoggedIn() {
-  const user = localStorage.getItem("user");
-  if (user) {
-    // check user role in local storage and grant access
-    systemAccess(localStorage.getItem("user"));
-} else {
-    location.href = "#home"; // redirect to guest landing page
-    systemAccess("guest"); // grant guest access
-}
+	const user = localStorage.getItem("user");
+	if (user) {
+		// check user role in local storage and grant access
+		systemAccess(localStorage.getItem("user"));
+	} else {
+		location.href = "#home"; // redirect to guest landing page
+		systemAccess("guest"); // grant guest access
+	}
 }
 
 // grant access based on user role in local storage
@@ -64,7 +64,8 @@ function systemAccess(role) {
 		filterJunior.setAttribute("hidden", "");
 		filterSenior.setAttribute("hidden", "");
 		competitiveCheckbox.checked = false;
-		document.querySelector("#logged-in-as-p").textContent = "Logged in as Chairman";
+		document.querySelector("#logged-in-span").textContent = "Chairman";
+		document.querySelector("#log-in-text").classList.remove("hidden");
 	} else if (role === "cashier") {
 		// nav links and buttons
 		loginBtn.className = "hidden";
@@ -88,7 +89,8 @@ function systemAccess(role) {
 		filterJunior.setAttribute("hidden", "");
 		filterSenior.setAttribute("hidden", "");
 		competitiveCheckbox.checked = false;
-		document.querySelector("#logged-in-as-p").textContent = "Logged in as Cashier";
+		document.querySelector("#logged-in-span").textContent = "Cashier";
+		document.querySelector("#log-in-text").classList.remove("hidden");
 	} else if (role === "trainer") {
 		// nav links and buttons
 		loginBtn.className = "hidden";
@@ -112,7 +114,8 @@ function systemAccess(role) {
 		filterJunior.removeAttribute("hidden");
 		filterSenior.removeAttribute("hidden");
 		competitiveCheckbox.checked = true;
-		document.querySelector("#logged-in-as-p").textContent = "Logged in as Trainer";
+		document.querySelector("#logged-in-span").textContent = "Trainer";
+		document.querySelector("#log-in-text").classList.remove("hidden");
 	} else if (role === "guest") {
 		console.log("no user logged in - guest view shown");
 		// nav links and buttons
@@ -121,7 +124,8 @@ function systemAccess(role) {
 		membersLink.className = "hidden";
 		financesLink.className = "hidden";
 		topFiveLink.className = "hidden";
-		document.querySelector("#logged-in-as-p").textContent = "";
+		document.querySelector("#logged-in-span").textContent = "";
+		document.querySelector("#log-in-text").classList.add("hidden");
 	}
 
 	// apply searchbar and filter to members section
@@ -140,8 +144,5 @@ function systemAccess(role) {
 		}
 	}
 }
-
-	
-
 
 export { checkIfLoggedIn, systemAccess };

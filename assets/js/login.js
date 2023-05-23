@@ -11,6 +11,7 @@ function login() {
 
 	const loginForm = /*html*/ `
     <form id="login-form">
+		<h2>Please login</h2>
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Username" required>
         <label for="password">Password</label>

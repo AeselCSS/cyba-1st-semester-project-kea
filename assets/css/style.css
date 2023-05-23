@@ -123,7 +123,8 @@ button {
 	border-radius: var(--border-radius);
 }
 
-select, input {
+select,
+input {
 	cursor: pointer;
 	background-color: var(--primary-color);
 }
@@ -175,20 +176,20 @@ nav a:hover {
 }
 
 nav a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0.5em;
-  left: 0;
-  background-color: var(--tertiary-color);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.2s ease-in-out;
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 2px;
+	bottom: 0.5em;
+	left: 0;
+	background-color: var(--tertiary-color);
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 0.2s ease-in-out;
 }
 
 nav a:hover::after {
-  transform: scaleX(1);
+	transform: scaleX(1);
 }
 
 nav button {
@@ -196,9 +197,15 @@ nav button {
 	margin-right: var(--spacing-small);
 }
 
-#logged-in-as-p {
+#log-in-text {
 	margin-left: auto;
 	margin-right: var(--spacing-small);
+}
+
+#logged-in-span {
+	margin-left: auto;
+	margin-right: var(--spacing-small);
+	font-weight: bold;
 }
 
 /* search-bar & performance filter bar styling */
@@ -283,12 +290,10 @@ nav button {
 	animation: fade-in 0.2s forwards;
 }
 
-
 .member-details-section h3 {
 	font-weight: bolder;
 	line-height: 2rem;
 }
-
 
 .details-body-grid {
 	display: grid;
@@ -389,6 +394,10 @@ nav button {
 	margin-right: auto;
 }
 
+.grid-item-bottom h2 {
+	text-transform: capitalize;
+}
+
 .grid-item-bottom-btns {
 	margin-top: 0.5rem;
 	display: flex;
@@ -440,6 +449,11 @@ nav button {
 	margin: 1rem;
 	width: 700px;
 	min-width: fit-content;
+}
+
+#time-container {
+	display: grid;
+	grid-template-columns: 5.6em 5.6em 5.6em;
 }
 
 #competition-container {
@@ -503,35 +517,37 @@ tr:nth-child(even) {
 	margin-bottom: 0.5rem;
 }
 
-#finances h3, #finances-top-container table tr td:nth-child(odd),
-#finances-top-container table tr:last-child, #finances-membertype-overview thead tr:first-child,#finances-membertype-overview tbody tr td:nth-child(1), 
-#finances-membertype-overview tbody tr:last-child{
+#finances h3,
+#finances-top-container table tr td:nth-child(odd),
+#finances-top-container table tr:last-child,
+#finances-membertype-overview thead tr:first-child,
+#finances-membertype-overview tbody tr td:nth-child(1),
+#finances-membertype-overview tbody tr:last-child {
 	font-weight: bolder;
 }
 
 #finances-membertype-overview tbody tr td:first-child,
-#finances-active-inactive-article tbody tr td:first-child, 
+#finances-active-inactive-article tbody tr td:first-child,
 #finances-debt-table tbody tr td:first-child {
 	text-align: left;
 }
 
-
 #finances-membertype-overview {
 	margin-bottom: 2rem;
-	
 }
 
-
-
 #finance-membertype-table tbody tr:last-child,
-#finances-top-container tbody tr:last-child{
+#finances-top-container tbody tr:last-child {
 	outline: 2px dotted var(--secondary-color);
 }
 
 /*Displaying all members in table*/
 
 #members-table,
-#member-dialog-results-table, #finances-active-inactive-article, #finances-debt-table, #finance-membertype-table {
+#member-dialog-results-table,
+#finances-active-inactive-article,
+#finances-debt-table,
+#finance-membertype-table {
 	margin-left: auto;
 	margin-right: auto;
 	width: 95%;
@@ -546,7 +562,6 @@ tr:nth-child(even) {
 #finance-membertype-table {
 	width: 100%;
 }
-
 
 #members-table img {
 	height: 4em;
@@ -700,6 +715,23 @@ form input[type="date"] {
 	margin: var(--spacing-normal) 0;
 }
 
+#login-form {
+	display: grid;
+}
+
+#login-form label {
+	margin: var(--spacing-tiny);
+	padding-bottom: 0;	
+}
+
+#login-form button {
+	margin-top: var(--spacing-large);
+}
+
+#login-form h3 {
+	text-align: center;
+}
+
 /* show disciplines container when competitive is selected */
 #memberType[value="competitive"] ~ #disciplines-container {
 	display: block;
@@ -751,7 +783,10 @@ form label {
 }
 
 /* button styling */
-button, input[type="button"], input[type="reset"], input[type="submit"]{
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
 	background-color: var(--tertiary-color);
 	color: var(--secondary-color);
 	font-size: var(--font-size-normal);
@@ -761,22 +796,31 @@ button, input[type="button"], input[type="reset"], input[type="submit"]{
 	box-shadow: var(--box-shadow);
 	padding: var(--spacing-small) var(--spacing-normal);
 	cursor: pointer;
-
 }
 
-button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
 	transform: var(--scale-on-hover);
 	box-shadow: 3px 3px 10px var(--shadow-color);
 	filter: brightness(1.2);
 }
 
-button:active, input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active {
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
 	transform: var(--scale-on-click);
 	transition: 0.1s;
 }
 
 #btn-close-dialog-modal {
 	margin-bottom: var(--spacing-normal);
+}
+
+#login-btn {
+	margin-left: auto;
 }
 
 #join-btn {
