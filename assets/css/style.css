@@ -66,12 +66,6 @@ body {
 	flex-direction: column;
 }
 
-header,
-nav,
-footer {
-	background-color: var(--accent-color-light);
-}
-
 h1,
 h2,
 h3,
@@ -135,10 +129,11 @@ main {
 }
 
 /* header styling */
-header,
-footer {
+header {
 	padding: var(--spacing-small) var(--spacing-normal);
-	width: 100%;
+	background-image: url(/assets/images/header-background.svg);
+	background-size: 100% 150px;
+	filter: blur();
 }
 
 header h1 {
@@ -157,11 +152,18 @@ header img {
 }
 
 footer {
+	background-color: var(--accent-color-light);
+	padding: 1rem 0;
 	margin-top: 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-top: solid 2px var(--accent-color-dark);
+	box-shadow: 0px -2px 10px var(--shadow-color);
 }
+
+
+
 .logo-container {
 	display: flex;
 	position: relative;
@@ -182,7 +184,10 @@ nav {
 	display: flex;
 	justify-content: left;
 	align-items: center;
-	box-shadow: 2px 2px 10px var(--shadow-color);
+	box-shadow: 0 2px 10px var(--shadow-color);
+	border-top: solid 2px var(--accent-color-dark);
+	border-bottom: solid 2px var(--accent-color-dark);
+	background: linear-gradient( rgb(65, 169, 249), rgb(154, 228, 255), rgb(0, 106, 152));
 }
 
 nav a {
@@ -238,7 +243,7 @@ nav button {
 /* search-bar & performance filter bar styling */
 #search-bar,
 #performance-filter-bar {
-	background-color: var(--accent-color-light);
+	background-color: rgb(2, 156, 211);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -310,7 +315,7 @@ nav button {
 	margin: auto;
 	padding: 1em;
 	/* background-color: var(--accent-color-light); */
-	background: linear-gradient(var(--accent-color-light), #1a829c);
+	background: linear-gradient(to bottom right, var(--accent-color-light), rgb(2, 155, 211));
 	border: var(--border-solid);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
