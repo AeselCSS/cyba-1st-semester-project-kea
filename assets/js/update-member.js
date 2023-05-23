@@ -201,7 +201,7 @@ function showMemberCompetitiveStatus(member) {
 }
 
 function setCheckBoxValues(member) {
-	console.log(member.disciplines);
+	
 	for (const discipline of member.disciplines) {
 		if (discipline.includes("butterfly")) {
 			document.querySelector("#butterfly").checked = true;
