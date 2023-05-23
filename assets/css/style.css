@@ -388,6 +388,10 @@ nav button {
 	margin-right: auto;
 }
 
+.grid-item-bottom h2 {
+	text-transform: capitalize;
+}
+
 .grid-item-bottom-btns {
 	margin-top: 0.5rem;
 	display: flex;
