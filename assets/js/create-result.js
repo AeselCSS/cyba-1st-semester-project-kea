@@ -1,7 +1,7 @@
 import { apiCreateResult, apiReadResults } from "./api.js";
 import { notificationFeedback } from "./notification-feedback.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
-import { currentDate } from "./helpers-module.js";
+import { createMinMaxDate } from "./helpers-module.js";
 
 function addResultDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -19,7 +19,7 @@ function addResultDialog(member) {
     </select>
 
     <label for="date">Date of result</label>
-    <input type="date" name="date" id="date" max="${currentDate()}" required>
+    <input type="date" name="date" id="date" max="${createMinMaxDate(0)}" required>
 
       <label for="discipline">Discipline</label>
     <select name="discipline" id="discipline" required>
