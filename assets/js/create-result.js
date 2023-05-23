@@ -150,7 +150,7 @@ function addResultDialog(member) {
 
 		if (response.ok) {
 			console.log("Result was added to Firebase! 🔥");
-			notificationFeedback(`Added result for ${member.firstName}`, true);
+			notificationFeedback(`Added new result for ${member.firstName} ✅`, true);
 			form.reset();
 			dialogFrame.close();
 			dialog.innerHTML = "";
@@ -159,7 +159,7 @@ function addResultDialog(member) {
 			refreshTop5Results();
 		} else {
 			console.log("Something went wrong with result POST request");
-			notificationFeedback("Something went wrong with result POST request", false);
+			notificationFeedback("Error occured while creating new result ⛔", false);
 		}
 	}
 }

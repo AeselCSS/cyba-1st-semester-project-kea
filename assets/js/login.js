@@ -36,7 +36,7 @@ async function userAuthentication(event) {
 	// check if role exists and if password is correct
 	if (user && user.password === password) {
 		console.log(`${username} logged in`);
-		notificationFeedback(`${username} logged in`, true);
+		notificationFeedback(`${username} logged in ✅`, true);
 		// save users role in local storage
 		localStorage.setItem("user", user.role);
 		// check user role in local storage and grant access
@@ -49,7 +49,7 @@ async function userAuthentication(event) {
 		// to be created later
 	} else {
 		console.log("Wrong username or password");
-		notificationFeedback("Wrong username or password", false);
+		notificationFeedback("Wrong username or password ⛔", false);
 
 		// show error message
 		// to be created later

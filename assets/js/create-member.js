@@ -132,11 +132,11 @@ async function createMember(event) {
 		form.reset();
 		document.querySelector("#main-dialog-frame").close();
 		dialog.innerHTML = "";
-		notificationFeedback("Member has been added", true);
+		notificationFeedback("New member has been added ✅", true);
 		refreshMembersView();
 	} else {
 		console.log("Error occured while creating new member");
-		notificationFeedback("Error occured while creating new member", false);
+		notificationFeedback("Error occured while creating new member ⛔", false);
 	}
 }
 
