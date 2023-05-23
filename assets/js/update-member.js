@@ -178,11 +178,11 @@ function updateMemberForm(member) {
 				form.reset();
 				document.querySelector("#main-dialog-frame").close();
 
-				notificationFeedback(`${member.firstName} ${member.lastName} has been updated`, true);
+				notificationFeedback(`${member.firstName} ${member.lastName} has been updated ✅`, true);
 				refreshMembersView();
 			} else {
 				console.log("Error occured while updated member");
-				notificationFeedback("Error occured while updated member", false);
+				notificationFeedback("Error occured while updating member ⛔", false);
 			}
 		}
 	}
