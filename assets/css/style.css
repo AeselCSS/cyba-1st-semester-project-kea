@@ -195,7 +195,7 @@ nav a {
 	position: relative;
 	/* text-decoration: none; */
 	filter: drop-shadow(1px 1px 1px var(--shadow-color));
-	color: var(--secondary-color);
+	color: var(--primary-color);
 }
 
 nav a:hover {
