@@ -1,6 +1,7 @@
 import { apiCreateResult, apiReadResults } from "./api.js";
 import { notificationFeedback } from "./notification-feedback.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
+import { currentDate } from "./helpers-module.js";
 
 function addResultDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -18,7 +19,7 @@ function addResultDialog(member) {
     </select>
 
     <label for="date">Date of result</label>
-    <input type="date" name="date" id="date" required>
+    <input type="date" name="date" id="date" max="${currentDate()}" required>
 
       <label for="discipline">Discipline</label>
     <select name="discipline" id="discipline" required>
@@ -31,7 +32,11 @@ function addResultDialog(member) {
     </select>
 
     <label for="time">time of result</label>
-    <input type="text" name="time" id="time" placeholder="mm:ss.ms (eg. 01:30.24)" required>
+	<div id="time-container"> 
+    <input type="number" name="mm" id="mm" step="1" placeholder="mm" min="0" max="59" required>
+    <input type="number" name="ss" id="ss" step="1" placeholder="ss" min="0" max="59" required>
+    <input type="number" name="ms" id="ms" step="1" placeholder="ms" min="0" max="99" required>
+    </div>
     </div>
 
     <!-- competition details, only shows when competition type is selected -->
@@ -119,11 +124,19 @@ function addResultDialog(member) {
 			resultType: form.resultType.value,
 			date: form.date.value,
 			discipline: form.discipline.value,
-			time: form.time.value,
+			time: resultTimeInputToString(),
 			competitionLocation: form.location.value,
 			competitionName: form.name.value,
 			competitionPlacement: form.placement.value,
 		};
+
+		function resultTimeInputToString() {
+			const minutes = document.querySelector("#mm").value;
+			const seconds = document.querySelector("#ss").value;
+			const miliSeconds = document.querySelector("#ms").value;
+
+			return `${minutes.padStart(2, "0")}:${seconds.padStart(2, "0")}.${miliSeconds.padStart(2, "0")}`;
+		}
 
 		// If training result, remove uneeded properties from object
 		if (form.resultType.value === "training") {
