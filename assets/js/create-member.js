@@ -23,7 +23,7 @@ function createMemberForm() {
     <input type="email" name="email" id="email" required>
 
     <label for="image">Image</label>
-    <input type="url" name="image" id="image" pattern=".*\.(jpg|jpeg|png|svg|webp|bmp)$" title="Please enter a valid URL ending with .jpg, .jpeg, .png, .svg, .webp, or .bmp (lower case)" value=${defaultAvatar} required>
+    <input type="url" name="image" id="image" pattern=".*\.(jpg|jpeg|png|svg|webp|bmp|JPG|JPEG|PNG|SVG|WEBP|BMP)$" title="Please enter a valid URL ending with .jpg, .jpeg, .png, .svg, .webp, or .bmp" value=${defaultAvatar} required>
 
     <label for="dateOfBirth">Date of birth</label>
     <input type="date" name="dateOfBirth" id="dateOfBirth" min="1900-01-01" max="2018-01-01" required>
