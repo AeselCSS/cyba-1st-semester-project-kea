@@ -16,4 +16,11 @@ function resetFilterSearchSort() {
 	document.querySelector("#checkbox-competitive").checked = true;
 }
 
-export { closeDialogEventListener, resetFilterSearchSort };
+// create max date for date input
+function currentDate() {
+	const today = new Date();
+	// set max date to today
+	return today.toISOString().split("T")[0];
+}
+
+export { closeDialogEventListener, resetFilterSearchSort, currentDate };
