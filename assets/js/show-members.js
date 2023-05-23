@@ -21,7 +21,6 @@ function showMembers(members) {
 
 function showMemberGrid(member) {
 	isGrid = true;
-	//Added class has-payed-true or has-payed-false. If it is has-payed-true, then a class with a red border is displayed
 	const htmlGrid = /*html*/ `
     <article class="grid-item">
     <img src=${member.image}>
