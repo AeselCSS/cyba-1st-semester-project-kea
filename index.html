@@ -21,7 +21,7 @@
 			<a href="#finances" class="view-link" id="finances-link">Finances</a>
 			<a href="#top-five" class="view-link" id="top-five-link">Top 5</a>
 
-			<p id="logged-in-as-p"></p>
+			<p id="log-in-text">Logged in as <span id="logged-in-span"></span></p>
 			<button id="login-btn">Log in</button>
 			<button id="logout-btn">Log out</button>
 		</nav>
@@ -157,24 +157,23 @@
 					<button id="add-new-member-btn">Add member</button>
 				</div>
 
-					<table id="members-table" class="hidden">
-						<thead>
-							<tr>
-								<th><h3>image</h3></th>
-								<th><h3>Name</h3></th>
-								<th><h3>Age</h3></th>
-								<th><h3>Gender</h3></th>
-								<th><h3>E-mail</h3></th>
-								<th><h3>Status</h3></th>
-								<th><h3>Competitive/casual</h3></th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody id="members-table-content">
-							<!-- Inserts member rows -->
-						</tbody>
-					</table>
-				
+				<table id="members-table" class="hidden">
+					<thead>
+						<tr>
+							<th><h3>image</h3></th>
+							<th><h3>Name</h3></th>
+							<th><h3>Age</h3></th>
+							<th><h3>Gender</h3></th>
+							<th><h3>E-mail</h3></th>
+							<th><h3>Status</h3></th>
+							<th><h3>Competitive/casual</h3></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="members-table-content">
+						<!-- Inserts member rows -->
+					</tbody>
+				</table>
 
 				<section class="member-grid-wrapper">
 					<div id="members-grid">
@@ -214,7 +213,7 @@
 						<table id="finances-debt-table">
 							<thead>
 								<td colspan="2">
-								<h3>Members in debt</h3>
+									<h3>Members in debt</h3>
 								</td>
 							</thead>
 							<tr>
@@ -234,7 +233,7 @@
 				</section>
 
 				<article id="finances-membertype-overview">
-					<h3 >Membership Overview</h3>
+					<h3>Membership Overview</h3>
 
 					<table id="finance-membertype-table">
 						<thead>

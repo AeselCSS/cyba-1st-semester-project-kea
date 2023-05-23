@@ -197,9 +197,15 @@ nav button {
 	margin-right: var(--spacing-small);
 }
 
-#logged-in-as-p {
+#log-in-text {
 	margin-left: auto;
 	margin-right: var(--spacing-small);
+}
+
+#logged-in-span {
+	margin-left: auto;
+	margin-right: var(--spacing-small);
+	font-weight: bold;
 }
 
 /* search-bar & performance filter bar styling */
@@ -794,6 +800,10 @@ input[type="submit"]:active {
 
 #btn-close-dialog-modal {
 	margin-bottom: var(--spacing-normal);
+}
+
+#login-btn {
+	margin-left: auto;
 }
 
 #join-btn {
