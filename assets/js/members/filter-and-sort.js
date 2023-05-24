@@ -1,5 +1,5 @@
 import { members } from "../helpers/api.js";
-import { calculateMemberAge } from "./member-detailed-view.js";
+import { calculateMemberAge } from "../helpers/helpers-module.js";
 import { showMembers } from "./show-members.js";
 
 function refreshFiltersAndSort() {
