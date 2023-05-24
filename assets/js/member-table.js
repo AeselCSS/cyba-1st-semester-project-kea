@@ -1,7 +1,6 @@
 import { members } from "./api.js";
 
 function calculateMembersCount() {
-
 	//Saves the count of active and inactives members in variables.
 	const activeMembersSum = countActiveMembers();
 	const inactiveMembersSum = countInactiveMembers();

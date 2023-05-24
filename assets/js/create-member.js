@@ -1,7 +1,7 @@
 // imports
 import { apiCreateMember, refreshMembersView } from "./api.js";
-import { notificationFeedback } from "./notification-feedback.js";
 import { createMinMaxDate } from "./helpers-module.js";
+import { notificationFeedback } from "./notification-feedback.js";
 
 const defaultAvatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 

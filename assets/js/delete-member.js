@@ -1,5 +1,4 @@
-import { apiDeleteMember, refreshMembersView, apiDeleteResult, apiReadResults } from "./api.js";
-import { results } from "./api.js";
+import { apiDeleteMember, apiDeleteResult, apiReadResults, refreshMembersView, results } from "./api.js";
 import { notificationFeedback } from "./notification-feedback.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
 
@@ -19,7 +18,6 @@ function confirmDeleteMember(member) {
 
 	dialogContent.insertAdjacentHTML("beforeend", html);
 	document.querySelector("#confirm-delete-btn").addEventListener("click", () => deleteMember(member));
-
 }
 
 function resultCountOfMember(memberUserId) {
@@ -29,8 +27,8 @@ function resultCountOfMember(memberUserId) {
 			count++;
 		}
 	}
-	
-	return count
+
+	return count;
 }
 
 async function deleteMember(member) {

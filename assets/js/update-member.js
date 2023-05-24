@@ -1,7 +1,7 @@
 import { apiUpdateMember, refreshMembersView } from "./api.js";
+import { createMinMaxDate } from "./helpers-module.js";
 import { memberDetailsDialog } from "./member-detailed-view.js";
 import { notificationFeedback } from "./notification-feedback.js";
-import { createMinMaxDate } from "./helpers-module.js";
 
 function updateMemberForm(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -201,7 +201,6 @@ function showMemberCompetitiveStatus(member) {
 }
 
 function setCheckBoxValues(member) {
-	
 	for (const discipline of member.disciplines) {
 		if (discipline.includes("butterfly")) {
 			document.querySelector("#butterfly").checked = true;

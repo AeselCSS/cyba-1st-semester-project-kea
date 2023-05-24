@@ -1,10 +1,10 @@
-import { createMinMaxDate } from "./helpers-module.js"
-import {notificationFeedback} from "./notification-feedback.js"
+import { createMinMaxDate } from "./helpers-module.js";
+import { notificationFeedback } from "./notification-feedback.js";
 
 function displayJoinForm() {
-    document.querySelector("#main-dialog").innerHTML = "";
-    
-    const html = /*html*/ `
+	document.querySelector("#main-dialog").innerHTML = "";
+
+	const html = /*html*/ `
 		<form id="join-form">
 			<div id="form-content">
 				<label for="firstName">First name</label>
@@ -35,15 +35,14 @@ function displayJoinForm() {
 		</form>
     `;
 
-    document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
-    document.querySelector("#main-dialog-frame").showModal();
-    document.querySelector("#home-form-input-button").addEventListener("click", sendForm)
-    
+	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
+	document.querySelector("#main-dialog-frame").showModal();
+	document.querySelector("#home-form-input-button").addEventListener("click", sendForm);
 }
 
 function sendForm() {
-    document.querySelector("#main-dialog-frame").close();
+	document.querySelector("#main-dialog-frame").close();
 	notificationFeedback("Success! We will reach back to you through Email", true);
 }
 
-export {displayJoinForm}
+export { displayJoinForm };

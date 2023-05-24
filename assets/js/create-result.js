@@ -1,7 +1,7 @@
 import { apiCreateResult, apiReadResults } from "./api.js";
+import { createMinMaxDate } from "./helpers-module.js";
 import { notificationFeedback } from "./notification-feedback.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
-import { createMinMaxDate } from "./helpers-module.js";
 
 function addResultDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";

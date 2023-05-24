@@ -1,9 +1,9 @@
 import { refreshFiltersAndSort } from "./filter-and-sort.js";
-import { calculateMemberAge } from "./member-detailed-view.js";
-import { checkIfLoggedIn } from "./system-access.js";
 import { updateFinancialTable } from "./member-and-finance-overview.js";
+import { calculateMemberAge } from "./member-detailed-view.js";
 import { calculateMembersCount } from "./member-table.js";
 import { displayMembersInDebt } from "./restance.js";
+import { checkIfLoggedIn } from "./system-access.js";
 
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";

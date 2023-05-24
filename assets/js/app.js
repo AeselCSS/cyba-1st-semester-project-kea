@@ -1,19 +1,16 @@
 "use strict";
 
 // imports
-import { initViews } from "./spa-router.js";
-import { apiReadMembers, apiReadResults, members } from "./api.js";
-import { showMembers } from "./show-members.js";
-import { checkIfLoggedIn } from "./system-access.js";
+import { apiReadMembers, apiReadResults } from "./api.js";
 import { createMemberForm } from "./create-member.js";
 import { refreshFiltersAndSort } from "./filter-and-sort.js";
-import { sortAndShowMembers } from "./sort.js";
-import { displayMembersInDebt } from "./restance.js";
 import { closeDialogEventListener, resetFilterSearchSort } from "./helpers-module.js";
 import { displayJoinForm } from "./home.js";
-
-import { calculateMembersCount } from "./member-table.js";
+import { displayMembersInDebt } from "./restance.js";
+import { initViews } from "./spa-router.js";
+import { checkIfLoggedIn } from "./system-access.js";
 import { displayFinancialTable } from "./member-and-finance-overview.js";
+import { calculateMembersCount } from "./member-table.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
 import { toggleTableGridView } from "./toggle-table-grid.js";
 

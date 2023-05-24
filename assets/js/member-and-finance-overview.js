@@ -1,6 +1,6 @@
 import { members } from "./api.js";
-import { countInactiveMembers } from "./member-table.js";
 import { calculateMemberAge } from "./member-detailed-view.js";
+import { countInactiveMembers } from "./member-table.js";
 
 //Prices for each member type
 const inactiveSubscriptionPrice = 500;
@@ -21,8 +21,6 @@ function displayFinancialTable() {
 	populateSubscriptionPrice();
 	subscriptionSubTotal(totalInactiveMembers, totalJuniorMembers, totalSeniorMembers, totalSeniorPlusMembers);
 }
-
-
 
 function updateFinancialTable() {
 	countAllMemberTypes();
@@ -95,7 +93,6 @@ function subscriptionSubTotal(inactiveCount, juniorCount, seniorCount, seniorPlu
 		// addCommaInNumber returns a new array of prices as strings
 	] = addCommaInNumber(subTotalArr);
 
-	
 	//Displays the total subscription price for each member type and the total sum /grand total category in the table overview
 	document.querySelector("#inactive-subscription-subtotal").textContent = inactiveSubTotalWithComma;
 	document.querySelector("#junior-subscription-subtotal").textContent = juniorSubTotalWithComma;
@@ -103,16 +100,17 @@ function subscriptionSubTotal(inactiveCount, juniorCount, seniorCount, seniorPlu
 	document.querySelector("#senior-plus-subscription-subtotal").textContent = seniorPlusSubTotalWithComma;
 	document.querySelector("#total-member-subscription-grand-total").textContent = grandTotalWithComma;
 
-	displayGrandTotalExcludingIndebted(grandTotal)
+	displayGrandTotalExcludingIndebted(grandTotal);
 }
 
 function displayGrandTotalExcludingIndebted(grandTotalIncludingDebt) {
 	const debt = calculateDebt();
-	
+
 	const grandTotalExcludingDebt = grandTotalIncludingDebt - debt;
 	const [grandTotalExcludingDebtWithComma] = addCommaInNumber(grandTotalExcludingDebt.toString().split(" "));
 
-	document.querySelector("#total-member-subscription-grand-total-excluding-indebted").textContent = grandTotalExcludingDebtWithComma;
+	document.querySelector("#total-member-subscription-grand-total-excluding-indebted").textContent =
+		grandTotalExcludingDebtWithComma;
 }
 
 function calculateDebt() {
@@ -133,9 +131,6 @@ function calculateDebt() {
 	}
 	return amount;
 }
-
-
-
 
 //
 function addCommaInNumber(subTotalArr) {

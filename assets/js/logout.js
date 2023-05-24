@@ -1,14 +1,14 @@
 // imports
-import { checkIfLoggedIn } from "./system-access.js";
 import { resetFilterSearchSort } from "./helpers-module.js";
 import { notificationFeedback } from "./notification-feedback.js";
+import { checkIfLoggedIn } from "./system-access.js";
 
 function logout() {
 	localStorage.removeItem("user");
 	removeMemberInDebtClass();
 	resetFilterSearchSort();
 	checkIfLoggedIn();
-	notificationFeedback('You have logged out 🙋‍♂️', true)
+	notificationFeedback("You have logged out 🙋‍♂️", true);
 }
 
 function removeMemberInDebtClass() {

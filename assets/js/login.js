@@ -1,8 +1,8 @@
 // imports
 import { apiReadRole } from "./api.js";
-import { systemAccess } from "./system-access.js";
 import { refreshFiltersAndSort } from "./filter-and-sort.js";
 import { notificationFeedback } from "./notification-feedback.js";
+import { systemAccess } from "./system-access.js";
 
 // create login form upon clicking login button
 function login() {

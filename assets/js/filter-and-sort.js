@@ -1,6 +1,6 @@
 import { members } from "./api.js";
-import { showMembers } from "./show-members.js";
 import { calculateMemberAge } from "./member-detailed-view.js";
+import { showMembers } from "./show-members.js";
 
 function refreshFiltersAndSort() {
 	const filteredMembers = filters();
