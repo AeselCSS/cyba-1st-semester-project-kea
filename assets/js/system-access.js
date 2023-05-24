@@ -1,6 +1,6 @@
 import { login } from "./login.js";
 import { logout } from "./logout.js";
-import { searchbarAndFilter } from "./search.js";
+import { refreshFiltersAndSort } from "./filter-and-sort.js";
 
 function checkIfLoggedIn() {
 	const user = localStorage.getItem("user");
@@ -33,6 +33,7 @@ function systemAccess(role) {
 	const filterJunior = document.querySelector("#filter-junior");
 	const filterSenior = document.querySelector("#filter-senior");
 	const competitiveCheckbox = document.querySelector("#checkbox-competitive");
+	const inDebtCheckbox = document.querySelector("#checkbox-in-debt");
 
 	// role specific buttons and checkboxes
 	const resultsBtn = document.querySelectorAll(".grid-item-results-btn");
@@ -44,11 +45,11 @@ function systemAccess(role) {
 
 	if (role === "chairman") {
 		// nav links and buttons
-		loginBtn.classList.add('hidden');
-		logoutBtn.classList.remove('hidden');
-		membersLink.classList.remove('hidden');
-		financesLink.classList.add('hidden');
-		topFiveLink.classList.add('hidden');
+		loginBtn.classList.add("hidden");
+		logoutBtn.classList.remove("hidden");
+		membersLink.classList.remove("hidden");
+		financesLink.classList.add("hidden");
+		topFiveLink.classList.add("hidden");
 		// role specific buttons
 		addMemberBtn.className = "";
 		ResultsBtnClass("hidden");
@@ -65,16 +66,16 @@ function systemAccess(role) {
 		filterJunior.setAttribute("hidden", "");
 		filterSenior.setAttribute("hidden", "");
 		competitiveCheckbox.checked = false;
+		inDebtCheckbox.checked = false;
 		document.querySelector("#logged-in-span").textContent = "Chairman";
 		document.querySelector("#log-in-text").classList.remove("hidden");
-
 	} else if (role === "cashier") {
 		// nav links and buttons
-		loginBtn.classList.add('hidden');
-		logoutBtn.classList.remove('hidden');
-		membersLink.classList.remove('hidden');
-		financesLink.classList.remove('hidden');
-		topFiveLink.classList.add('hidden');
+		loginBtn.classList.add("hidden");
+		logoutBtn.classList.remove("hidden");
+		membersLink.classList.remove("hidden");
+		financesLink.classList.remove("hidden");
+		topFiveLink.classList.add("hidden");
 		// role specific buttons
 		addMemberBtn.className = "hidden";
 		ResultsBtnClass("hidden");
@@ -91,15 +92,15 @@ function systemAccess(role) {
 		filterJunior.setAttribute("hidden", "");
 		filterSenior.setAttribute("hidden", "");
 		competitiveCheckbox.checked = false;
+		inDebtCheckbox.checked = true;
 		document.querySelector("#logged-in-span").textContent = "Cashier";
 		document.querySelector("#log-in-text").classList.remove("hidden");
-
 	} else if (role === "trainer") {
 		// nav links and buttons
-		loginBtn.classList.add('hidden');
-		logoutBtn.classList.remove('hidden');
-		membersLink.classList.remove('hidden');
-		financesLink.classList.add('hidden');
+		loginBtn.classList.add("hidden");
+		logoutBtn.classList.remove("hidden");
+		membersLink.classList.remove("hidden");
+		financesLink.classList.add("hidden");
 		topFiveLink.classList.remove("hidden");
 		// role specific buttons
 		addMemberBtn.className = "hidden";
@@ -117,23 +118,23 @@ function systemAccess(role) {
 		filterJunior.removeAttribute("hidden");
 		filterSenior.removeAttribute("hidden");
 		competitiveCheckbox.checked = true;
+		inDebtCheckbox.checked = false;
 		document.querySelector("#logged-in-span").textContent = "Trainer";
 		document.querySelector("#log-in-text").classList.remove("hidden");
-		
 	} else if (role === "guest") {
 		console.log("no user logged in - guest view shown");
 		// nav links and buttons
 		loginBtn.classList.remove("hidden");
-		logoutBtn.classList.add('hidden');
-		membersLink.classList.add('hidden');
-		financesLink.classList.add('hidden');
-		topFiveLink.classList.add('hidden');
+		logoutBtn.classList.add("hidden");
+		membersLink.classList.add("hidden");
+		financesLink.classList.add("hidden");
+		topFiveLink.classList.add("hidden");
 		document.querySelector("#logged-in-span").textContent = "";
 		document.querySelector("#log-in-text").classList.add("hidden");
 	}
 
 	// apply searchbar and filter to members section
-	searchbarAndFilter();
+	refreshFiltersAndSort();
 
 	// eventlisteners
 	document.querySelector("#login-btn").addEventListener("click", login);
