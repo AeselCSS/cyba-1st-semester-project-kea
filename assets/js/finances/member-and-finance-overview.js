@@ -1,5 +1,4 @@
 import { members } from "../helpers/api.js";
-import { calculateMemberAge } from "../members/member-detailed-view.js";
 import { countInactiveMembers } from "./member-table.js";
 
 //Prices for each member type
@@ -157,33 +156,18 @@ function addCommaInNumber(subTotalArr) {
 
 // Iterates through members and returns number of juniors members using filter
 function countJuniorMembers() {
-	// let count = 0;=
-	// for (const member of members) {
-	// 	const age = calculateMemberAge(member);
-	// 	if (age < 18) {
-	// 		count++;
-	// 	}
-	// }
-	// return count;
-
-	// const juniorArr = members.filter((member) => {
-	// 	if (calculateMemberAge(member) < 18) {
-	// 		return member;
-	// 	}
-	// });
-
-	const juniorArr = members.filter((member) => calculateMemberAge(member) < 18);
+	const juniorArr = members.filter((member) => member.agegroup === "junior");
 	return juniorArr.length;
 }
 
 // Iterates through members and returns number of seniors members using filter
 function countSeniorMembers() {
-	const seniorArr = members.filter((member) => calculateMemberAge(member) >= 18 && calculateMemberAge(member) <= 60);
+	const seniorArr = members.filter((member) => member.agegroup === "senior");
 	return seniorArr.length;
 }
 // Iterates through members and returns number of seniors plus members using filter
 function countSeniorPlusMembers() {
-	const seniorPlusArr = members.filter((member) => calculateMemberAge(member) > 60);
+	const seniorPlusArr = members.filter((member) => member.agegroup === "senior+");
 	return seniorPlusArr.length;
 }
 
