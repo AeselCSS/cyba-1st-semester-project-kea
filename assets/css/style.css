@@ -152,7 +152,7 @@ header img {
 
 .logo-container {
 	display: flex;
-	position: relative;
+	/* position: relative; */
 	justify-content: center;
 	align-items: center;
 }
@@ -322,7 +322,7 @@ nav button {
 	animation: fade-in 0.2s forwards;
 }
 
-.member-details-section {
+#details-else {
 	font-size: var(--font-size-large);
 }
 
