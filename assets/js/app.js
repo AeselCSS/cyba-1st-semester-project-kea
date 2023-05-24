@@ -6,18 +6,16 @@ import { apiReadMembers, apiReadResults, members } from "./api.js";
 import { showMembers } from "./show-members.js";
 import { checkIfLoggedIn } from "./system-access.js";
 import { createMemberForm } from "./create-member.js";
-import { searchbarAndFilter } from "./search.js";
+import { refreshFiltersAndSort } from "./filter-and-sort.js";
 import { sortAndShowMembers } from "./sort.js";
-import { displayMembersInDebt } from "./restance.js"
+import { displayMembersInDebt } from "./restance.js";
 import { closeDialogEventListener, resetFilterSearchSort } from "./helpers-module.js";
 import { displayJoinForm } from "./home.js";
-
 
 import { calculateMembersCount } from "./member-table.js";
 import { displayFinancialTable } from "./member-and-finance-overview.js";
 import { refreshTop5Results } from "./results-top-five-section.js";
 import { toggleTableGridView } from "./toggle-table-grid.js";
-
 
 // onload event
 window.addEventListener("load", initApp);
@@ -27,12 +25,12 @@ async function initApp() {
 	console.log(`App is running!`);
 	initViews(); // init spa router
 	checkIfLoggedIn(); // check if user is logged in
-	resetFilterSearchSort() // Resets search, filter and sort values on load/refresh
+	resetFilterSearchSort(); // Resets search, filter and sort values on load/refresh
 	// members
 	await apiReadMembers();
 	//showMembers(members)
 	// sortAndShowMembers(members);
-	searchbarAndFilter()
+	refreshFiltersAndSort();
 	// top 5 results
 	await apiReadResults();
 	refreshTop5Results();
@@ -42,15 +40,16 @@ async function initApp() {
 	displayMembersInDebt();
 
 	// add event listeners
-	document.querySelector("#join-btn").addEventListener("click", displayJoinForm)
+	document.querySelector("#join-btn").addEventListener("click", displayJoinForm);
 	// filters on members section
 	closeDialogEventListener();
-	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
-	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
-	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
+	document.querySelector("#search").addEventListener("input", refreshFiltersAndSort);
+	// document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
+	document.querySelector("#members-sort").addEventListener("change", refreshFiltersAndSort);
+	document.querySelector("#filter").addEventListener("change", refreshFiltersAndSort);
 	document.querySelector("#add-new-member-btn").addEventListener("click", createMemberForm);
-	document.querySelector("#checkbox-in-debt").addEventListener("change", searchbarAndFilter);
-	document.querySelector("#checkbox-competitive").addEventListener("change", searchbarAndFilter);
+	document.querySelector("#checkbox-in-debt").addEventListener("change", refreshFiltersAndSort);
+	document.querySelector("#checkbox-competitive").addEventListener("change", refreshFiltersAndSort);
 	document.querySelector("#toggle-table-grid").addEventListener("click", toggleTableGridView);
 
 	// filters on top five section
@@ -59,5 +58,4 @@ async function initApp() {
 	document.querySelectorAll(".result-type-filter").forEach((checkbox) => {
 		checkbox.addEventListener("change", refreshTop5Results);
 	});
-
 }
