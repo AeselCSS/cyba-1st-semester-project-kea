@@ -1,4 +1,4 @@
-import { members } from "./api.js";
+import { members } from "../helpers/api.js";
 import { calculateMemberAge } from "./member-detailed-view.js";
 import { showMembers } from "./show-members.js";
 

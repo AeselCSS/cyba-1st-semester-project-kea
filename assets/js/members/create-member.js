@@ -1,7 +1,7 @@
 // imports
-import { apiCreateMember, refreshMembersView } from "./api.js";
-import { createMinMaxDate } from "./helpers-module.js";
-import { notificationFeedback } from "./notification-feedback.js";
+import { apiCreateMember, refreshMembersView } from "../helpers/api.js";
+import { createMinMaxDate } from "../helpers/helpers-module.js";
+import { notificationFeedback } from "../helpers/notification-feedback.js";
 
 const defaultAvatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
 
@@ -41,7 +41,7 @@ function createMemberForm() {
     <label for="membershipStatus">Membership status</label>
     <select name="membershipStatus" id="membershipStatus" required>
         <option value="active">Active</option>
-        <option value="passive">Passive</option>
+        <option value="passive">Inactive</option>
     </select>
 
     <label for="memberType">Member type</label>

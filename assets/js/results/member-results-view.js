@@ -1,4 +1,4 @@
-import { results } from "./api.js";
+import { results } from "../helpers/api.js";
 import { addResultDialog } from "./create-result.js";
 
 function memberResultsDialog(member) {

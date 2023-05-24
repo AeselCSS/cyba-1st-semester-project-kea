@@ -1,6 +1,6 @@
 // imports
 import { apiReadRole } from "./api.js";
-import { refreshFiltersAndSort } from "./filter-and-sort.js";
+import { refreshFiltersAndSort } from "../members/filter-and-sort.js";
 import { notificationFeedback } from "./notification-feedback.js";
 import { systemAccess } from "./system-access.js";
 

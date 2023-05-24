@@ -1,5 +1,5 @@
 import { calculateMemberAge, memberDetailsDialog } from "./member-detailed-view.js";
-import { memberResultsDialog } from "./member-results-view.js";
+import { memberResultsDialog } from "../results/member-results-view.js";
 
 let isGrid = true;
 

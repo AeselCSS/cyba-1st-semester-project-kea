@@ -1,6 +1,6 @@
-import { apiDeleteMember, apiDeleteResult, apiReadResults, refreshMembersView, results } from "./api.js";
-import { notificationFeedback } from "./notification-feedback.js";
-import { refreshTop5Results } from "./results-top-five-section.js";
+import { apiDeleteMember, apiDeleteResult, apiReadResults, refreshMembersView, results } from "../helpers/api.js";
+import { notificationFeedback } from "../helpers/notification-feedback.js";
+import { refreshTop5Results } from "../results/results-top-five-section.js";
 
 function confirmDeleteMember(member) {
 	const dialogContent = document.querySelector("#main-dialog");

@@ -1,5 +1,5 @@
-import { members } from "./api.js";
-import { calculateMemberAge } from "./member-detailed-view.js";
+import { members } from "../helpers/api.js";
+import { calculateMemberAge } from "../members/member-detailed-view.js";
 import { countInactiveMembers } from "./member-table.js";
 
 //Prices for each member type

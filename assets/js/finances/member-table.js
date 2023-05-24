@@ -1,4 +1,4 @@
-import { members } from "./api.js";
+import { members } from "../helpers/api.js";
 
 function calculateMembersCount() {
 	//Saves the count of active and inactives members in variables.

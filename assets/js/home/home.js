@@ -1,6 +1,5 @@
-import { createMinMaxDate } from "./helpers-module.js";
-import { notificationFeedback } from "./notification-feedback.js";
-
+import { createMinMaxDate } from "../helpers/helpers-module.js";
+import { notificationFeedback } from "../helpers/notification-feedback.js";
 function displayJoinForm() {
 	document.querySelector("#main-dialog").innerHTML = "";
 

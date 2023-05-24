@@ -1,18 +1,18 @@
 "use strict";
 
 // imports
-import { apiReadMembers, apiReadResults } from "./api.js";
-import { createMemberForm } from "./create-member.js";
-import { refreshFiltersAndSort } from "./filter-and-sort.js";
-import { closeDialogEventListener, resetFilterSearchSort } from "./helpers-module.js";
-import { displayJoinForm } from "./home.js";
-import { displayMembersInDebt } from "./restance.js";
-import { initViews } from "./spa-router.js";
-import { checkIfLoggedIn } from "./system-access.js";
-import { displayFinancialTable } from "./member-and-finance-overview.js";
-import { calculateMembersCount } from "./member-table.js";
-import { refreshTop5Results } from "./results-top-five-section.js";
-import { toggleTableGridView } from "./toggle-table-grid.js";
+import { apiReadMembers, apiReadResults } from "./helpers/api.js";
+import { createMemberForm } from "./members/create-member.js";
+import { refreshFiltersAndSort } from "./members/filter-and-sort.js";
+import { closeDialogEventListener, resetFilterSearchSort } from "./helpers/helpers-module.js";
+import { displayJoinForm } from "./home/home.js";
+import { displayMembersInDebt } from "./finances/restance.js";
+import { initViews } from "./helpers/spa-router.js";
+import { checkIfLoggedIn } from "./helpers/system-access.js";
+import { displayFinancialTable } from "./finances/member-and-finance-overview.js";
+import { calculateMembersCount } from "./finances/member-table.js";
+import { refreshTop5Results } from "./results/results-top-five-section.js";
+import { toggleTableGridView } from "./helpers/toggle-table-grid.js";
 
 // onload event
 window.addEventListener("load", initApp);

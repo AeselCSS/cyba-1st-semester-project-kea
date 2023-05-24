@@ -1,6 +1,6 @@
 import { login } from "./login.js";
 import { logout } from "./logout.js";
-import { refreshFiltersAndSort } from "./filter-and-sort.js";
+import { refreshFiltersAndSort } from "../members/filter-and-sort.js";
 
 function checkIfLoggedIn() {
 	const user = localStorage.getItem("user");

@@ -1,7 +1,7 @@
-import { apiUpdateMember, refreshMembersView } from "./api.js";
-import { createMinMaxDate } from "./helpers-module.js";
+import { apiUpdateMember, refreshMembersView } from "../helpers/api.js";
+import { createMinMaxDate } from "../helpers/helpers-module.js";
 import { memberDetailsDialog } from "./member-detailed-view.js";
-import { notificationFeedback } from "./notification-feedback.js";
+import { notificationFeedback } from "../helpers/notification-feedback.js";
 
 function updateMemberForm(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
@@ -140,8 +140,8 @@ function updateMemberForm(member) {
 				
 			</div>
 			<div id="confirmation-update-btns"> 
-					<p><button id="confirm-update-btn" >Confirm update</button></p>
-					<p><button id="cancel-update-btn" >Cancel update</button></p>
+				<p><button id="cancel-update-btn" >Cancel update</button></p>
+				<p><button id="confirm-update-btn" >Confirm update</button></p>
 				</div>
 	 </section>
 

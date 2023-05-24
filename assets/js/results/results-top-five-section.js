@@ -1,4 +1,4 @@
-import { members, results } from "./api.js";
+import { members, results } from "../helpers/api.js";
 
 // Function to refresh the top 5 results based on the current filters
 function refreshTop5Results() {
@@ -59,7 +59,6 @@ function getTop5Results(results) {
 	showTop5Results(top5AllDisciplines);
 }
 
-
 function showTop5Results(allDisciplines) {
 	Object.keys(allDisciplines).forEach((discipline) => {
 		const disciplineResults = allDisciplines[discipline];
@@ -101,7 +100,7 @@ function showTop5result(result) {
 
 function noResults(discipline) {
 	console.log(discipline);
-const gridArticle = document.querySelector(`#top-five-${discipline}`);
+	const gridArticle = document.querySelector(`#top-five-${discipline}`);
 	const htmlGridItem = /*html*/ `
 	    <div class="top-five-grid-item">
 	    <h4>No results available</h4>
@@ -110,42 +109,41 @@ const gridArticle = document.querySelector(`#top-five-${discipline}`);
 	gridArticle.insertAdjacentHTML("beforeend", htmlGridItem);
 }
 
-
 // filters
 // filter members by age group
 function filterByAgeGroup(members) {
-  const ageFilter = document.querySelector("#age-filter").value;
-  return members.filter((member) => member.agegroup.toLowerCase() === ageFilter.toLowerCase());
+	const ageFilter = document.querySelector("#age-filter").value;
+	return members.filter((member) => member.agegroup.toLowerCase() === ageFilter.toLowerCase());
 }
 
 // filter by gender from dropdown
 function filterByGender(members) {
-  const genderFilter = document.querySelector("#gender-filter").value;
-  return members.filter((member) => member.gender.toLowerCase() === genderFilter.toLowerCase());
+	const genderFilter = document.querySelector("#gender-filter").value;
+	return members.filter((member) => member.gender.toLowerCase() === genderFilter.toLowerCase());
 }
 
 // filter by result type from checkboxes
 function filterByResultType(results) {
-  // create an array of the checked result types
-  const checkedResultTypes = Array.from(document.querySelectorAll(".result-type-filter:checked")).map(
-    (checkbox) => checkbox.value
-  );
+	// create an array of the checked result types
+	const checkedResultTypes = Array.from(document.querySelectorAll(".result-type-filter:checked")).map(
+		(checkbox) => checkbox.value
+	);
 
-  return results.filter((result) => {
-    if (checkedResultTypes.length === 0) {
-      // If no result type checkboxes are checked, exclude all results
-      return false;
-    } else {
-      return checkedResultTypes.includes(result.resultType);
-    }
-  });
+	return results.filter((result) => {
+		if (checkedResultTypes.length === 0) {
+			// If no result type checkboxes are checked, exclude all results
+			return false;
+		} else {
+			return checkedResultTypes.includes(result.resultType);
+		}
+	});
 }
 
 function applyFilters(members, results) {
-  let filteredMembers = filterByAgeGroup(members);
-  filteredMembers = filterByGender(filteredMembers);
-  const filteredResults = filterByResultType(results);
-  return { members: filteredMembers, results: filteredResults };
+	let filteredMembers = filterByAgeGroup(members);
+	filteredMembers = filterByGender(filteredMembers);
+	const filteredResults = filterByResultType(results);
+	return { members: filteredMembers, results: filteredResults };
 }
 
 // helper functions

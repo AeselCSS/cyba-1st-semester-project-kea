@@ -1,8 +1,8 @@
-import { refreshFiltersAndSort } from "./filter-and-sort.js";
-import { updateFinancialTable } from "./member-and-finance-overview.js";
-import { calculateMemberAge } from "./member-detailed-view.js";
-import { calculateMembersCount } from "./member-table.js";
-import { displayMembersInDebt } from "./restance.js";
+import { refreshFiltersAndSort } from "../members/filter-and-sort.js";
+import { updateFinancialTable } from "../finances/member-and-finance-overview.js";
+import { calculateMemberAge } from "../members/member-detailed-view.js";
+import { calculateMembersCount } from "../finances/member-table.js";
+import { displayMembersInDebt } from "../finances/restance.js";
 import { checkIfLoggedIn } from "./system-access.js";
 
 // module variables
