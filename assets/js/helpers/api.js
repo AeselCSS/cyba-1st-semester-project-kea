@@ -1,6 +1,6 @@
 import { refreshFiltersAndSort } from "../members/filter-and-sort.js";
 import { updateFinancialTable } from "../finances/member-and-finance-overview.js";
-import { calculateMemberAge } from "../members/member-detailed-view.js";
+import { calculateMemberAge } from "./helpers-module.js";
 import { calculateMembersCount } from "../finances/member-table.js";
 import { displayMembersInDebt } from "../finances/restance.js";
 import { checkIfLoggedIn } from "./system-access.js";
