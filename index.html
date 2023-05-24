@@ -13,7 +13,7 @@
 		<header>
 			<!-- title, logo, image -->
 			<div class="logo-container">
-				<img src="./assets/images/dolphin.png" class="dolphin-logo" alt="Dolphin image">
+				<img src="./assets/images/dolphin.png" class="dolphin-logo" alt="Dolphin image" />
 				<h1>Delfin Svømmeklub</h1>
 			</div>
 		</header>
@@ -126,8 +126,10 @@
 					<div class="search-bar-group-container">
 						<label for="sort">Sort after</label>
 						<select name="sort" id="members-sort">
-							<option value="firstName">A-Z</option>
-							<option value="firstName-reverse">Z-A</option>
+							<option value="firstName">A-Z First name</option>
+							<option value="firstName-reverse">Z-A First name</option>
+							<option value="lastName">A-Z Last name</option>
+							<option value="lastName-reverse">Z-A Last name</option>
 							<option value="dateOfBirth">Youngest</option>
 							<option value="dateOfBirth-reverse">Oldest</option>
 						</select>
@@ -151,11 +153,23 @@
 					<button id="toggle-table-grid">View table</button>
 					<div id="in-debt-container">
 						<label for="in-debt">Show in debt</label>
-						<input type="checkbox" name="in-debt" id="checkbox-in-debt" />
+						<input
+							type="checkbox"
+							name="in-debt"
+							id="checkbox-in-debt"
+							class="checkbox-filter"
+							value="is-indebt"
+						/>
 					</div>
 					<div id="competitive-filter-container" class="search-bar-group-container">
 						<label for="member-type">Competitive Members</label>
-						<input type="checkbox" name="member-type" id="checkbox-competitive" />
+						<input
+							type="checkbox"
+							name="member-type"
+							id="checkbox-competitive"
+							class="checkbox-filter"
+							value="is-competitive"
+						/>
 					</div>
 					<button id="add-new-member-btn">Add member</button>
 				</div>
