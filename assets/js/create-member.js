@@ -126,17 +126,15 @@ async function createMember(event) {
 	// call apiCreateMember function from api.js
 	const response = await apiCreateMember(newMember);
 	if (response.ok) {
-		console.log("Member created");
-		console.log(newMember);
 		// reset the form, close the dialog and clear the dialog content
 		form.reset();
 		document.querySelector("#main-dialog-frame").close();
 		dialog.innerHTML = "";
-		notificationFeedback("Member has been added", true);
+		notificationFeedback(`<b>${newMember.firstName} ${newMember.lastName}</b> has been added ✅`, true);
 		refreshMembersView();
 	} else {
 		console.log("Error occured while creating new member");
-		notificationFeedback("Error occured while creating new member", false);
+		notificationFeedback("Error occured while creating new member ⛔", false);
 	}
 }
 

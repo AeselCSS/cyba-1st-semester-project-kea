@@ -17,6 +17,7 @@
 	--tertiary-color: #b7e3f5;
 	--accent-color-light: #24adcf;
 	--accent-color-dark: #11596b;
+	--color-orange: rgb(255, 216, 143);
 	--shadow-color: #111;
 	--text-color: var(--secondary-color);
 
@@ -63,12 +64,6 @@ body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-}
-
-header,
-nav,
-footer {
-	background-color: var(--accent-color-light);
 }
 
 h1,
@@ -134,22 +129,49 @@ main {
 }
 
 /* header styling */
-header,
-footer {
-	padding: var(--spacing-normal) var(--spacing-normal);
-	width: 100%;
+header {
+	padding: var(--spacing-small) var(--spacing-normal);
+	background-image: url(/assets/images/header-background.svg);
+	background-size: 100% 150px;
 }
 
 header h1 {
 	text-align: center;
 	color: var(--secondary-color);
+	z-index: 1;
+	font-weight: 800;
+	color: var(--color-orange);
+	text-shadow: 2px 2px 0px var(--shadow-color),
+	3px 3px 3px var(--shadow-color);
+
+}
+
+header img {
+	filter: drop-shadow(3px 3px 10px black)
+}
+
+.logo-container {
+	display: flex;
+	/* position: relative; */
+	justify-content: center;
+	align-items: center;
+}
+
+.dolphin-logo {
+	position: relative;
+	width: 8rem;
+	left: 4rem;
 }
 
 footer {
+	background: linear-gradient(var(--accent-color-light), var(--accent-color-dark));
+	padding: 1rem 0;
 	margin-top: 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-top: solid 2px var(--accent-color-dark);
+	box-shadow: 0px -2px 10px var(--shadow-color);
 }
 
 /* nav styling */
@@ -159,7 +181,11 @@ nav {
 	display: flex;
 	justify-content: left;
 	align-items: center;
-	box-shadow: 2px 2px 10px var(--shadow-color);
+	box-shadow: 0 2px 10px var(--shadow-color);
+	border-top: solid 2px var(--accent-color-dark);
+	border-bottom: solid 2px var(--accent-color-dark);
+	background: linear-gradient( rgb(65, 169, 249), rgb(115, 218, 255), rgb(0, 106, 152));
+	filter: hue-rotate(350deg);
 }
 
 nav a {
@@ -167,7 +193,9 @@ nav a {
 	font-weight: 600;
 	padding: var(--spacing-small) var(--spacing-normal);
 	position: relative;
-	text-decoration: none;
+	/* text-decoration: none; */
+	filter: drop-shadow(1px 1px 1px var(--shadow-color));
+	color: var(--primary-color);
 }
 
 nav a:hover {
@@ -182,14 +210,14 @@ nav a::after {
 	height: 2px;
 	bottom: 0.5em;
 	left: 0;
-	background-color: var(--tertiary-color);
+	background-color: var(--color-orange);
 	transform: scaleX(0);
 	transform-origin: center;
 	transition: transform 0.2s ease-in-out;
 }
 
 nav a:hover::after {
-	transform: scaleX(1);
+	transform: scaleX(.6);
 }
 
 nav button {
@@ -208,14 +236,18 @@ nav button {
 	font-weight: bold;
 }
 
+.view-link.active {
+	color: var(--color-orange);
+}
+
 /* search-bar & performance filter bar styling */
 #search-bar,
 #performance-filter-bar {
-	background-color: var(--accent-color-light);
+	background-color: rgb(2, 156, 211);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: var(--spacing-normal) auto;
+	margin: var(--spacing-large) auto;
 	padding: var(--spacing-tiny);
 	outline: var(--border-solid);
 	border-radius: var(--border-radius);
@@ -283,16 +315,21 @@ nav button {
 	margin: auto;
 	padding: 1em;
 	/* background-color: var(--accent-color-light); */
-	background: linear-gradient(var(--accent-color-light), #1a829c);
+	background: linear-gradient(to bottom right, var(--accent-color-light), rgb(2, 155, 211));
 	border: var(--border-solid);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
 	animation: fade-in 0.2s forwards;
 }
 
+#details-else {
+	font-size: var(--font-size-large);
+}
+
 .member-details-section h3 {
 	font-weight: bolder;
 	line-height: 2rem;
+	color: var(--tertiary-color);
 }
 
 .details-body-grid {
@@ -336,13 +373,12 @@ nav button {
 	outline: 2px solid var(--secondary-color);
 	position: fixed;
 	top: 85%;
-	left: 10%;
+	left: 5%;
 	padding: 2rem;
 	width: fit-content;
 	height: 3em;
 	box-shadow: var(--box-shadow);
 	z-index: 1;
-	background-color: var(--primary-color);
 }
 
 /* grid styling */
@@ -498,7 +534,7 @@ tr:nth-child(even) {
 /* Finances tables*/
 
 #finances {
-	width: 95%;
+	width: 70%;
 	margin: auto;
 }
 
@@ -508,7 +544,8 @@ tr:nth-child(even) {
 	gap: 2rem;
 	margin-top: 1rem;
 	margin-bottom: 2rem;
-	width: 100%;
+	width: 80%;
+	margin: 1rem auto;
 }
 
 #finances-membertype-overview h3 {
@@ -804,7 +841,7 @@ input[type="reset"]:hover,
 input[type="submit"]:hover {
 	transform: var(--scale-on-hover);
 	box-shadow: 3px 3px 10px var(--shadow-color);
-	filter: brightness(1.2);
+	background-color: var(--color-orange);
 }
 
 button:active,
@@ -944,4 +981,5 @@ input[type="submit"]:active {
 
 .view-content.active {
 	display: block;
+	
 }

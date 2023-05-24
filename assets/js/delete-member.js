@@ -45,12 +45,12 @@ async function deleteMember(member) {
 
 		await deleteAllResultsUnderMember(member.uid);
 		refreshTop5Results();
-		notificationFeedback(`${firstName} ${lastName} has been deleted`, true);
+		notificationFeedback(`<b>${firstName} ${lastName}</b> has been deleted ✅`, true);
 	} else {
 		//Visual feedback function goes here.
 
-		console.error("An error has occurred");
-		notificationFeedback("An error has occurred", false);
+		console.error("An error has occurred while deleting member");
+		notificationFeedback("Error occured while deleting member ⛔", false);
 	}
 	document.querySelector("#main-dialog-frame").close();
 }

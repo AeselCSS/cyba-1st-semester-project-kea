@@ -41,13 +41,14 @@ function systemAccess(role) {
 	const competitive = document.querySelector("#competitive-filter-container");
 
 	console.log(`systemAccess: ${role} found in local storage`);
+
 	if (role === "chairman") {
 		// nav links and buttons
-		loginBtn.className = "hidden";
-		logoutBtn.className = "";
-		membersLink.className = "";
-		financesLink.className = "hidden";
-		topFiveLink.className = "hidden";
+		loginBtn.classList.add('hidden');
+		logoutBtn.classList.remove('hidden');
+		membersLink.classList.remove('hidden');
+		financesLink.classList.add('hidden');
+		topFiveLink.classList.add('hidden');
 		// role specific buttons
 		addMemberBtn.className = "";
 		ResultsBtnClass("hidden");
@@ -66,13 +67,14 @@ function systemAccess(role) {
 		competitiveCheckbox.checked = false;
 		document.querySelector("#logged-in-span").textContent = "Chairman";
 		document.querySelector("#log-in-text").classList.remove("hidden");
+
 	} else if (role === "cashier") {
 		// nav links and buttons
-		loginBtn.className = "hidden";
-		logoutBtn.className = "";
-		membersLink.className = "";
-		financesLink.className = "";
-		topFiveLink.className = "hidden";
+		loginBtn.classList.add('hidden');
+		logoutBtn.classList.remove('hidden');
+		membersLink.classList.remove('hidden');
+		financesLink.classList.remove('hidden');
+		topFiveLink.classList.add('hidden');
 		// role specific buttons
 		addMemberBtn.className = "hidden";
 		ResultsBtnClass("hidden");
@@ -91,13 +93,14 @@ function systemAccess(role) {
 		competitiveCheckbox.checked = false;
 		document.querySelector("#logged-in-span").textContent = "Cashier";
 		document.querySelector("#log-in-text").classList.remove("hidden");
+
 	} else if (role === "trainer") {
 		// nav links and buttons
-		loginBtn.className = "hidden";
-		logoutBtn.className = "";
-		membersLink.className = "";
-		financesLink.className = "hidden";
-		topFiveLink.className = "";
+		loginBtn.classList.add('hidden');
+		logoutBtn.classList.remove('hidden');
+		membersLink.classList.remove('hidden');
+		financesLink.classList.add('hidden');
+		topFiveLink.classList.remove("hidden");
 		// role specific buttons
 		addMemberBtn.className = "hidden";
 		ResultsBtnClass("");
@@ -116,14 +119,15 @@ function systemAccess(role) {
 		competitiveCheckbox.checked = true;
 		document.querySelector("#logged-in-span").textContent = "Trainer";
 		document.querySelector("#log-in-text").classList.remove("hidden");
+		
 	} else if (role === "guest") {
 		console.log("no user logged in - guest view shown");
 		// nav links and buttons
-		loginBtn.className = "";
-		logoutBtn.className = "hidden";
-		membersLink.className = "hidden";
-		financesLink.className = "hidden";
-		topFiveLink.className = "hidden";
+		loginBtn.classList.remove("hidden");
+		logoutBtn.classList.add('hidden');
+		membersLink.classList.add('hidden');
+		financesLink.classList.add('hidden');
+		topFiveLink.classList.add('hidden');
 		document.querySelector("#logged-in-span").textContent = "";
 		document.querySelector("#log-in-text").classList.add("hidden");
 	}
