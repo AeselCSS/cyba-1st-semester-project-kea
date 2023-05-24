@@ -125,11 +125,6 @@ function prepareResults(resultsAsObjects) {
 
 async function refreshMembersView() {
 	await apiReadMembers();
-	document.querySelector("#filter").value = "all";
-	document.querySelector("#search").value = "";
-	document.querySelector("#members-sort").value = "firstName";
-	document.querySelector("#checkbox-in-debt").checked = false;
-
 	refreshFiltersAndSort();
 	checkIfLoggedIn();
 	calculateMembersCount();
