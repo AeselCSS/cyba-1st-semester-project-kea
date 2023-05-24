@@ -1,7 +1,7 @@
 // imports
 import { apiReadRole } from "./api.js";
 import { systemAccess } from "./system-access.js";
-import { searchbarAndFilter } from "./search.js";
+import { refreshFiltersAndSort } from "./filter-and-sort.js";
 import { notificationFeedback } from "./notification-feedback.js";
 
 // create login form upon clicking login button
@@ -47,7 +47,7 @@ async function userAuthentication(event) {
 		// redirect to members page
 		location.href = "#members";
 		//Show members anew with sort, search and filter value in mind
-		searchbarAndFilter();
+		refreshFiltersAndSort();
 		// provide visual feedback that user is logged in
 		// to be created later
 	} else {
