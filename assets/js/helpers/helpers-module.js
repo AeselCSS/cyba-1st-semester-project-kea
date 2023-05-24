@@ -23,4 +23,12 @@ function createMinMaxDate(yearsToSubtract) {
 	return new Date(date).toISOString().split("T")[0];
 }
 
-export { closeDialogEventListener, resetFilterSearchSort, createMinMaxDate };
+function calculateMemberAge(member) {
+	//member.dateOfBirth format YYYY-MM-DD
+	const dateArr = member.dateOfBirth.split("-");
+	const date = new Date(dateArr[0], dateArr[1], dateArr[2]);
+	const age = new Date(Date.now() - date.getTime()).getUTCFullYear() - 1970;
+	return age;
+}
+
+export { closeDialogEventListener, resetFilterSearchSort, createMinMaxDate, calculateMemberAge };
