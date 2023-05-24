@@ -50,20 +50,12 @@ function populateAmountInTable(inactive, junior, senior, seniorPlus) {
 }
 
 function populateSubscriptionPrice() {
-	const subscriptionPriceArr = [
-		inactiveSubscriptionPrice,
-		juniorSubscriptionPrice,
-		seniorSubscriptionPrice,
-		seniorPlusSubscriptionPrice,
-	];
-	//Using desstructuring with the four member types in order to store each price in a seperate variable
-	const [
-		inactiveSubscriptionPriceWithComma,
-		juniorSubscriptionPriceWithComma,
-		seniorSubscriptionPriceWithComma,
-		seniorPlusSubscriptionPriceWithComma,
-		// addCommaInNumber returns a new array of prices as strings
-	] = addCommaInNumber(subscriptionPriceArr);
+	// addCommaInNumber 
+	const inactiveSubscriptionPriceWithComma = addCommaInNumber(inactiveSubscriptionPrice)
+	const juniorSubscriptionPriceWithComma = addCommaInNumber(juniorSubscriptionPrice)
+	const seniorSubscriptionPriceWithComma = addCommaInNumber(seniorSubscriptionPrice)
+	const seniorPlusSubscriptionPriceWithComma = addCommaInNumber(seniorPlusSubscriptionPrice)
+
 
 	//Displays the subscription price per year for each member type category in the table overview
 	document.querySelector("#inactive-subscription").textContent = inactiveSubscriptionPriceWithComma;
@@ -79,18 +71,14 @@ function subscriptionSubTotal(inactiveCount, juniorCount, seniorCount, seniorPlu
 	const seniorSubTotal = seniorCount * seniorSubscriptionPrice;
 	const seniorPlusSubTotal = seniorPlusCount * seniorPlusSubscriptionPrice;
 	const grandTotal = inactiveSubTotal + juniorSubTotal + seniorSubTotal + seniorPlusSubTotal;
+	
+	// addCommaInNumber
+	const inactiveSubTotalWithComma = addCommaInNumber(inactiveSubTotal);
+	const juniorSubTotalWithComma = addCommaInNumber(juniorSubTotal);
+	const seniorSubTotalWithComma = addCommaInNumber(seniorSubTotal);
+	const seniorPlusSubTotalWithComma = addCommaInNumber(seniorPlusSubTotal);
+	const grandTotalWithComma = addCommaInNumber(grandTotal);
 
-	const subTotalArr = [inactiveSubTotal, juniorSubTotal, seniorSubTotal, seniorPlusSubTotal, grandTotal];
-
-	//Using desstructuring in order to store each sub total and grand total in seperate variables
-	const [
-		inactiveSubTotalWithComma,
-		juniorSubTotalWithComma,
-		seniorSubTotalWithComma,
-		seniorPlusSubTotalWithComma,
-		grandTotalWithComma,
-		// addCommaInNumber returns a new array of prices as strings
-	] = addCommaInNumber(subTotalArr);
 
 	//Displays the total subscription price for each member type and the total sum /grand total category in the table overview
 	document.querySelector("#inactive-subscription-subtotal").textContent = inactiveSubTotalWithComma;
@@ -106,7 +94,7 @@ function displayGrandTotalExcludingIndebted(grandTotalIncludingDebt) {
 	const debt = calculateDebt();
 
 	const grandTotalExcludingDebt = grandTotalIncludingDebt - debt;
-	const [grandTotalExcludingDebtWithComma] = addCommaInNumber(grandTotalExcludingDebt.toString().split(" "));
+	const grandTotalExcludingDebtWithComma = addCommaInNumber(grandTotalExcludingDebt);
 
 	document.querySelector("#total-member-subscription-grand-total-excluding-indebted").textContent =
 		grandTotalExcludingDebtWithComma;
@@ -131,27 +119,8 @@ function calculateDebt() {
 	return amount;
 }
 
-//
-function addCommaInNumber(subTotalArr) {
-	const subTotalArrWithComma = [];
-	for (const subtotal of subTotalArr) {
-		//for all the prices less than 1000
-		if (String(subtotal).length > 3) {
-			//Finds and store the last three digits in a subscription price
-			const threeZeros = String(subtotal).slice(-3);
-
-			//Finds digits from index 0 up until the last 3 digits.
-			const otherNumbers = String(subtotal).slice(0, -3);
-			//Adds a comma to the subscription price and saves it in the array.
-			const result = `${otherNumbers}.${threeZeros}`;
-			subTotalArrWithComma.push(result);
-		} else {
-			//We dont want to add commas to prices with that are less than 3 digits.
-			subTotalArrWithComma.push(String(subtotal));
-		}
-	}
-
-	return subTotalArrWithComma;
+function addCommaInNumber(number) {
+	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 // Iterates through members and returns number of juniors members using filter
