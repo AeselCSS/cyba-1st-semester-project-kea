@@ -29,7 +29,7 @@ function memberDetailsDialog(member) {
 					<h3>Member Status</h3> 
 					${showMemberActivityStatus(member)}
 					<h3>Membertype</h3> 
-					${showMemberType(memberAge)} - ${showMemberCompetitiveStatus(member)}
+					${member.agegroup} - ${showMemberCompetitiveStatus(member)}
 					${
 						member.disciplines
 							? `<h3>Disciplines</h3>
@@ -58,23 +58,23 @@ function memberDetailsDialog(member) {
 	if (!dialogFrame.open) dialogFrame.showModal();
 }
 
-function calculateMemberAge(member) {
-	//member.dateOfBirth format YYYY-MM-DD
-	const dateArr = member.dateOfBirth.split("-");
-	const date = new Date(dateArr[0], dateArr[1], dateArr[2]);
-	const age = new Date(Date.now() - date.getTime()).getUTCFullYear() - 1970;
-	return age;
-}
+// function calculateMemberAge(member) {
+// 	//member.dateOfBirth format YYYY-MM-DD
+// 	const dateArr = member.dateOfBirth.split("-");
+// 	const date = new Date(dateArr[0], dateArr[1], dateArr[2]);
+// 	const age = new Date(Date.now() - date.getTime()).getUTCFullYear() - 1970;
+// 	return age;
+// }
 
-function showMemberType(age) {
-	if (age < 18) {
-		return "Junior";
-	} else if (age > 60) {
-		return "Senior+";
-	} else {
-		return "Senior";
-	}
-}
+// function showMemberType(age) {
+// 	if (age < 18) {
+// 		return "Junior";
+// 	} else if (age > 60) {
+// 		return "Senior+";
+// 	} else {
+// 		return "Senior";
+// 	}
+// }
 
 function showMemberActivityStatus(member) {
 	return member.isActiveMember ? "Active" : "Inactive";
@@ -88,4 +88,4 @@ function showMemberDisciplines(member) {
 	return member.disciplines.join(", ");
 }
 
-export { memberDetailsDialog, calculateMemberAge };
+export { memberDetailsDialog };
