@@ -120,7 +120,8 @@ function calculateDebt() {
 }
 
 function addCommaInNumber(number) {
-	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+	console.log(number);
+	return new Intl.NumberFormat("da-DK").format(number);
 }
 
 // Iterates through members and returns number of juniors members using filter
