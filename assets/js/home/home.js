@@ -29,17 +29,18 @@ function displayJoinForm() {
             </div>
 							
 				<div id="home-form-button">
-					<input id="home-form-input-button" type="button" value="Send"/>
+					<input id="home-form-input-button" type="submit" value="Send"/>
 				</div>
 		</form>
     `;
 
 	document.querySelector("#main-dialog").insertAdjacentHTML("beforeend", html);
 	document.querySelector("#main-dialog-frame").showModal();
-	document.querySelector("#home-form-input-button").addEventListener("click", sendForm);
+	document.querySelector("#join-form").addEventListener("submit", sendForm);
 }
 
-function sendForm() {
+function sendForm(event) {
+	event.preventDefault();
 	document.querySelector("#main-dialog-frame").close();
 	notificationFeedback("Success! We will reach back to you through Email", true);
 }
