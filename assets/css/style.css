@@ -131,8 +131,9 @@ main {
 /* header styling */
 header {
 	padding: var(--spacing-small) var(--spacing-normal);
-	background-image: url(/assets/images/header-background.svg);
+	background-image: url(../images/header-background.svg);
 	background-size: 100% 150px;
+	user-select: none;
 }
 
 header h1 {

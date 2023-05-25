@@ -1,6 +1,6 @@
+import { calculateMemberAge } from "../helpers/helpers-module.js";
+import { memberResultsDialog } from "../results/member-results-view.js";
 import { memberDetailsDialog } from "./member-detailed-view.js";
-import { memberResultsDialog } from "./member-results-view.js";
-import { calculateMemberAge } from "./member-detailed-view.js";
 
 let isGrid = true;
 

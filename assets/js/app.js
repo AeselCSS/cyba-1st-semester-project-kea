@@ -1,23 +1,15 @@
 "use strict";
 
 // imports
-import { initViews } from "./spa-router.js";
-import { apiReadMembers, apiReadResults, members } from "./api.js";
-import { showMembers } from "./show-members.js";
-import { checkIfLoggedIn } from "./system-access.js";
-import { createMemberForm } from "./create-member.js";
-import { searchbarAndFilter } from "./search.js";
-import { sortAndShowMembers } from "./sort.js";
-import { displayMembersInDebt } from "./restance.js"
-import { closeDialogEventListener, resetFilterSearchSort } from "./helpers-module.js";
-import { displayJoinForm } from "./home.js";
-
-
-import { calculateMembersCount } from "./member-table.js";
-import { displayFinancialTable } from "./member-and-finance-overview.js";
-import { refreshTop5Results } from "./results-top-five-section.js";
-import { toggleTableGridView } from "./toggle-table-grid.js";
-
+import { displayFinancialTable } from "./finances/member-and-finance-overview.js";
+import { calculateMembersCount } from "./finances/member-table.js";
+import { displayMembersInDebt } from "./finances/restance.js";
+import { apiReadMembers, apiReadResults } from "./helpers/api.js";
+import { initiateEventlisteners, resetFilterSearchSort } from "./helpers/helpers-module.js";
+import { initViews } from "./helpers/spa-router.js";
+import { checkIfLoggedIn } from "./helpers/system-access.js";
+import { refreshFiltersAndSort } from "./members/filter-and-sort.js";
+import { refreshTop5Results } from "./results/results-top-five-section.js";
 
 // onload event
 window.addEventListener("load", initApp);
@@ -27,12 +19,10 @@ async function initApp() {
 	console.log(`App is running!`);
 	initViews(); // init spa router
 	checkIfLoggedIn(); // check if user is logged in
-	resetFilterSearchSort() // Resets search, filter and sort values on load/refresh
+	resetFilterSearchSort(); // Resets search, filter and sort values on load/refresh
 	// members
 	await apiReadMembers();
-	//showMembers(members)
-	// sortAndShowMembers(members);
-	searchbarAndFilter()
+	refreshFiltersAndSort();
 	// top 5 results
 	await apiReadResults();
 	refreshTop5Results();
@@ -40,24 +30,8 @@ async function initApp() {
 	calculateMembersCount();
 	displayFinancialTable();
 	displayMembersInDebt();
-
-	// add event listeners
-	document.querySelector("#join-btn").addEventListener("click", displayJoinForm)
-	// filters on members section
-	closeDialogEventListener();
-	document.querySelector("#search").addEventListener("keyup", searchbarAndFilter);
-	document.querySelector("#members-sort").addEventListener("change", () => sortAndShowMembers(members));
-	document.querySelector("#filter").addEventListener("change", searchbarAndFilter);
-	document.querySelector("#add-new-member-btn").addEventListener("click", createMemberForm);
-	document.querySelector("#checkbox-in-debt").addEventListener("change", searchbarAndFilter);
-	document.querySelector("#checkbox-competitive").addEventListener("change", searchbarAndFilter);
-	document.querySelector("#toggle-table-grid").addEventListener("click", toggleTableGridView);
-
-	// filters on top five section
-	document.querySelector("#age-filter").addEventListener("change", refreshTop5Results);
-	document.querySelector("#gender-filter").addEventListener("change", refreshTop5Results);
-	document.querySelectorAll(".result-type-filter").forEach((checkbox) => {
-		checkbox.addEventListener("change", refreshTop5Results);
-	});
-
+	// event listeners
+	initiateEventlisteners()
 }
+
+

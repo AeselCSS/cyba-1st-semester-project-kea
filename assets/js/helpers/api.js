@@ -1,9 +1,9 @@
-import { searchbarAndFilter } from "./search.js";
-import { calculateMemberAge } from "./member-detailed-view.js";
+import { refreshFiltersAndSort } from "../members/filter-and-sort.js";
+import { updateFinancialTable } from "../finances/member-and-finance-overview.js";
+import { calculateMemberAge } from "./helpers-module.js";
+import { calculateMembersCount } from "../finances/member-table.js";
+import { displayMembersInDebt } from "../finances/restance.js";
 import { checkIfLoggedIn } from "./system-access.js";
-import { updateFinancialTable } from "./member-and-finance-overview.js";
-import { calculateMembersCount } from "./member-table.js";
-import { displayMembersInDebt } from "./restance.js";
 
 // module variables
 const endpoint = "https://cyba-1st-semester-project-default-rtdb.europe-west1.firebasedatabase.app";
@@ -35,7 +35,6 @@ async function apiReadMembers() {
 	const membersInObjects = await response.json();
 
 	members = prepareMembers(membersInObjects);
-	
 }
 
 async function apiReadRole(role) {
@@ -126,12 +125,7 @@ function prepareResults(resultsAsObjects) {
 
 async function refreshMembersView() {
 	await apiReadMembers();
-	document.querySelector("#filter").value = "all";
-	document.querySelector("#search").value = "";
-	document.querySelector("#members-sort").value = "firstName";
-	document.querySelector("#checkbox-in-debt").checked = false;
-	
-	searchbarAndFilter();
+	refreshFiltersAndSort();
 	checkIfLoggedIn();
 	calculateMembersCount();
 	updateFinancialTable();
