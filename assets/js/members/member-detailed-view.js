@@ -1,6 +1,7 @@
 // imports
 import { confirmDeleteMember } from "./delete-member.js";
 import { updateMemberForm } from "./update-member.js";
+import { calculateMemberAge } from "../helpers/helpers-module.js";
 
 function memberDetailsDialog(member) {
 	document.querySelector("#main-dialog").innerHTML = "";
