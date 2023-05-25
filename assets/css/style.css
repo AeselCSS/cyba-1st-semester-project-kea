@@ -753,6 +753,10 @@ form input[type="date"] {
 	margin: var(--spacing-normal) 0;
 }
 
+#join-form h2 {
+	margin-bottom: 1em;
+}
+
 #login-form {
 	display: grid;
 }

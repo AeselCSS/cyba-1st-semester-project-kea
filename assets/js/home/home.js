@@ -5,6 +5,7 @@ function displayJoinForm() {
 
 	const html = /*html*/ `
 		<form id="join-form">
+		<h2>Fill out your personal details</h2>
 			<div id="form-content">
 				<label for="firstName">First name</label>
 				<input type="text" name="firstName" id="firstName" required />
