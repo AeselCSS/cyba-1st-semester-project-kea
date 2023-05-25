@@ -89,7 +89,7 @@ function prepareMembers(membersInObjects) {
 		const age = calculateMemberAge(member);
 		if (age < 18) {
 			member.agegroup = "junior";
-		} else if (age < 65) {
+		} else if (age < 60) {
 			member.agegroup = "senior";
 		} else {
 			member.agegroup = "senior+";
