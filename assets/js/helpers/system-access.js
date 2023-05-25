@@ -41,8 +41,6 @@ function systemAccess(role) {
 	const inDebt = document.querySelector("#in-debt-container");
 	const competitive = document.querySelector("#competitive-filter-container");
 
-	console.log(`systemAccess: ${role} found in local storage`);
-
 	if (role === "chairman") {
 		// nav links and buttons
 		loginBtn.classList.add("hidden");

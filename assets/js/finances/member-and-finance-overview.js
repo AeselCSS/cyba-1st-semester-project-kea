@@ -120,7 +120,6 @@ function calculateDebt() {
 }
 
 function addCommaInNumber(number) {
-	console.log(number);
 	return new Intl.NumberFormat("da-DK").format(number);
 }
 

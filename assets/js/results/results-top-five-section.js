@@ -99,7 +99,6 @@ function showTop5result(result) {
 }
 
 function noResults(discipline) {
-	console.log(discipline);
 	const gridArticle = document.querySelector(`#top-five-${discipline}`);
 	const htmlGridItem = /*html*/ `
 	    <div class="top-five-grid-item">
